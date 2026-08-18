@@ -1,0 +1,108 @@
+{
+  "nav": {
+    "home": "Anasayfa",
+    "products": "Ürünler",
+    "projects": "Projeler",
+    "about": "Hakkımızda",
+    "contact": "İletişim",
+    "getQuote": "Teklif Al"
+  },
+  "hero": {
+    "tagline": "Lüks & Özgün Tasarım",
+    "title": "Zarafet,\nHer Detayda",
+    "subtitle": "El işçiliğiyle üretilen, tasarım odaklı mobilya koleksiyonlarımızla yaşam alanlarınızı dönüştürün.",
+    "cta": "Koleksiyonu Keşfet",
+    "ctaSecondary": "Projelerimiz"
+  },
+  "categories": {
+    "title": "Koleksiyonlar",
+    "subtitle": "Her mekan için özenle tasarlanmış, kalıcı güzellik",
+    "sofa": "Kanepe & Köşe Takımları",
+    "berjer": "Berjer",
+    "chair": "Sandalye & Benchler",
+    "bedroom": "Yatak Odası",
+    "mirrors": "Aynalar & Üniteler",
+    "garden": "Bahçe Mobilyası",
+    "viewAll": "Tümünü Gör"
+  },
+  "about": {
+    "label": "Hakkımızda",
+    "title": "Tasarımın Ötesinde\nBir Deneyim",
+    "p1": "Armoni Design, 20 yılı aşkın deneyimiyle Türkiye'nin önde gelen lüks mobilya üreticilerinden biridir. Her parça, ustalarımızın ellerinde hayat bulur; kalite ve estetik, her detayda kendini gösterir.",
+    "p2": "İtalyan tasarım anlayışı ile Türk zanaatkârlığını harmanlayan koleksiyonlarımız; oturma odalarından yatak odalarına, bahçelerden ofislere kadar her mekânı zarif bir yaşam alanına dönüştürür.",
+    "stats": {
+      "products": "Ürün",
+      "years": "Yıl Deneyim",
+      "projects": "Proje",
+      "countries": "Ülke"
+    },
+    "cta": "Daha Fazla Bilgi"
+  },
+  "featured": {
+    "title": "Öne Çıkan Ürünler",
+    "subtitle": "En çok tercih edilen tasarımlarımız",
+    "viewProduct": "Ürünü İncele",
+    "getQuote": "Teklif Al"
+  },
+  "contact": {
+    "title": "İletişime Geçin",
+    "subtitle": "Projeniz ve özel tasarım talepleriniz için bizimle iletişime geçin.",
+    "name": "Adınız Soyadınız",
+    "email": "E-posta Adresiniz",
+    "phone": "Telefon Numaranız",
+    "message": "Mesajınız",
+    "send": "Gönder",
+    "ourAddresses": "Adresimiz",
+    "factoryAddressLabel": "Üretim",
+    "factoryAddress": "Kağıthane Cad, Limon Sk. 1A, 34400 Kağıthane / İstanbul",
+    "storeAddressLabel": "Mağaza",
+    "storeAddress": "Kağıthane Cad, Limon Sk. 1A, 34400 Kağıthane / İstanbul",
+    "ourEmails": "Email Adresimiz",
+    "primaryEmail": "iletisim@armonidesign.com",
+    "secondaryEmail": "info@armonidesign.com",
+    "ourPhones": "Telefon Numaramız",
+    "phone1": "0 212 296 13 56",
+    "phone2": "0 552 583 32 34",
+    "address": "Adres",
+    "addressValue": "Kağıthane Cad, Limon Sk. 1A, 34400 Kağıthane / İstanbul",
+    "phone_label": "Telefon",
+    "phoneValue": "0 212 296 13 56",
+    "email_label": "E-posta",
+    "emailValue": "iletisim@armonidesign.com",
+    "success": "Mesajınız başarıyla gönderildi.",
+    "whatsapp": "WhatsApp ile Yazın",
+    "mapTitle": "Konumumuz"
+  },
+  "footer": {
+    "description": "Lüks mobilya tasarımı ve üretiminde 20 yılı aşkın deneyim. Estetik ve fonksiyonelliği yaşam alanlarınıza taşıyoruz.",
+    "quickLinks": "Hızlı Bağlantılar",
+    "categories": "Kategoriler",
+    "followUs": "Bizi Takip Edin",
+    "rights": "Tüm hakları saklıdır.",
+    "privacy": "Gizlilik Politikası",
+    "terms": "Kullanım Şartları"
+  },
+  "products": {
+    "title": "Ürünlerimiz",
+    "subtitle": "Tüm koleksiyonumuzu keşfedin",
+    "filter": "Filtrele",
+    "sort": "Sırala",
+    "noProducts": "Ürün bulunamadı.",
+    "priceOnRequest": "Fiyat için teklif alınız",
+    "viewDetails": "Detayları Gör",
+    "back": "Geri Dön",
+    "relatedProducts": "Benzer Ürünler"
+  },
+  "projects": {
+    "title": "Projelerimiz",
+    "subtitle": "Tamamlanan çalışmalarımızdan bir seçki",
+    "viewProject": "Projeyi İncele"
+  },
+  "meta": {
+    "homeTitle": "Armoni Design | Lüks Mobilya Tasarımı ve Üretimi",
+    "homeDesc": "Armoni Design ile yaşam alanlarınızı lüks ve özgün mobilya tasarımlarıyla dönüştürün. Kanepe, berjer, sandalye ve daha fazlası.",
+    "productsTitle": "Ürünler | Armoni Design",
+    "aboutTitle": "Hakkımızda | Armoni Design",
+    "contactTitle": "İletişim | Armoni Design"
+  }
+}

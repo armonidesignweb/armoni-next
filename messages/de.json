@@ -1,0 +1,108 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "products": "Produkte",
+    "projects": "Projekte",
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "getQuote": "Angebot einholen"
+  },
+  "hero": {
+    "tagline": "Luxus & Originelles Design",
+    "title": "Eleganz,\nIn jedem Detail",
+    "subtitle": "Verwandeln Sie Ihre Wohnräume mit unseren handgefertigten, designorientierten Möbelkollektionen.",
+    "cta": "Kollektion entdecken",
+    "ctaSecondary": "Unsere Projekte"
+  },
+  "categories": {
+    "title": "Kollektionen",
+    "subtitle": "Zeitlose Schönheit, sorgfältig für jeden Raum gestaltet",
+    "sofa": "Sofas & Eckgarnituren",
+    "berjer": "Sessel",
+    "chair": "Stühle & Bänke",
+    "bedroom": "Schlafzimmer",
+    "mirrors": "Spiegel & Einheiten",
+    "garden": "Gartenmöbel",
+    "viewAll": "Alle anzeigen"
+  },
+  "about": {
+    "label": "Über uns",
+    "title": "Eine Erfahrung\nJenseits des Designs",
+    "p1": "Armoni Design ist einer der führenden Luxusmöbelhersteller der Türkei mit über 20 Jahren Erfahrung. Jedes Stück erwacht in den Händen unserer Handwerker zum Leben.",
+    "p2": "Unsere Kollektionen verbinden italienische Designästhetik mit türkischem Handwerk und verwandeln jeden Raum in ein elegantes Wohnambiente.",
+    "stats": {
+      "products": "Produkte",
+      "years": "Jahre Erfahrung",
+      "projects": "Projekte",
+      "countries": "Länder"
+    },
+    "cta": "Mehr erfahren"
+  },
+  "featured": {
+    "title": "Ausgewählte Produkte",
+    "subtitle": "Unsere beliebtesten Designs",
+    "viewProduct": "Produkt ansehen",
+    "getQuote": "Angebot anfragen"
+  },
+  "contact": {
+    "title": "Kontakt aufnehmen",
+    "subtitle": "Kontaktieren Sie uns für Ihre Projekte und individuellen Designanfragen.",
+    "name": "Vollständiger Name",
+    "email": "E-Mail-Adresse",
+    "phone": "Telefonnummer",
+    "message": "Ihre Nachricht",
+    "send": "Senden",
+    "ourAddresses": "Unsere Adressen",
+    "factoryAddressLabel": "Produktion",
+    "factoryAddress": "Kağıthane Cad, Limon Sk. 1A, 34400 Kağıthane / Istanbul",
+    "storeAddressLabel": "Geschäft",
+    "storeAddress": "Kağıthane Cad, Limon Sk. 1A, 34400 Kağıthane / Istanbul",
+    "ourEmails": "E-Mail-Adressen",
+    "primaryEmail": "iletisim@armonidesign.com",
+    "secondaryEmail": "info@armonidesign.com",
+    "ourPhones": "Telefonnummern",
+    "phone1": "0 212 296 13 56",
+    "phone2": "0 552 583 32 34",
+    "address": "Adresse",
+    "addressValue": "Kağıthane Cad, Limon Sk. 1A, 34400 Kağıthane / Istanbul",
+    "phone_label": "Telefon",
+    "phoneValue": "0 212 296 13 56",
+    "email_label": "E-Mail",
+    "emailValue": "iletisim@armonidesign.com",
+    "success": "Ihre Nachricht wurde erfolgreich gesendet.",
+    "whatsapp": "Per WhatsApp schreiben",
+    "mapTitle": "Unser Standort"
+  },
+  "footer": {
+    "description": "Über 20 Jahre Erfahrung in Luxusmöbeldesign und -herstellung. Wir bringen Ästhetik und Funktionalität in Ihre Wohnräume.",
+    "quickLinks": "Schnelllinks",
+    "categories": "Kategorien",
+    "followUs": "Folgen Sie uns",
+    "rights": "Alle Rechte vorbehalten.",
+    "privacy": "Datenschutzrichtlinie",
+    "terms": "Nutzungsbedingungen"
+  },
+  "products": {
+    "title": "Unsere Produkte",
+    "subtitle": "Entdecken Sie unsere gesamte Kollektion",
+    "filter": "Filtern",
+    "sort": "Sortieren",
+    "noProducts": "Keine Produkte gefunden.",
+    "priceOnRequest": "Preis auf Anfrage",
+    "viewDetails": "Details ansehen",
+    "back": "Zurück",
+    "relatedProducts": "Ähnliche Produkte"
+  },
+  "projects": {
+    "title": "Unsere Projekte",
+    "subtitle": "Eine Auswahl unserer abgeschlossenen Arbeiten",
+    "viewProject": "Projekt ansehen"
+  },
+  "meta": {
+    "homeTitle": "Armoni Design | Luxusmöbel Design & Herstellung",
+    "homeDesc": "Verwandeln Sie Ihre Wohnräume mit Armoni Designs luxuriösen und einzigartigen Möbeldesigns.",
+    "productsTitle": "Produkte | Armoni Design",
+    "aboutTitle": "Über uns | Armoni Design",
+    "contactTitle": "Kontakt | Armoni Design"
+  }
+}

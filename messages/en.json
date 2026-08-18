@@ -1,0 +1,108 @@
+{
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact",
+    "getQuote": "Get a Quote"
+  },
+  "hero": {
+    "tagline": "Luxury & Original Design",
+    "title": "Elegance,\nIn Every Detail",
+    "subtitle": "Transform your living spaces with our handcrafted, design-focused furniture collections.",
+    "cta": "Explore Collection",
+    "ctaSecondary": "Our Projects"
+  },
+  "categories": {
+    "title": "Collections",
+    "subtitle": "Timeless beauty, carefully designed for every space",
+    "sofa": "Sofas & Corner Sets",
+    "berjer": "Armchairs",
+    "chair": "Chairs & Benches",
+    "bedroom": "Bedroom",
+    "mirrors": "Mirrors & Units",
+    "garden": "Garden Furniture",
+    "viewAll": "View All"
+  },
+  "about": {
+    "label": "About Us",
+    "title": "An Experience\nBeyond Design",
+    "p1": "Armoni Design is one of Turkey's leading luxury furniture manufacturers with over 20 years of experience. Each piece comes to life in the hands of our craftsmen; quality and aesthetics are evident in every detail.",
+    "p2": "Our collections, blending Italian design sensibility with Turkish craftsmanship, transform every space — from living rooms to bedrooms, gardens to offices — into an elegant living environment.",
+    "stats": {
+      "products": "Products",
+      "years": "Years Experience",
+      "projects": "Projects",
+      "countries": "Countries"
+    },
+    "cta": "Learn More"
+  },
+  "featured": {
+    "title": "Featured Products",
+    "subtitle": "Our most preferred designs",
+    "viewProduct": "View Product",
+    "getQuote": "Get Quote"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Get in touch with us for your projects and custom design requests.",
+    "name": "Full Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "message": "Your Message",
+    "send": "Send",
+    "ourAddresses": "Our Addresses",
+    "factoryAddressLabel": "Factory",
+    "factoryAddress": "Kağıthane Cad, Limon Sk. 1A, 34400 Kağıthane / Istanbul",
+    "storeAddressLabel": "Showroom",
+    "storeAddress": "Kağıthane Cad, Limon Sk. 1A, 34400 Kağıthane / Istanbul",
+    "ourEmails": "Email Addresses",
+    "primaryEmail": "iletisim@armonidesign.com",
+    "secondaryEmail": "info@armonidesign.com",
+    "ourPhones": "Phone Numbers",
+    "phone1": "0 212 296 13 56",
+    "phone2": "0 552 583 32 34",
+    "address": "Address",
+    "addressValue": "Kağıthane Cad, Limon Sk. 1A, 34400 Kağıthane / Istanbul",
+    "phone_label": "Phone",
+    "phoneValue": "0 212 296 13 56",
+    "email_label": "Email",
+    "emailValue": "iletisim@armonidesign.com",
+    "success": "Your message has been sent successfully.",
+    "whatsapp": "Chat on WhatsApp",
+    "mapTitle": "Our Location"
+  },
+  "footer": {
+    "description": "Over 20 years of experience in luxury furniture design and manufacturing. We bring aesthetics and functionality to your living spaces.",
+    "quickLinks": "Quick Links",
+    "categories": "Categories",
+    "followUs": "Follow Us",
+    "rights": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "products": {
+    "title": "Our Products",
+    "subtitle": "Explore our full collection",
+    "filter": "Filter",
+    "sort": "Sort",
+    "noProducts": "No products found.",
+    "priceOnRequest": "Price on request",
+    "viewDetails": "View Details",
+    "back": "Go Back",
+    "relatedProducts": "Related Products"
+  },
+  "projects": {
+    "title": "Our Projects",
+    "subtitle": "A selection from our completed works",
+    "viewProject": "View Project"
+  },
+  "meta": {
+    "homeTitle": "Armoni Design | Luxury Furniture Design & Manufacturing",
+    "homeDesc": "Transform your living spaces with Armoni Design's luxury and unique furniture designs. Sofas, armchairs, chairs and more.",
+    "productsTitle": "Products | Armoni Design",
+    "aboutTitle": "About | Armoni Design",
+    "contactTitle": "Contact | Armoni Design"
+  }
+}
