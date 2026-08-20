@@ -143,7 +143,7 @@ export default function Footer({ locale }: FooterProps) {
                 </li>
                 <li className="flex items-center space-x-3 rtl:space-x-reverse">
                   <Mail className="w-4 h-4 text-brand-400 shrink-0" />
-                  <a href="mailto:info@armonidesign.com" className="hover:text-white transition-colors">
+                  <a href="mailto:iletisim@armonidesign.com" className="hover:text-white transition-colors">
                     {email}
                   </a>
                 </li>

@@ -81,7 +81,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
                 {t('primaryEmail')}
               </a>
               <a
-                href="mailto:info@armonidesign.com"
+                href="mailto:iletisim@armonidesign.com"
                 className="block text-neutral-400 hover:text-brand-400 transition-colors text-xs"
               >
                 {t('secondaryEmail')}

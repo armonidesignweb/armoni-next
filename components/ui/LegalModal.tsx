@@ -35,11 +35,11 @@ const PRIVACY_CONTENT = {
       },
       {
         heading: '5. Haklarınız',
-        text: 'KVKK kapsamında kişisel verilerinize erişme, düzeltme, silme ve itiraz etme haklarına sahipsiniz. Talepleriniz için info@armonidesign.com adresine yazabilirsiniz.',
+        text: 'KVKK kapsamında kişisel verilerinize erişme, düzeltme, silme ve itiraz etme haklarına sahipsiniz. Talepleriniz için iletisim@armonidesign.com adresine yazabilirsiniz.',
       },
       {
         heading: '6. İletişim',
-        text: 'Gizlilik politikamız hakkında sorularınız için: Kağıthane Cd. No:123, Çağlayan, 34403 Kağıthane/İstanbul | T: 0 212 296 13 56 | E: info@armonidesign.com',
+        text: 'Gizlilik politikamız hakkında sorularınız için: Kağıthane Cd. No:123, Çağlayan, 34403 Kağıthane/İstanbul | T: 0 212 296 13 56 | E: iletisim@armonidesign.com',
       },
     ],
   },
@@ -51,8 +51,8 @@ const PRIVACY_CONTENT = {
       { heading: '2. Use of Information', text: 'We use the personal information we collect to respond to your inquiries, provide price quotes, manage order processes, and fulfill our legal obligations. Your information will never be shared with third parties for marketing purposes.' },
       { heading: '3. Cookies', text: 'Our website uses cookies to improve user experience. You can disable cookies in your browser settings, though some features may not function properly as a result.' },
       { heading: '4. Data Security', text: 'We implement industry-standard security measures to protect your personal data, including SSL encryption and secure server infrastructure.' },
-      { heading: '5. Your Rights', text: 'You have the right to access, correct, delete, and object to your personal data. For requests, please write to info@armonidesign.com.' },
-      { heading: '6. Contact', text: 'For questions about our privacy policy: Kağıthane Cd. No:123, Çağlayan, 34403 Kağıthane/Istanbul | T: +90 212 296 13 56 | E: info@armonidesign.com' },
+      { heading: '5. Your Rights', text: 'You have the right to access, correct, delete, and object to your personal data. For requests, please write to iletisim@armonidesign.com.' },
+      { heading: '6. Contact', text: 'For questions about our privacy policy: Kağıthane Cd. No:123, Çağlayan, 34403 Kağıthane/Istanbul | T: +90 212 296 13 56 | E: iletisim@armonidesign.com' },
     ],
   },
   de: {
@@ -63,8 +63,8 @@ const PRIVACY_CONTENT = {
       { heading: '2. Verwendung der Informationen', text: 'Wir verwenden die gesammelten Daten, um auf Ihre Anfragen zu antworten, Angebote zu erstellen, Bestellprozesse zu verwalten und unsere gesetzlichen Pflichten zu erfüllen.' },
       { heading: '3. Cookies', text: 'Unsere Website verwendet Cookies zur Verbesserung der Benutzererfahrung. Sie können Cookies in Ihren Browsereinstellungen deaktivieren.' },
       { heading: '4. Datensicherheit', text: 'Wir implementieren branchenübliche Sicherheitsmaßnahmen zum Schutz Ihrer persönlichen Daten, einschließlich SSL-Verschlüsselung.' },
-      { heading: '5. Ihre Rechte', text: 'Sie haben das Recht auf Zugang, Berichtigung, Löschung und Widerspruch Ihrer personenbezogenen Daten. Schreiben Sie an info@armonidesign.com.' },
-      { heading: '6. Kontakt', text: 'Für Fragen: Kağıthane Cd. No:123, Çağlayan, 34403 Kağıthane/Istanbul | T: +90 212 296 13 56 | E: info@armonidesign.com' },
+      { heading: '5. Ihre Rechte', text: 'Sie haben das Recht auf Zugang, Berichtigung, Löschung und Widerspruch Ihrer personenbezogenen Daten. Schreiben Sie an iletisim@armonidesign.com.' },
+      { heading: '6. Kontakt', text: 'Für Fragen: Kağıthane Cd. No:123, Çağlayan, 34403 Kağıthane/Istanbul | T: +90 212 296 13 56 | E: iletisim@armonidesign.com' },
     ],
   },
   ru: {
@@ -75,8 +75,8 @@ const PRIVACY_CONTENT = {
       { heading: '2. Использование информации', text: 'Мы используем собранные данные для ответа на ваши запросы, предоставления коммерческих предложений и управления заказами.' },
       { heading: '3. Файлы Cookie', text: 'Наш сайт использует файлы cookie для улучшения пользовательского опыта. Вы можете отключить их в настройках браузера.' },
       { heading: '4. Безопасность данных', text: 'Мы применяем стандартные меры безопасности для защиты ваших личных данных, включая SSL-шифрование.' },
-      { heading: '5. Ваши права', text: 'Вы имеете право на доступ, исправление и удаление ваших персональных данных. Пишите на info@armonidesign.com.' },
-      { heading: '6. Контакты', text: 'Kağıthane Cd. No:123, Çağlayan, 34403 Kağıthane/Istanbul | T: +90 212 296 13 56 | E: info@armonidesign.com' },
+      { heading: '5. Ваши права', text: 'Вы имеете право на доступ, исправление и удаление ваших персональных данных. Пишите на iletisim@armonidesign.com.' },
+      { heading: '6. Контакты', text: 'Kağıthane Cd. No:123, Çağlayan, 34403 Kağıthane/Istanbul | T: +90 212 296 13 56 | E: iletisim@armonidesign.com' },
     ],
   },
   ar: {
@@ -87,8 +87,8 @@ const PRIVACY_CONTENT = {
       { heading: '٢. استخدام المعلومات', text: 'نستخدم المعلومات المجمعة للرد على استفساراتك وتقديم عروض الأسعار وإدارة طلباتك.' },
       { heading: '٣. ملفات تعريف الارتباط', text: 'يستخدم موقعنا ملفات تعريف الارتباط لتحسين تجربة المستخدم. يمكنك تعطيلها من إعدادات متصفحك.' },
       { heading: '٤. أمان البيانات', text: 'نطبق تدابير أمنية قياسية لحماية بياناتك الشخصية بما في ذلك تشفير SSL.' },
-      { heading: '٥. حقوقك', text: 'لديك الحق في الوصول إلى بياناتك الشخصية وتصحيحها وحذفها. اكتب إلى info@armonidesign.com.' },
-      { heading: '٦. التواصل', text: 'Kağıthane Cd. No:123, Çağlayan, 34403 Kağıthane/Istanbul | T: +90 212 296 13 56 | E: info@armonidesign.com' },
+      { heading: '٥. حقوقك', text: 'لديك الحق في الوصول إلى بياناتك الشخصية وتصحيحها وحذفها. اكتب إلى iletisim@armonidesign.com.' },
+      { heading: '٦. التواصل', text: 'Kağıthane Cd. No:123, Çağlayan, 34403 Kağıthane/Istanbul | T: +90 212 296 13 56 | E: iletisim@armonidesign.com' },
     ],
   },
 };

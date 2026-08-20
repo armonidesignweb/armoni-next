@@ -25,7 +25,7 @@ export const REFERENCES: Reference[] = [
   { slug: 'chamada-hotel', name: 'CHAMADA HOTEL', file: 'chamada-prestige-renkli.png', href: 'https://booking.chamadahotels.com/booking' },
   { slug: 'cvk-hotel', name: 'CVK HOTEL', file: 'cvk park otel-renkli.png', href: 'https://www.cvkhotelsandresorts.com/' },
   { slug: 'czn-burak', name: 'CZN BURAK', file: 'czn-burak-renkli.png', href: 'https://www.cznburak.tr/tr' },
-  { slug: 'dilan-polat', name: 'DİLAN POLAT', file: 'dilan-polat-renkli.png', href: 'https://www.dilanpolat.com.tr/' },
+  { slug: 'aqua-florya', name: 'AQUA FLORYA', file: 'aqua-florya-renkli.png', href: 'https://aquaflorya.com/' },
   { slug: 'double-tree', name: 'DOUBLE TREE', file: 'double-tree-by-hilton-renkli.webp', href: 'https://www.hilton.com/en/hotels/istimdi-doubletree-istanbul-moda/' },
   { slug: 'eln-london', name: 'EL&N LONDON', file: 'el&n-renkli.webp', href: 'https://elnlondon.com/' },
   { slug: 'ercan-havalimani', name: 'ERCAN HAVALİMANI', file: 'ercan-havalimanı-renkli.webp', href: 'https://www.ercanhavalimani.com/' },
