@@ -1,7 +1,8 @@
 import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FEATURED_PRODUCTS, CATEGORIES } from '@/lib/data';
+import { ALL_PRODUCTS } from '@/lib/products-data';
+import { CATEGORIES } from '@/lib/data';
 import { Eye, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface ProductsPageProps {
@@ -32,14 +33,30 @@ export default async function ProductsPage({
   const ITEMS_PER_PAGE = 12;
 
   const filteredProducts = activeCategory
-    ? FEATURED_PRODUCTS.filter((p) => p.categorySlug === activeCategory)
-    : FEATURED_PRODUCTS;
+    ? ALL_PRODUCTS.filter((p) => p.categorySlug === activeCategory)
+    : ALL_PRODUCTS;
 
   const totalItems = filteredProducts.length;
   const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE) || 1;
-  
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+
+  const safePage = Math.min(Math.max(1, currentPage), totalPages);
+  const startIndex = (safePage - 1) * ITEMS_PER_PAGE;
   const paginatedProducts = filteredProducts.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+  /** Smart page numbers with ellipsis */
+  function getPageNumbers(current: number, total: number): (number | '...')[] {
+    if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
+    const pages: (number | '...')[] = [1];
+    if (current > 3) pages.push('...');
+    for (let i = Math.max(2, current - 1); i <= Math.min(total - 1, current + 1); i++) {
+      pages.push(i);
+    }
+    if (current < total - 2) pages.push('...');
+    pages.push(total);
+    return pages;
+  }
+
+  const pageNumbers = getPageNumbers(safePage, totalPages);
 
   return (
     <div className="pt-32 pb-28 bg-neutral-950 min-h-screen">
@@ -67,7 +84,7 @@ export default async function ProductsPage({
                 : 'glass-card text-neutral-300 hover:text-white border border-white/10'
             }`}
           >
-            Tüm Ürünler ({FEATURED_PRODUCTS.length})
+            Tüm Ürünler ({ALL_PRODUCTS.length})
           </Link>
           {CATEGORIES.map((cat) => (
             <Link
@@ -88,57 +105,74 @@ export default async function ProductsPage({
         {filteredProducts.length > 0 ? (
           <div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {paginatedProducts.map((product) => (
-              <div
-                key={product.id}
-                className="group glass-card rounded-2xl overflow-hidden flex flex-col justify-between"
-              >
-                <div className="relative aspect-square w-full bg-neutral-950 p-6 flex items-center justify-center img-zoom-container">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    className="object-contain p-6 transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-neutral-950/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-3 rtl:space-x-reverse">
-                    <Link
-                      href={`/${locale}/urun/${product.slug}`}
-                      className="w-11 h-11 rounded-full bg-brand-500 text-white flex items-center justify-center hover:bg-brand-600 transition-colors shadow-xl"
-                    >
-                      <Eye className="w-5 h-5" />
-                    </Link>
+              {paginatedProducts.map((product) => {
+                const productName =
+                  typeof product.name === 'string'
+                    ? product.name
+                    : (product.name as Record<string, string>)[locale] ||
+                      (product.name as Record<string, string>).tr ||
+                      '';
+                const catName =
+                  typeof product.categoryName === 'string'
+                    ? product.categoryName
+                    : (product.categoryName as Record<string, string>)[locale] ||
+                      (product.categoryName as Record<string, string>).tr ||
+                      '';
+
+                return (
+                  <div
+                    key={product.id}
+                    className="group glass-card rounded-2xl overflow-hidden flex flex-col justify-between"
+                  >
+                    <div className="relative aspect-square w-full bg-neutral-950 p-6 flex items-center justify-center img-zoom-container">
+                      <Image
+                        src={product.image}
+                        alt={productName}
+                        fill
+                        className="object-contain p-6 transition-transform duration-700 group-hover:scale-110"
+                        unoptimized
+                      />
+                      <div className="absolute inset-0 bg-neutral-950/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-3 rtl:space-x-reverse">
+                        <Link
+                          href={`/${locale}/urun/${product.slug}`}
+                          className="w-11 h-11 rounded-full bg-brand-500 text-white flex items-center justify-center hover:bg-brand-600 transition-colors shadow-xl"
+                        >
+                          <Eye className="w-5 h-5" />
+                        </Link>
+                      </div>
+                    </div>
+                    <div className="p-6 space-y-2 border-t border-white/5">
+                      <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-500 block">
+                        {catName}
+                      </span>
+                      <h3 className="text-lg font-light text-white group-hover:text-brand-300 transition-colors">
+                        {productName}
+                      </h3>
+                      <div className="pt-2 flex items-center justify-between">
+                        <Link
+                          href={`/${locale}/urun/${product.slug}`}
+                          className="text-xs uppercase tracking-widest text-brand-400 hover:text-brand-300 font-medium transition-colors"
+                        >
+                          {t('viewDetails')} →
+                        </Link>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div className="p-6 space-y-2 border-t border-white/5">
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-500 block">
-                    {product.categoryName[locale] || product.categoryName.tr}
-                  </span>
-                  <h3 className="text-lg font-light text-white group-hover:text-brand-300 transition-colors">
-                    {product.name}
-                  </h3>
-                  <div className="pt-2 flex items-center justify-between">
-                    <Link
-                      href={`/${locale}/urun/${product.slug}`}
-                      className="text-xs uppercase tracking-widest text-brand-400 hover:text-brand-300 font-medium transition-colors"
-                    >
-                      {t('viewDetails')} →
-                    </Link>
-                  </div>
-                </div>
-              </div>
-              ))}
+                );
+              })}
             </div>
 
             {/* Pagination */}
             {totalPages > 1 && (
               <div className="flex items-center justify-center space-x-2 rtl:space-x-reverse mt-16">
+                {/* Prev */}
                 <Link
                   href={`/${locale}/urunler?${new URLSearchParams({
                     ...(kategori ? { kategori } : {}),
-                    page: Math.max(1, currentPage - 1).toString(),
+                    page: Math.max(1, safePage - 1).toString(),
                   }).toString()}`}
                   className={`p-2 rounded-full border transition-colors ${
-                    currentPage === 1
+                    safePage === 1
                       ? 'border-white/10 text-neutral-600 pointer-events-none'
                       : 'border-white/20 text-white hover:bg-white/5'
                   }`}
@@ -146,9 +180,15 @@ export default async function ProductsPage({
                   <ChevronLeft className="w-5 h-5" />
                 </Link>
 
-                {Array.from({ length: totalPages }).map((_, idx) => {
-                  const p = idx + 1;
-                  return (
+                {pageNumbers.map((p, idx) =>
+                  p === '...' ? (
+                    <span
+                      key={`ellipsis-${idx}`}
+                      className="w-10 h-10 flex items-center justify-center text-neutral-500 text-sm"
+                    >
+                      …
+                    </span>
+                  ) : (
                     <Link
                       key={p}
                       href={`/${locale}/urunler?${new URLSearchParams({
@@ -156,23 +196,24 @@ export default async function ProductsPage({
                         page: p.toString(),
                       }).toString()}`}
                       className={`w-10 h-10 flex items-center justify-center rounded-full text-sm transition-all ${
-                        currentPage === p
+                        safePage === p
                           ? 'bg-brand-500 text-white font-medium'
                           : 'text-neutral-400 hover:bg-white/5 hover:text-white'
                       }`}
                     >
                       {p}
                     </Link>
-                  );
-                })}
+                  )
+                )}
 
+                {/* Next */}
                 <Link
                   href={`/${locale}/urunler?${new URLSearchParams({
                     ...(kategori ? { kategori } : {}),
-                    page: Math.min(totalPages, currentPage + 1).toString(),
+                    page: Math.min(totalPages, safePage + 1).toString(),
                   }).toString()}`}
                   className={`p-2 rounded-full border transition-colors ${
-                    currentPage === totalPages
+                    safePage === totalPages
                       ? 'border-white/10 text-neutral-600 pointer-events-none'
                       : 'border-white/20 text-white hover:bg-white/5'
                   }`}
@@ -181,6 +222,11 @@ export default async function ProductsPage({
                 </Link>
               </div>
             )}
+
+            {/* Page info */}
+            <p className="text-center text-neutral-600 text-xs mt-4">
+              {totalItems} üründen {startIndex + 1}–{Math.min(startIndex + ITEMS_PER_PAGE, totalItems)} gösteriliyor
+            </p>
           </div>
         ) : (
           <div className="text-center py-20">
@@ -191,3 +237,4 @@ export default async function ProductsPage({
     </div>
   );
 }
+

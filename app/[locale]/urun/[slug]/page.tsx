@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
-import { FEATURED_PRODUCTS } from '@/lib/data';
+import { ALL_PRODUCTS } from '@/lib/products-data';
 import Link from 'next/link';
 import ProductGallery from '@/components/ProductGallery';
 import { ArrowLeft } from 'lucide-react';
@@ -10,24 +10,30 @@ interface ProductPageProps {
 }
 
 export async function generateMetadata({ params }: ProductPageProps) {
-  const { slug } = await params;
-  const product = FEATURED_PRODUCTS.find((p) => p.slug === slug);
+  const { locale, slug } = await params;
+  const product = ALL_PRODUCTS.find((p) => p.slug === slug);
   if (!product) return { title: 'Product Not Found' };
-  return { title: `${product.name} | Armoni Design` };
+  const productName = product.name[locale] || product.name.tr;
+  return { title: `${productName} | Armoni Design` };
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const { locale, slug } = await params;
   const t = await getTranslations({ locale, namespace: 'products' });
 
-  const product = FEATURED_PRODUCTS.find((p) => p.slug === slug);
+  const product = ALL_PRODUCTS.find((p) => p.slug === slug);
 
   if (!product) {
     notFound();
   }
 
-  // Generate a mock gallery for zoom effect visualization if we have one image
-  const images = [product.image, product.image, product.image];
+  const productName = product.name[locale] || product.name.tr;
+  const categoryName = product.categoryName[locale] || product.categoryName.tr;
+
+  // Use product images if available, fall back to main image duplicated
+  const images = product.images && product.images.length > 0 
+    ? product.images 
+    : [product.image, product.image, product.image];
 
   return (
     <div className="pt-32 pb-28 bg-neutral-950 min-h-screen">
@@ -50,10 +56,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <div className="flex flex-col justify-center space-y-8">
             <div className="space-y-4">
               <span className="text-xs uppercase tracking-[0.35em] text-brand-400 font-medium block">
-                {product.categoryName[locale] || product.categoryName.tr}
+                {categoryName}
               </span>
               <h1 className="text-4xl md:text-5xl font-light text-white font-serif tracking-tight">
-                {product.name}
+                {productName}
               </h1>
               {product.badge && (
                 <span className="inline-block px-3 py-1 bg-brand-500/20 text-brand-300 text-xs uppercase tracking-widest rounded-full border border-brand-500/30">
@@ -64,7 +70,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
             <div className="prose prose-invert prose-neutral max-w-none">
               <p className="text-neutral-400 font-light leading-relaxed">
-                {product.description[locale] || product.description.tr}
+                {product.description[locale] || product.description.tr || `${productName}.`}
               </p>
             </div>
 
@@ -74,7 +80,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href={`https://wa.me/905525833234?text=Merhaba,%20${encodeURIComponent(product.name)}%20ürünü%20hakkında%20bilgi%20ve%20fiyat%20almak%20istiyorum.`}
+                  href={`https://wa.me/905525833234?text=Merhaba,%20${encodeURIComponent(productName)}%20ürünü%20hakkında%20bilgi%20ve%20fiyat%20almak%20istiyorum.`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-8 py-4 bg-emerald-500 text-white text-sm font-medium tracking-wide rounded-full hover:bg-emerald-600 transition-colors text-center"
