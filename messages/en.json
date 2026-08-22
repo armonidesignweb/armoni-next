@@ -3,9 +3,13 @@
     "home": "Home",
     "products": "Products",
     "projects": "Projects",
-    "about": "About",
+    "about": "About Us",
+    "references": "References",
     "contact": "Contact",
-    "getQuote": "Get a Quote"
+    "getQuote": "Get a Quote",
+    "signUp": "Sign Up",
+    "catalog": "Catalog",
+    "search": "Search"
   },
   "hero": {
     "tagline": "Luxury & Original Design",

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { Search, X } from 'lucide-react';
 
 interface TopBarProps {
@@ -10,6 +11,7 @@ interface TopBarProps {
 }
 
 export default function TopBar({ locale }: TopBarProps) {
+  const t = useTranslations('nav');
   const pathname = usePathname();
   const languages = ['tr', 'en', 'de', 'ru', 'ar'];
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -59,24 +61,24 @@ export default function TopBar({ locale }: TopBarProps) {
         {/* Right Side - Actions */}
         <div className="flex items-center space-x-8 rtl:space-x-reverse text-[10px] uppercase font-medium tracking-widest text-neutral-400">
           <Link href={`/${locale}/kayit`} className="hover:text-white transition-colors">
-            KAYIT OL
+            {t('signUp')}
           </Link>
-          <a 
-            href="/catalog/armoni-design-2026.pdf" 
-            target="_blank" 
+          <a
+            href="/catalog/armoni-design-2026.pdf"
+            target="_blank"
             rel="noopener noreferrer"
             className="hover:text-white transition-colors"
           >
-            KATALOG
+            {t('catalog')}
           </a>
           <Link href={`/${locale}/iletisim`} className="hover:text-white transition-colors">
-            TEKLİF AL
+            {t('getQuote')}
           </Link>
-          <button 
+          <button
             onClick={() => setIsSearchOpen(true)}
             className="flex items-center space-x-2 hover:text-white transition-colors rtl:space-x-reverse"
           >
-            <span>ARA</span>
+            <span>{t('search')}</span>
             <Search className="w-3.5 h-3.5" />
           </button>
         </div>
@@ -96,7 +98,7 @@ export default function TopBar({ locale }: TopBarProps) {
             <input
               type="text"
               autoFocus
-              placeholder="Ne aramıştınız?..."
+              placeholder={`${t('search')}...`}
               className="w-full bg-transparent border-b-2 border-neutral-500 text-white text-3xl md:text-5xl py-4 outline-none placeholder:text-neutral-600 focus:border-white transition-colors"
             />
           </div>

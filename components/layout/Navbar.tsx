@@ -29,7 +29,7 @@ export default function Navbar({ locale }: NavbarProps) {
     { href: `/${locale}/urunler`, label: t('products') },
     { href: `/${locale}/projeler`, label: t('projects') },
     { href: `/${locale}/hakkimizda`, label: t('about') },
-    { href: `/${locale}/referanslar`, label: 'Referanslar' },
+    { href: `/${locale}/referanslar`, label: t('references') },
     { href: `/${locale}/iletisim`, label: t('contact') },
   ];
 

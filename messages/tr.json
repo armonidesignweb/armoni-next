@@ -4,8 +4,12 @@
     "products": "Ürünler",
     "projects": "Projeler",
     "about": "Hakkımızda",
+    "references": "Referanslar",
     "contact": "İletişim",
-    "getQuote": "Teklif Al"
+    "getQuote": "Teklif Al",
+    "signUp": "Kayıt Ol",
+    "catalog": "Katalog",
+    "search": "Ara"
   },
   "hero": {
     "tagline": "Lüks & Özgün Tasarım",

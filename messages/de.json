@@ -4,8 +4,12 @@
     "products": "Produkte",
     "projects": "Projekte",
     "about": "Über uns",
+    "references": "Referenzen",
     "contact": "Kontakt",
-    "getQuote": "Angebot einholen"
+    "getQuote": "Angebot einholen",
+    "signUp": "Registrieren",
+    "catalog": "Katalog",
+    "search": "Suchen"
   },
   "hero": {
     "tagline": "Luxus & Originelles Design",

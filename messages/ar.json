@@ -4,8 +4,12 @@
     "products": "المنتجات",
     "projects": "المشاريع",
     "about": "من نحن",
+    "references": "المراجع",
     "contact": "اتصل بنا",
-    "getQuote": "احصل على عرض سعر"
+    "getQuote": "احصل على عرض سعر",
+    "signUp": "التسجيل",
+    "catalog": "الكتالوج",
+    "search": "بحث"
   },
   "hero": {
     "tagline": "الفخامة والتصميم الأصيل",
