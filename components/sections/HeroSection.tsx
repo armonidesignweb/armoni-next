@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -45,21 +44,13 @@ export default function HeroSection({ locale }: HeroSectionProps) {
           transition={{ opacity: { duration: 1.4, ease: [0.16, 1, 0.3, 1] }, scale: { duration: 4, ease: [0.25, 1, 0.5, 1] } }}
           className="absolute inset-0 z-0"
         >
-          <Image
-            src={slide.image}
-            alt={slide.titleKey}
-            fill
-            priority
-            className="object-cover object-center brightness-[0.65]"
-          />
-          {/* Minotti Vignette Gradient Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/30 to-neutral-950/60" />
-          <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/80 via-transparent to-neutral-950/80" />
+          <video autoPlay loop muted playsInline className="w-full h-full object-cover absolute inset-0 z-0" src={slide.video}></video>
+          <div className="absolute inset-0 z-10 bg-black/20 shadow-[inset_0_0_200px_rgba(0,0,0,0.9)]"></div>
         </motion.div>
       </AnimatePresence>
 
       {/* Main Content Overlay */}
-      <div className="relative z-10 h-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col justify-center">
+      <div className="relative z-20 h-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col justify-center">
         <motion.div
           key={`content-${slide.id}`}
           initial={{ opacity: 0, y: 40 }}

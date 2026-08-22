@@ -20,38 +20,38 @@ export interface HeroSlide {
   id: number;
   titleKey: string;
   subtitleKey: string;
-  image: string;
+  video: string;
   category: string;
 }
 
 export const HERO_SLIDES: HeroSlide[] = [
   {
     id: 1,
-    titleKey: "Arco Köşe Kanepe",
+    titleKey: "Bellagia Outdoor Takımı",
     subtitleKey: "Modern İtalyan çizgisi, üst düzey konfor",
-    image: "/images/2026/01/Arco-Kose-Kanepe.png",
-    category: "kanepe-kose-takimlari"
+    video: "/slider-video/Bellagio-Outdoor-Team-Video.mp4",
+    category: "outdoor"
   },
   {
     id: 2,
-    titleKey: "Zen Berjer Collection",
+    titleKey: "Crown Sandalye",
     subtitleKey: "Ergonomi ve zarif detayların mükemmel uyumu",
-    image: "/images/2026/01/Zen-Berjer-1.png",
-    category: "berjer"
+    video: "/slider-video/Crown-Chair-Video.mp4",
+    category: "sandalye-benchler"
   },
   {
     id: 3,
-    titleKey: "Weave Berjer",
+    titleKey: "Fjord Berjer",
     subtitleKey: "Dokusal zenginlik ve zamansız estetik",
-    image: "/images/2026/01/Weave-Berjerrrs.png",
+    video: "/slider-video/Fjord-Berjer-Video.mp4",
     category: "berjer"
   },
   {
     id: 4,
-    titleKey: "Vittorio Sandalye",
+    titleKey: "Nacre Köşe Kanepe",
     subtitleKey: "Zanaatkarlık ve şıklığın simgesi",
-    image: "/images/2026/06/Vittorio-Sandalye-1.png",
-    category: "sandalye-benchler"
+    video: "/slider-video/Nacre-Corner Sofa-Video.mp4",
+    category: "kanepe-kose-takimlari"
   }
 ];
 
