@@ -30,10 +30,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const productName = product.name[locale] || product.name.tr;
   const categoryName = product.categoryName[locale] || product.categoryName.tr;
 
-  // Use product images if available, fall back to main image duplicated
-  const images = product.images && product.images.length > 0 
-    ? product.images 
-    : [product.image, product.image, product.image];
+  // Use product images if available, fall back to main image
+  const rawImages = product.images && product.images.length > 0
+    ? product.images
+    : product.image
+      ? [product.image]
+      : ['/images/placeholder.jpg'];
+  // De-duplicate image list
+  const images = rawImages.filter((img, i, arr) => arr.indexOf(img) === i);
 
   return (
     <div className="pt-32 pb-28 bg-neutral-950 min-h-screen">
@@ -70,7 +74,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
             <div className="prose prose-invert prose-neutral max-w-none">
               <p className="text-neutral-400 font-light leading-relaxed">
-                {product.description[locale] || product.description.tr || `${productName}.`}
+                {product.description[locale] || product.description.tr || t('contactForDetails')}
               </p>
             </div>
 

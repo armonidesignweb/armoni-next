@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, MouseEvent } from 'react';
+import React, { useState, useEffect, MouseEvent } from 'react';
 import Image from 'next/image';
 
 interface ProductGalleryProps {
@@ -9,9 +9,15 @@ interface ProductGalleryProps {
 
 export default function ProductGallery({ images }: ProductGalleryProps) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [imgSrcs, setImgSrcs] = useState<string[]>(images);
   const [zoomStyle, setZoomStyle] = useState({
     transformOrigin: '50% 50%',
   });
+
+  useEffect(() => {
+    setImgSrcs(images);
+    setActiveIndex(0);
+  }, [images]);
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
@@ -22,6 +28,14 @@ export default function ProductGallery({ images }: ProductGalleryProps) {
     });
   };
 
+  const handleImageError = (idx: number) => {
+    const newSrcs = [...imgSrcs];
+    newSrcs[idx] = '/images/placeholder.jpg';
+    setImgSrcs(newSrcs);
+  };
+
+  const currentImage = imgSrcs[activeIndex] || '/images/placeholder.jpg';
+
   return (
     <div className="flex flex-col gap-4">
       {/* Main Image Container */}
@@ -30,18 +44,19 @@ export default function ProductGallery({ images }: ProductGalleryProps) {
         onMouseMove={handleMouseMove}
       >
         <Image
-          src={images[activeIndex]}
+          src={currentImage}
           alt="Product Image"
           fill
           className="object-contain p-8 transition-transform duration-200 ease-out group-hover:scale-[1.5]"
           style={zoomStyle}
+          onError={() => handleImageError(activeIndex)}
         />
       </div>
 
       {/* Thumbnails */}
-      {images.length > 1 && (
+      {imgSrcs.length > 1 && (
         <div className="flex gap-4 overflow-x-auto pb-2 no-scrollbar">
-          {images.map((image, idx) => (
+          {imgSrcs.map((image, idx) => (
             <button
               key={idx}
               onClick={() => setActiveIndex(idx)}
@@ -56,6 +71,7 @@ export default function ProductGallery({ images }: ProductGalleryProps) {
                 alt={`Thumbnail ${idx + 1}`}
                 fill
                 className="object-contain p-3"
+                onError={() => handleImageError(idx)}
               />
             </button>
           ))}

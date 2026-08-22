@@ -124,12 +124,12 @@ export default async function ProductsPage({
                     key={product.id}
                     className="group glass-card rounded-2xl overflow-hidden flex flex-col justify-between"
                   >
-                    <div className="relative aspect-square w-full bg-neutral-950 p-6 flex items-center justify-center img-zoom-container">
+                    <div className="relative aspect-square w-full bg-neutral-900 rounded-t-2xl overflow-hidden">
                       <Image
-                        src={product.image}
+                        src={product.image || '/images/placeholder.jpg'}
                         alt={productName}
                         fill
-                        className="object-contain p-6 transition-transform duration-700 group-hover:scale-110"
+                        className="object-contain p-4 transition-transform duration-700 group-hover:scale-110"
                         unoptimized
                       />
                       <div className="absolute inset-0 bg-neutral-950/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-3 rtl:space-x-reverse">
