@@ -1,9 +1,9 @@
-{
+﻿{
   "nav": {
     "home": "Startseite",
     "products": "Produkte",
     "projects": "Projekte",
-    "about": "Über uns",
+    "about": "Ãœber uns",
     "references": "Referenzen",
     "contact": "Kontakt",
     "getQuote": "Angebot einholen",
@@ -14,54 +14,54 @@
   "hero": {
     "tagline": "Luxus & Originelles Design",
     "title": "Eleganz,\nIn jedem Detail",
-    "subtitle": "Verwandeln Sie Ihre Wohnräume mit unseren handgefertigten, designorientierten Möbelkollektionen.",
+    "subtitle": "Verwandeln Sie Ihre WohnrÃ¤ume mit unseren handgefertigten, designorientierten MÃ¶belkollektionen.",
     "cta": "Kollektion entdecken",
     "ctaSecondary": "Unsere Projekte"
   },
   "categories": {
     "title": "Kollektionen",
-    "subtitle": "Zeitlose Schönheit, sorgfältig für jeden Raum gestaltet",
+    "subtitle": "Zeitlose SchÃ¶nheit, sorgfÃ¤ltig fÃ¼r jeden Raum gestaltet",
     "sofa": "Sofas & Eckgarnituren",
     "berjer": "Sessel",
-    "chair": "Stühle & Bänke",
+    "chair": "StÃ¼hle & BÃ¤nke",
     "bedroom": "Schlafzimmer",
     "mirrors": "Spiegel & Einheiten",
-    "garden": "Gartenmöbel",
+    "garden": "GartenmÃ¶bel",
     "viewAll": "Alle anzeigen"
   },
   "about": {
-    "label": "Über uns",
+    "label": "Ãœber uns",
     "title": "Eine Erfahrung\nJenseits des Designs",
-    "p1": "Armoni Design ist einer der führenden Luxusmöbelhersteller der Türkei mit über 20 Jahren Erfahrung. Jedes Stück erwacht in den Händen unserer Handwerker zum Leben.",
-    "p2": "Unsere Kollektionen verbinden italienische Designästhetik mit türkischem Handwerk und verwandeln jeden Raum in ein elegantes Wohnambiente.",
+    "p1": "Armoni Design ist einer der fÃ¼hrenden LuxusmÃ¶belhersteller der TÃ¼rkei mit Ã¼ber 20 Jahren Erfahrung. Jedes StÃ¼ck erwacht in den HÃ¤nden unserer Handwerker zum Leben.",
+    "p2": "Unsere Kollektionen verbinden italienische DesignÃ¤sthetik mit tÃ¼rkischem Handwerk und verwandeln jeden Raum in ein elegantes Wohnambiente.",
     "stats": {
       "products": "Produkte",
       "years": "Jahre Erfahrung",
       "projects": "Projekte",
-      "countries": "Länder"
+      "countries": "LÃ¤nder"
     },
     "cta": "Mehr erfahren"
   },
   "featured": {
-    "title": "Ausgewählte Produkte",
+    "title": "AusgewÃ¤hlte Produkte",
     "subtitle": "Unsere beliebtesten Designs",
     "viewProduct": "Produkt ansehen",
     "getQuote": "Angebot anfragen"
   },
   "contact": {
     "title": "Kontakt aufnehmen",
-    "subtitle": "Kontaktieren Sie uns für Ihre Projekte und individuellen Designanfragen.",
-    "name": "Vollständiger Name",
+    "subtitle": "Kontaktieren Sie uns fÃ¼r Ihre Projekte und individuellen Designanfragen.",
+    "name": "VollstÃ¤ndiger Name",
     "email": "E-Mail-Adresse",
     "phone": "Telefonnummer",
     "message": "Ihre Nachricht",
     "send": "Senden",
     "ourAddresses": "Unsere Adressen",
     "factoryAddressLabel": "Produktion",
-    "factoryAddress": "Kağıthane Cad, 102 Sk. 34400 Kağıthane / Istanbul",
+    "factoryAddress": "KaÄŸÄ±thane Cad, 102 Sk. 34400 KaÄŸÄ±thane / Istanbul",
     "factoryMapUrl": "https://maps.app.goo.gl/B9QoXW5XoFmR4T4S6",
-    "storeAddressLabel": "Geschäft",
-    "storeAddress": "Kağıthane Cad, Limon Sk. 1A, 34400 Kağıthane / Istanbul",
+    "storeAddressLabel": "GeschÃ¤ft",
+    "storeAddress": "KaÄŸÄ±thane Cad, Limon Sk. 1A, 34400 KaÄŸÄ±thane / Istanbul",
     "storeMapUrl": "https://maps.app.goo.gl/B9QoXW5XoFmR4T4S6",
     "ourEmails": "E-Mail-Adressen",
     "primaryEmail": "iletisim@armonidesign.com",
@@ -70,7 +70,7 @@
     "phone1": "0 212 296 13 56",
     "phone2": "0 552 583 32 34",
     "address": "Adresse",
-    "addressValue": "Kağıthane Cad, Limon Sk. 1A, 34400 Kağıthane / Istanbul",
+    "addressValue": "KaÄŸÄ±thane Cad, Limon Sk. 1A, 34400 KaÄŸÄ±thane / Istanbul",
     "phone_label": "Telefon",
     "phoneValue": "0 212 296 13 56",
     "email_label": "E-Mail",
@@ -80,7 +80,7 @@
     "mapTitle": "Unser Standort"
   },
   "footer": {
-    "description": "Über 20 Jahre Erfahrung in Luxusmöbeldesign und -herstellung. Wir bringen Ästhetik und Funktionalität in Ihre Wohnräume.",
+    "description": "Ãœber 20 Jahre Erfahrung in LuxusmÃ¶beldesign und -herstellung. Wir bringen Ã„sthetik und FunktionalitÃ¤t in Ihre WohnrÃ¤ume.",
     "quickLinks": "Schnelllinks",
     "categories": "Kategorien",
     "followUs": "Folgen Sie uns",
@@ -96,8 +96,8 @@
     "noProducts": "Keine Produkte gefunden.",
     "priceOnRequest": "Preis auf Anfrage",
     "viewDetails": "Details ansehen",
-    "back": "Zurück",
-    "relatedProducts": "Ähnliche Produkte"
+    "back": "ZurÃ¼ck",
+    "relatedProducts": "Ã„hnliche Produkte"
   },
   "projects": {
     "title": "Unsere Projekte",
@@ -105,10 +105,10 @@
     "viewProject": "Projekt ansehen"
   },
   "meta": {
-    "homeTitle": "Armoni Design | Luxusmöbel Design & Herstellung",
-    "homeDesc": "Verwandeln Sie Ihre Wohnräume mit Armoni Designs luxuriösen und einzigartigen Möbeldesigns.",
+    "homeTitle": "Armoni Design | LuxusmÃ¶bel Design & Herstellung",
+    "homeDesc": "Verwandeln Sie Ihre WohnrÃ¤ume mit Armoni Designs luxuriÃ¶sen und einzigartigen MÃ¶beldesigns.",
     "productsTitle": "Produkte | Armoni Design",
-    "aboutTitle": "Über uns | Armoni Design",
+    "aboutTitle": "Ãœber uns | Armoni Design",
     "contactTitle": "Kontakt | Armoni Design"
   }
 }

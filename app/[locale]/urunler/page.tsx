@@ -2,11 +2,11 @@ import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FEATURED_PRODUCTS, CATEGORIES } from '@/lib/data';
-import { MessageCircle, Eye } from 'lucide-react';
+import { Eye, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface ProductsPageProps {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ kategori?: string }>;
+  searchParams: Promise<{ kategori?: string; page?: string }>;
 }
 
 export async function generateMetadata({ params }: ProductsPageProps) {
@@ -22,15 +22,24 @@ export default async function ProductsPage({
   searchParams,
 }: ProductsPageProps) {
   const { locale } = await params;
-  const { kategori } = await searchParams;
+  const { kategori, page } = await searchParams;
   const t = await getTranslations({ locale, namespace: 'products' });
   const tCat = await getTranslations({ locale, namespace: 'categories' });
 
   const activeCategory = kategori;
 
+  const currentPage = page ? parseInt(page, 10) : 1;
+  const ITEMS_PER_PAGE = 12;
+
   const filteredProducts = activeCategory
     ? FEATURED_PRODUCTS.filter((p) => p.categorySlug === activeCategory)
     : FEATURED_PRODUCTS;
+
+  const totalItems = filteredProducts.length;
+  const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE) || 1;
+  
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const paginatedProducts = filteredProducts.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
   return (
     <div className="pt-32 pb-28 bg-neutral-950 min-h-screen">
@@ -77,8 +86,9 @@ export default async function ProductsPage({
 
         {/* Products Grid */}
         {filteredProducts.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {filteredProducts.map((product) => (
+          <div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {paginatedProducts.map((product) => (
               <div
                 key={product.id}
                 className="group glass-card rounded-2xl overflow-hidden flex flex-col justify-between"
@@ -116,7 +126,61 @@ export default async function ProductsPage({
                   </div>
                 </div>
               </div>
-            ))}
+              ))}
+            </div>
+
+            {/* Pagination */}
+            {totalPages > 1 && (
+              <div className="flex items-center justify-center space-x-2 rtl:space-x-reverse mt-16">
+                <Link
+                  href={`/${locale}/urunler?${new URLSearchParams({
+                    ...(kategori ? { kategori } : {}),
+                    page: Math.max(1, currentPage - 1).toString(),
+                  }).toString()}`}
+                  className={`p-2 rounded-full border transition-colors ${
+                    currentPage === 1
+                      ? 'border-white/10 text-neutral-600 pointer-events-none'
+                      : 'border-white/20 text-white hover:bg-white/5'
+                  }`}
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </Link>
+
+                {Array.from({ length: totalPages }).map((_, idx) => {
+                  const p = idx + 1;
+                  return (
+                    <Link
+                      key={p}
+                      href={`/${locale}/urunler?${new URLSearchParams({
+                        ...(kategori ? { kategori } : {}),
+                        page: p.toString(),
+                      }).toString()}`}
+                      className={`w-10 h-10 flex items-center justify-center rounded-full text-sm transition-all ${
+                        currentPage === p
+                          ? 'bg-brand-500 text-white font-medium'
+                          : 'text-neutral-400 hover:bg-white/5 hover:text-white'
+                      }`}
+                    >
+                      {p}
+                    </Link>
+                  );
+                })}
+
+                <Link
+                  href={`/${locale}/urunler?${new URLSearchParams({
+                    ...(kategori ? { kategori } : {}),
+                    page: Math.min(totalPages, currentPage + 1).toString(),
+                  }).toString()}`}
+                  className={`p-2 rounded-full border transition-colors ${
+                    currentPage === totalPages
+                      ? 'border-white/10 text-neutral-600 pointer-events-none'
+                      : 'border-white/20 text-white hover:bg-white/5'
+                  }`}
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </Link>
+              </div>
+            )}
           </div>
         ) : (
           <div className="text-center py-20">

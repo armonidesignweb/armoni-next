@@ -1,4 +1,4 @@
-{
+﻿{
   "nav": {
     "home": "Home",
     "products": "Products",
@@ -33,7 +33,7 @@
     "label": "About Us",
     "title": "An Experience\nBeyond Design",
     "p1": "Armoni Design is one of Turkey's leading luxury furniture manufacturers with over 20 years of experience. Each piece comes to life in the hands of our craftsmen; quality and aesthetics are evident in every detail.",
-    "p2": "Our collections, blending Italian design sensibility with Turkish craftsmanship, transform every space — from living rooms to bedrooms, gardens to offices — into an elegant living environment.",
+    "p2": "Our collections, blending Italian design sensibility with Turkish craftsmanship, transform every space â€” from living rooms to bedrooms, gardens to offices â€” into an elegant living environment.",
     "stats": {
       "products": "Products",
       "years": "Years Experience",
@@ -58,10 +58,10 @@
     "send": "Send",
     "ourAddresses": "Our Addresses",
     "factoryAddressLabel": "Factory",
-    "factoryAddress": "Kağıthane Cad, 102 Sk. 34400 Kağıthane / Istanbul",
+    "factoryAddress": "KaÄŸÄ±thane Cad, 102 Sk. 34400 KaÄŸÄ±thane / Istanbul",
     "factoryMapUrl": "https://maps.app.goo.gl/B9QoXW5XoFmR4T4S6",
     "storeAddressLabel": "Showroom",
-    "storeAddress": "Kağıthane Cad, Limon Sk. 1A, 34400 Kağıthane / Istanbul",
+    "storeAddress": "KaÄŸÄ±thane Cad, Limon Sk. 1A, 34400 KaÄŸÄ±thane / Istanbul",
     "storeMapUrl": "https://maps.app.goo.gl/B9QoXW5XoFmR4T4S6",
     "ourEmails": "Email Addresses",
     "primaryEmail": "iletisim@armonidesign.com",
@@ -70,7 +70,7 @@
     "phone1": "0 212 296 13 56",
     "phone2": "0 552 583 32 34",
     "address": "Address",
-    "addressValue": "Kağıthane Cad, Limon Sk. 1A, 34400 Kağıthane / Istanbul",
+    "addressValue": "KaÄŸÄ±thane Cad, Limon Sk. 1A, 34400 KaÄŸÄ±thane / Istanbul",
     "phone_label": "Phone",
     "phoneValue": "0 212 296 13 56",
     "email_label": "Email",
