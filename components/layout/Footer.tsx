@@ -8,6 +8,8 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 import { CATEGORIES } from '@/lib/data';
 import LegalModal from '@/components/ui/LegalModal';
 
+const DEFAULT_LOCALE = 'tr';
+
 interface FooterProps {
   locale: string;
 }
@@ -26,6 +28,12 @@ export default function Footer({ locale }: FooterProps) {
   const phone = tContact('phoneValue');
   const email = tContact('emailValue');
 
+  // Build a locale-aware path respecting 'as-needed' prefix strategy.
+  const lp = (segment?: string) => {
+    const prefix = locale === DEFAULT_LOCALE ? '' : `/${locale}`;
+    return segment ? `${prefix}/${segment}` : prefix || '/';
+  };
+
   return (
     <>
       <footer className="bg-neutral-950 text-neutral-400 border-t border-neutral-900 pt-20 pb-10">
@@ -33,7 +41,7 @@ export default function Footer({ locale }: FooterProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 pb-16 border-b border-neutral-900">
             {/* Brand Info & Socials */}
             <div className="lg:col-span-2 space-y-6">
-              <Link href={`/${locale}`} className="inline-block">
+              <Link href={lp()} className="inline-block">
                 <div className="relative h-10 w-52">
                   <Image
                     src="/images/2024/12/armoni-beyaz.png"
@@ -79,27 +87,27 @@ export default function Footer({ locale }: FooterProps) {
               </h3>
               <ul className="space-y-2.5 text-sm font-light">
                 <li>
-                  <Link href={`/${locale}`} className="hover:text-brand-400 transition-colors">
+                  <Link href={lp()} className="hover:text-brand-400 transition-colors">
                     {tNav('home')}
                   </Link>
                 </li>
                 <li>
-                  <Link href={`/${locale}/urunler`} className="hover:text-brand-400 transition-colors">
+                  <Link href={lp('urunler')} className="hover:text-brand-400 transition-colors">
                     {tNav('products')}
                   </Link>
                 </li>
                 <li>
-                  <Link href={`/${locale}/projeler`} className="hover:text-brand-400 transition-colors">
+                  <Link href={lp('projeler')} className="hover:text-brand-400 transition-colors">
                     {tNav('projects')}
                   </Link>
                 </li>
                 <li>
-                  <Link href={`/${locale}/hakkimizda`} className="hover:text-brand-400 transition-colors">
+                  <Link href={lp('hakkimizda')} className="hover:text-brand-400 transition-colors">
                     {tNav('about')}
                   </Link>
                 </li>
                 <li>
-                  <Link href={`/${locale}/iletisim`} className="hover:text-brand-400 transition-colors">
+                  <Link href={lp('iletisim')} className="hover:text-brand-400 transition-colors">
                     {tNav('contact')}
                   </Link>
                 </li>
@@ -115,7 +123,7 @@ export default function Footer({ locale }: FooterProps) {
                 {CATEGORIES.slice(0, 5).map((cat) => (
                   <li key={cat.id}>
                     <Link
-                      href={`/${locale}/urunler?kategori=${cat.slug}`}
+                      href={`${lp('urunler')}?kategori=${cat.slug}`}
                       className="hover:text-brand-400 transition-colors"
                     >
                       {tCat(cat.key)}

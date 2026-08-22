@@ -4,6 +4,8 @@ import { useState, useRef, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { Globe, ChevronDown } from 'lucide-react';
 
+const DEFAULT_LOCALE = 'tr';
+
 const LANGUAGES = [
   { code: 'tr', label: 'Türkçe', flag: 'TR' },
   { code: 'en', label: 'English', flag: 'EN' },
@@ -36,16 +38,21 @@ export default function LanguageSelector({ currentLocale }: LanguageSelectorProp
 
   const handleLanguageChange = (newLocale: string) => {
     setIsOpen(false);
-    
-    // Replace current locale segment in pathname or prepend it
+
+    // Strip the current locale prefix from the pathname to get the raw base path.
     const segments = pathname.split('/');
-    let newPath = '';
-    
-    if (LANGUAGES.some((l) => l.code === segments[1])) {
-      segments[1] = newLocale;
-      newPath = segments.join('/');
+    const hasLocalePrefix = segments.length > 1 && LANGUAGES.some((l) => l.code === segments[1]);
+    if (hasLocalePrefix) {
+      segments.splice(1, 1);
+    }
+    const basePath = segments.join('/') || '/';
+
+    // Respect 'as-needed' prefix strategy: default locale (tr) has no prefix.
+    let newPath: string;
+    if (newLocale === DEFAULT_LOCALE) {
+      newPath = basePath === '/' ? '/' : basePath;
     } else {
-      newPath = `/${newLocale}${pathname}`;
+      newPath = `/${newLocale}${basePath === '/' ? '' : basePath}`;
     }
 
     router.push(newPath);

@@ -7,6 +7,9 @@ import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, MessageCircle } from 'lucide-react';
 import LanguageSelector from '../ui/LanguageSelector';
+
+const DEFAULT_LOCALE = 'tr';
+
 interface NavbarProps {
   locale: string;
 }
@@ -24,13 +27,20 @@ export default function Navbar({ locale }: NavbarProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Build a locale-aware path respecting 'as-needed' prefix strategy.
+  // Default locale (TR) has no prefix in the URL.
+  const lp = (segment?: string) => {
+    const prefix = locale === DEFAULT_LOCALE ? '' : `/${locale}`;
+    return segment ? `${prefix}/${segment}` : prefix || '/';
+  };
+
   const navLinks = [
-    { href: `/${locale}`, label: t('home') },
-    { href: `/${locale}/urunler`, label: t('products') },
-    { href: `/${locale}/projeler`, label: t('projects') },
-    { href: `/${locale}/hakkimizda`, label: t('about') },
-    { href: `/${locale}/referanslar`, label: t('references') },
-    { href: `/${locale}/iletisim`, label: t('contact') },
+    { href: lp(), label: t('home') },
+    { href: lp('urunler'), label: t('products') },
+    { href: lp('projeler'), label: t('projects') },
+    { href: lp('hakkimizda'), label: t('about') },
+    { href: lp('referanslar'), label: t('references') },
+    { href: lp('iletisim'), label: t('contact') },
   ];
 
   return (
@@ -45,7 +55,7 @@ export default function Navbar({ locale }: NavbarProps) {
         <div className="w-full px-6 md:px-12 lg:px-20 2xl:px-32 mx-auto">
           <div className="w-full flex items-center justify-between">
             {/* Logo */}
-            <Link href={`/${locale}`} className="relative z-10 flex items-center group">
+            <Link href={lp()} className="relative z-10 flex items-center group">
               <div className="relative h-9 w-48 md:w-56 transition-transform duration-300 group-hover:scale-105">
                 <Image
                   src="/images/2024/12/armoni-beyaz.png"
@@ -70,7 +80,7 @@ export default function Navbar({ locale }: NavbarProps) {
               ))}
             </nav>
 
-            {/* Right Action Icons & Language */}
+            {/* Right Action Icons */}
             <div className="hidden lg:flex items-center space-x-6 rtl:space-x-reverse">
               <a
                 href="https://wa.me/905525833234"
@@ -129,11 +139,11 @@ export default function Navbar({ locale }: NavbarProps) {
                 className="w-full flex items-center justify-center space-x-2 text-sm uppercase tracking-widest text-emerald-400 bg-emerald-950/50 border border-emerald-500/40 py-3 rounded-full"
               >
                 <MessageCircle className="w-4 h-4" />
-                <span>WhatsApp İletişim</span>
+                <span>WhatsApp</span>
               </a>
 
               <Link
-                href={`/${locale}/iletisim`}
+                href={lp('iletisim')}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="block w-full text-center text-sm uppercase tracking-widest bg-brand-500 text-white py-3.5 rounded-full font-medium shadow-lg"
               >
