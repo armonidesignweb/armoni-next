@@ -1,4 +1,4 @@
-﻿{
+{
   "nav": {
     "home": "Home",
     "products": "Products",
@@ -46,7 +46,8 @@
     "title": "Featured Products",
     "subtitle": "Our most preferred designs",
     "viewProduct": "View Product",
-    "getQuote": "Get Quote"
+    "getQuote": "Get Quote",
+    "bestseller": "Bestseller"
   },
   "contact": {
     "title": "Get In Touch",
@@ -97,7 +98,10 @@
     "priceOnRequest": "Price on request",
     "viewDetails": "View Details",
     "back": "Go Back",
-    "relatedProducts": "Related Products"
+    "relatedProducts": "Related Products",
+    "bestseller": "Bestseller",
+    "customOrderText": "You can contact us for custom dimensions and fabric options.",
+    "whatsappInfo": "Get Info via WhatsApp"
   },
   "projects": {
     "title": "Our Projects",

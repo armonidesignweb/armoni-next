@@ -1,4 +1,4 @@
-﻿{
+{
   "nav": {
     "home": "Anasayfa",
     "products": "ÃœrÃ¼nler",
@@ -46,7 +46,8 @@
     "title": "Ã–ne Ã‡Ä±kan ÃœrÃ¼nler",
     "subtitle": "En Ã§ok tercih edilen tasarÄ±mlarÄ±mÄ±z",
     "viewProduct": "ÃœrÃ¼nÃ¼ Ä°ncele",
-    "getQuote": "Teklif Al"
+    "getQuote": "Teklif Al",
+    "bestseller": "En Çok Satan"
   },
   "contact": {
     "title": "Ä°letiÅŸime GeÃ§in",
@@ -97,7 +98,10 @@
     "priceOnRequest": "Fiyat iÃ§in teklif alÄ±nÄ±z",
     "viewDetails": "Detayları İncele",
     "back": "Geri DÃ¶n",
-    "relatedProducts": "Benzer ÃœrÃ¼nler"
+    "relatedProducts": "Benzer ÃœrÃ¼nler",
+    "bestseller": "En Çok Satan",
+    "customOrderText": "Özel ölçü ve kumaş seçenekleri için bizimle iletişime geçebilirsiniz.",
+    "whatsappInfo": "WhatsApp'tan Bilgi Al"
   },
   "projects": {
     "title": "Projelerimiz",

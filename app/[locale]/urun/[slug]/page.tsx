@@ -50,27 +50,27 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <div className="flex flex-col justify-center space-y-8">
             <div className="space-y-4">
               <span className="text-xs uppercase tracking-[0.35em] text-brand-400 font-medium block">
-                {product.categoryName}
+                {product.categoryName[locale] || product.categoryName.tr}
               </span>
               <h1 className="text-4xl md:text-5xl font-light text-white font-serif tracking-tight">
                 {product.name}
               </h1>
               {product.badge && (
                 <span className="inline-block px-3 py-1 bg-brand-500/20 text-brand-300 text-xs uppercase tracking-widest rounded-full border border-brand-500/30">
-                  {product.badge}
+                  {product.badge === 'Bestseller' ? t('bestseller') : product.badge}
                 </span>
               )}
             </div>
 
             <div className="prose prose-invert prose-neutral max-w-none">
               <p className="text-neutral-400 font-light leading-relaxed">
-                Armoni Design'ın seçkin koleksiyonundan {product.name}. Zarif detayları ve yüksek kalite standartlarıyla üretilen bu tasarım, yaşam alanlarınıza sofistike bir dokunuş katıyor. İnce işçiliği ve modern çizgileriyle dikkat çeken bu parça, hem estetik hem de fonksiyonelliği bir araya getiriyor.
+                {product.description[locale] || product.description.tr}
               </p>
             </div>
 
             <div className="pt-8 border-t border-neutral-900">
               <p className="text-sm text-neutral-500 font-light mb-6">
-                Özel ölçü ve kumaş seçenekleri için bizimle iletişime geçebilirsiniz.
+                {t('customOrderText')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
@@ -79,7 +79,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   rel="noopener noreferrer"
                   className="px-8 py-4 bg-emerald-500 text-white text-sm font-medium tracking-wide rounded-full hover:bg-emerald-600 transition-colors text-center"
                 >
-                  WhatsApp'tan Bilgi Al
+                  {t('whatsappInfo')}
                 </a>
               </div>
             </div>

@@ -111,7 +111,7 @@ export default async function ProductsPage({
                 </div>
                 <div className="p-6 space-y-2 border-t border-white/5">
                   <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-500 block">
-                    {product.categoryName}
+                    {product.categoryName[locale] || product.categoryName.tr}
                   </span>
                   <h3 className="text-lg font-light text-white group-hover:text-brand-300 transition-colors">
                     {product.name}

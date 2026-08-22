@@ -11,7 +11,8 @@ export interface ProductData {
   slug: string;
   name: string;
   categorySlug: string;
-  categoryName: string;
+  categoryName: Record<string, string>;
+  description: Record<string, string>;
   image: string;
   badge?: string;
 }
@@ -92,7 +93,8 @@ export const FEATURED_PRODUCTS: ProductData[] = [
     slug: "zen-berjer",
     name: "Zen Berjer",
     categorySlug: "berjer",
-    categoryName: "Berjer",
+    categoryName: { tr: 'Berjer', en: 'Armchair', de: 'Sessel', ru: 'Кресло', ar: 'كرسي' },
+    description: { tr: 'Zarif detayları ve yüksek kalite standartlarıyla üretilen bu tasarım, yaşam alanlarınıza sofistike bir dokunuş katıyor. İnce işçiliği ve modern çizgileriyle dikkat çeken bu parça, hem estetik hem de fonksiyonelliği bir araya getiriyor.', en: 'Produced with elegant details and high quality standards, this design adds a sophisticated touch to your living spaces. Drawing attention with its fine craftsmanship and modern lines, this piece brings together both aesthetics and functionality.', de: 'Dieses Design, das mit eleganten Details und hohen Qualitätsstandards hergestellt wird, verleiht Ihren Wohnräumen eine raffinierte Note. Dieses Stück, das durch seine feine Handwerkskunst und modernen Linien besticht, vereint Ästhetik und Funktionalität.', ru: 'Этот дизайн, созданный с элегантными деталями и высокими стандартами качества, придает изысканность вашим жилым помещениям. Привлекая внимание своим тонким мастерством и современными линиями, этот предмет сочетает в себе эстетику и функциональность.', ar: 'يضيف هذا التصميم، الذي تم إنتاجه بتفاصيل أنيقة ومعايير جودة عالية، لمسة متطورة إلى مساحات المعيشة الخاصة بك. يجذب هذا القطعة الانتباه بحرفيتها الدقيقة وخطوطها الحديثة، حيث يجمع بين الجمالية والوظائف.' },
     image: "/images/2026/01/Zen-Berjer-1.png",
     badge: "Bestseller"
   },
@@ -101,7 +103,8 @@ export const FEATURED_PRODUCTS: ProductData[] = [
     slug: "weave-berjer",
     name: "Weave Berjer",
     categorySlug: "berjer",
-    categoryName: "Berjer",
+    categoryName: { tr: 'Berjer', en: 'Armchair', de: 'Sessel', ru: 'Кресло', ar: 'كرسي' },
+    description: { tr: 'Zarif detayları ve yüksek kalite standartlarıyla üretilen bu tasarım, yaşam alanlarınıza sofistike bir dokunuş katıyor. İnce işçiliği ve modern çizgileriyle dikkat çeken bu parça, hem estetik hem de fonksiyonelliği bir araya getiriyor.', en: 'Produced with elegant details and high quality standards, this design adds a sophisticated touch to your living spaces. Drawing attention with its fine craftsmanship and modern lines, this piece brings together both aesthetics and functionality.', de: 'Dieses Design, das mit eleganten Details und hohen Qualitätsstandards hergestellt wird, verleiht Ihren Wohnräumen eine raffinierte Note. Dieses Stück, das durch seine feine Handwerkskunst und modernen Linien besticht, vereint Ästhetik und Funktionalität.', ru: 'Этот дизайн, созданный с элегантными деталями и высокими стандартами качества, придает изысканность вашим жилым помещениям. Привлекая внимание своим тонким мастерством и современными линиями, этот предмет сочетает в себе эстетику и функциональность.', ar: 'يضيف هذا التصميم، الذي تم إنتاجه بتفاصيل أنيقة ومعايير جودة عالية، لمسة متطورة إلى مساحات المعيشة الخاصة بك. يجذب هذا القطعة الانتباه بحرفيتها الدقيقة وخطوطها الحديثة، حيث يجمع بين الجمالية والوظائف.' },
     image: "/images/2026/01/Weave-Berjerrrs.png",
     badge: "Iconic"
   },
@@ -110,7 +113,8 @@ export const FEATURED_PRODUCTS: ProductData[] = [
     slug: "soft-kose-kanepe",
     name: "Soft Köşe Kanepe",
     categorySlug: "kanepe-kose-takimlari",
-    categoryName: "Kanepe & Köşe",
+    categoryName: { tr: 'Kanepe & Köşe', en: 'Sofa & Corner', de: 'Sofa & Ecke', ru: 'Диван и угловой', ar: 'أريكة وزاوية' },
+    description: { tr: 'Zarif detayları ve yüksek kalite standartlarıyla üretilen bu tasarım, yaşam alanlarınıza sofistike bir dokunuş katıyor. İnce işçiliği ve modern çizgileriyle dikkat çeken bu parça, hem estetik hem de fonksiyonelliği bir araya getiriyor.', en: 'Produced with elegant details and high quality standards, this design adds a sophisticated touch to your living spaces. Drawing attention with its fine craftsmanship and modern lines, this piece brings together both aesthetics and functionality.', de: 'Dieses Design, das mit eleganten Details und hohen Qualitätsstandards hergestellt wird, verleiht Ihren Wohnräumen eine raffinierte Note. Dieses Stück, das durch seine feine Handwerkskunst und modernen Linien besticht, vereint Ästhetik und Funktionalität.', ru: 'Этот дизайн, созданный с элегантными деталями и высокими стандартами качества, придает изысканность вашим жилым помещениям. Привлекая внимание своим тонким мастерством и современными линиями, этот предмет сочетает в себе эстетику и функциональность.', ar: 'يضيف هذا التصميم، الذي تم إنتاجه بتفاصيل أنيقة ومعايير جودة عالية، لمسة متطورة إلى مساحات المعيشة الخاصة بك. يجذب هذا القطعة الانتباه بحرفيتها الدقيقة وخطوطها الحديثة، حيث يجمع بين الجمالية والوظائف.' },
     image: "/images/2026/01/Soft-Kose-Kanepe-1.png",
     badge: "New"
   },
@@ -119,7 +123,8 @@ export const FEATURED_PRODUCTS: ProductData[] = [
     slug: "vittorio-sandalye",
     name: "Vittorio Sandalye",
     categorySlug: "sandalye-benchler",
-    categoryName: "Sandalye",
+    categoryName: { tr: 'Sandalye', en: 'Chair', de: 'Stuhl', ru: 'Стул', ar: 'كرسي' },
+    description: { tr: 'Zarif detayları ve yüksek kalite standartlarıyla üretilen bu tasarım, yaşam alanlarınıza sofistike bir dokunuş katıyor. İnce işçiliği ve modern çizgileriyle dikkat çeken bu parça, hem estetik hem de fonksiyonelliği bir araya getiriyor.', en: 'Produced with elegant details and high quality standards, this design adds a sophisticated touch to your living spaces. Drawing attention with its fine craftsmanship and modern lines, this piece brings together both aesthetics and functionality.', de: 'Dieses Design, das mit eleganten Details und hohen Qualitätsstandards hergestellt wird, verleiht Ihren Wohnräumen eine raffinierte Note. Dieses Stück, das durch seine feine Handwerkskunst und modernen Linien besticht, vereint Ästhetik und Funktionalität.', ru: 'Этот дизайн, созданный с элегантными деталями и высокими стандартами качества, придает изысканность вашим жилым помещениям. Привлекая внимание своим тонким мастерством и современными линиями, этот предмет сочетает в себе эстетику и функциональность.', ar: 'يضيف هذا التصميم، الذي تم إنتاجه بتفاصيل أنيقة ومعايير جودة عالية، لمسة متطورة إلى مساحات المعيشة الخاصة بك. يجذب هذا القطعة الانتباه بحرفيتها الدقيقة وخطوطها الحديثة، حيث يجمع بين الجمالية والوظائف.' },
     image: "/images/2026/06/Vittorio-Sandalye-1.png",
     badge: "Signature"
   },
@@ -128,7 +133,8 @@ export const FEATURED_PRODUCTS: ProductData[] = [
     slug: "arco-kose-kanepe",
     name: "Arco Köşe Kanepe",
     categorySlug: "kanepe-kose-takimlari",
-    categoryName: "Kanepe & Köşe",
+    categoryName: { tr: 'Kanepe & Köşe', en: 'Sofa & Corner', de: 'Sofa & Ecke', ru: 'Диван и угловой', ar: 'أريكة وزاوية' },
+    description: { tr: 'Zarif detayları ve yüksek kalite standartlarıyla üretilen bu tasarım, yaşam alanlarınıza sofistike bir dokunuş katıyor. İnce işçiliği ve modern çizgileriyle dikkat çeken bu parça, hem estetik hem de fonksiyonelliği bir araya getiriyor.', en: 'Produced with elegant details and high quality standards, this design adds a sophisticated touch to your living spaces. Drawing attention with its fine craftsmanship and modern lines, this piece brings together both aesthetics and functionality.', de: 'Dieses Design, das mit eleganten Details und hohen Qualitätsstandards hergestellt wird, verleiht Ihren Wohnräumen eine raffinierte Note. Dieses Stück, das durch seine feine Handwerkskunst und modernen Linien besticht, vereint Ästhetik und Funktionalität.', ru: 'Этот дизайн, созданный с элегантными деталями и высокими стандартами качества, придает изысканность вашим жилым помещениям. Привлекая внимание своим тонким мастерством и современными линиями, этот предмет сочетает в себе эстетику и функциональность.', ar: 'يضيف هذا التصميم، الذي تم إنتاجه بتفاصيل أنيقة ومعايير جودة عالية، لمسة متطورة إلى مساحات المعيشة الخاصة بك. يجذب هذا القطعة الانتباه بحرفيتها الدقيقة وخطوطها الحديثة، حيث يجمع بين الجمالية والوظائف.' },
     image: "/images/2026/01/Arco-Kose-Kanepe.png",
     badge: "Exclusive"
   },
@@ -137,7 +143,8 @@ export const FEATURED_PRODUCTS: ProductData[] = [
     slug: "noma-berjer",
     name: "Noma Berjer",
     categorySlug: "berjer",
-    categoryName: "Berjer",
+    categoryName: { tr: 'Berjer', en: 'Armchair', de: 'Sessel', ru: 'Кресло', ar: 'كرسي' },
+    description: { tr: 'Zarif detayları ve yüksek kalite standartlarıyla üretilen bu tasarım, yaşam alanlarınıza sofistike bir dokunuş katıyor. İnce işçiliği ve modern çizgileriyle dikkat çeken bu parça, hem estetik hem de fonksiyonelliği bir araya getiriyor.', en: 'Produced with elegant details and high quality standards, this design adds a sophisticated touch to your living spaces. Drawing attention with its fine craftsmanship and modern lines, this piece brings together both aesthetics and functionality.', de: 'Dieses Design, das mit eleganten Details und hohen Qualitätsstandards hergestellt wird, verleiht Ihren Wohnräumen eine raffinierte Note. Dieses Stück, das durch seine feine Handwerkskunst und modernen Linien besticht, vereint Ästhetik und Funktionalität.', ru: 'Этот дизайн, созданный с элегантными деталями и высокими стандартами качества, придает изысканность вашим жилым помещениям. Привлекая внимание своим тонким мастерством и современными линиями, этот предмет сочетает в себе эстетику и функциональность.', ar: 'يضيف هذا التصميم، الذي تم إنتاجه بتفاصيل أنيقة ومعايير جودة عالية، لمسة متطورة إلى مساحات المعيشة الخاصة بك. يجذب هذا القطعة الانتباه بحرفيتها الدقيقة وخطوطها الحديثة، حيث يجمع بين الجمالية والوظائف.' },
     image: "/images/2026/01/Noma-Berjer-1.png"
   },
   {
@@ -145,7 +152,8 @@ export const FEATURED_PRODUCTS: ProductData[] = [
     slug: "calma-yatak",
     name: "Calma Yatak",
     categorySlug: "yatak-odasi",
-    categoryName: "Yatak Odası",
+    categoryName: { tr: 'Yatak Odası', en: 'Bedroom', de: 'Schlafzimmer', ru: 'Спальня', ar: 'غرفة نوم' },
+    description: { tr: 'Zarif detayları ve yüksek kalite standartlarıyla üretilen bu tasarım, yaşam alanlarınıza sofistike bir dokunuş katıyor. İnce işçiliği ve modern çizgileriyle dikkat çeken bu parça, hem estetik hem de fonksiyonelliği bir araya getiriyor.', en: 'Produced with elegant details and high quality standards, this design adds a sophisticated touch to your living spaces. Drawing attention with its fine craftsmanship and modern lines, this piece brings together both aesthetics and functionality.', de: 'Dieses Design, das mit eleganten Details und hohen Qualitätsstandards hergestellt wird, verleiht Ihren Wohnräumen eine raffinierte Note. Dieses Stück, das durch seine feine Handwerkskunst und modernen Linien besticht, vereint Ästhetik und Funktionalität.', ru: 'Этот дизайн, созданный с элегантными деталями и высокими стандартами качества, придает изысканность вашим жилым помещениям. Привлекая внимание своим тонким мастерством и современными линиями, этот предмет сочетает в себе эстетику и функциональность.', ar: 'يضيف هذا التصميم، الذي تم إنتاجه بتفاصيل أنيقة ومعايير جودة عالية، لمسة متطورة إلى مساحات المعيشة الخاصة بك. يجذب هذا القطعة الانتباه بحرفيتها الدقيقة وخطوطها الحديثة، حيث يجمع بين الجمالية والوظائف.' },
     image: "/images/2026/01/Calma-Yatak.png"
   },
   {
@@ -153,7 +161,8 @@ export const FEATURED_PRODUCTS: ProductData[] = [
     slug: "bellagio-sandalye",
     name: "Bellagio Sandalye",
     categorySlug: "sandalye-benchler",
-    categoryName: "Sandalye",
+    categoryName: { tr: 'Sandalye', en: 'Chair', de: 'Stuhl', ru: 'Стул', ar: 'كرسي' },
+    description: { tr: 'Zarif detayları ve yüksek kalite standartlarıyla üretilen bu tasarım, yaşam alanlarınıza sofistike bir dokunuş katıyor. İnce işçiliği ve modern çizgileriyle dikkat çeken bu parça, hem estetik hem de fonksiyonelliği bir araya getiriyor.', en: 'Produced with elegant details and high quality standards, this design adds a sophisticated touch to your living spaces. Drawing attention with its fine craftsmanship and modern lines, this piece brings together both aesthetics and functionality.', de: 'Dieses Design, das mit eleganten Details und hohen Qualitätsstandards hergestellt wird, verleiht Ihren Wohnräumen eine raffinierte Note. Dieses Stück, das durch seine feine Handwerkskunst und modernen Linien besticht, vereint Ästhetik und Funktionalität.', ru: 'Этот дизайн, созданный с элегантными деталями и высокими стандартами качества, придает изысканность вашим жилым помещениям. Привлекая внимание своим тонким мастерством и современными линиями, этот предмет сочетает в себе эстетику и функциональность.', ar: 'يضيف هذا التصميم، الذي تم إنتاجه بتفاصيل أنيقة ومعايير جودة عالية، لمسة متطورة إلى مساحات المعيشة الخاصة بك. يجذب هذا القطعة الانتباه بحرفيتها الدقيقة وخطوطها الحديثة، حيث يجمع بين الجمالية والوظائف.' },
     image: "/images/2026/06/Bellagio-Sandalye.png"
   }
 ];

@@ -1,4 +1,4 @@
-﻿{
+{
   "nav": {
     "home": "Startseite",
     "products": "Produkte",
@@ -46,7 +46,8 @@
     "title": "AusgewÃ¤hlte Produkte",
     "subtitle": "Unsere beliebtesten Designs",
     "viewProduct": "Produkt ansehen",
-    "getQuote": "Angebot anfragen"
+    "getQuote": "Angebot anfragen",
+    "bestseller": "Bestseller"
   },
   "contact": {
     "title": "Kontakt aufnehmen",
@@ -97,7 +98,10 @@
     "priceOnRequest": "Preis auf Anfrage",
     "viewDetails": "Details ansehen",
     "back": "ZurÃ¼ck",
-    "relatedProducts": "Ã„hnliche Produkte"
+    "relatedProducts": "Ã„hnliche Produkte",
+    "bestseller": "Bestseller",
+    "customOrderText": "Für Sondermaße und Stoffoptionen können Sie uns kontaktieren.",
+    "whatsappInfo": "Info über WhatsApp erhalten"
   },
   "projects": {
     "title": "Unsere Projekte",
