@@ -58,40 +58,27 @@ export default function FeaturedProducts({ locale }: FeaturedProductsProps) {
                 {/* Quick Action Overlay */}
                 <div className="absolute inset-0 bg-neutral-950/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-3 rtl:space-x-reverse">
                   <Link
-                    href={`/${locale}/urunler`}
-                    className="w-11 h-11 rounded-full bg-white text-neutral-950 flex items-center justify-center hover:bg-brand-400 hover:text-white transition-colors duration-200 shadow-xl"
+                    href={`/${locale}/urun/${product.slug}`}
+                    className="w-11 h-11 rounded-full bg-brand-500 text-white flex items-center justify-center hover:bg-brand-600 transition-colors duration-200 shadow-xl"
                     title={t('viewProduct')}
                   >
                     <Eye className="w-5 h-5" />
                   </Link>
-                  <a
-                    href={`https://wa.me/905525833234?text=Merhaba,%20${encodeURIComponent(product.name)}%20hakkında%20bilgi%20ve%20teklif%20almak%20istiyorum.`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-11 h-11 rounded-full bg-emerald-500 text-white flex items-center justify-center hover:bg-emerald-600 transition-colors duration-200 shadow-xl"
-                    title={t('getQuote')}
-                  >
-                    <MessageCircle className="w-5 h-5" />
-                  </a>
                 </div>
               </div>
 
-              {/* Product Meta */}
               <div className="p-6 space-y-2 border-t border-white/5">
                 <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-500 block">
                   {product.categoryName}
                 </span>
                 <h3 className="text-lg font-light text-white group-hover:text-brand-300 transition-colors">
-                  <Link href={`/${locale}/urunler`}>
+                  <Link href={`/${locale}/urun/${product.slug}`}>
                     {product.name}
                   </Link>
                 </h3>
                 <div className="pt-2 flex items-center justify-between">
-                  <span className="text-xs text-neutral-400 font-light">
-                    Özel İmalat
-                  </span>
                   <Link
-                    href={`/${locale}/urunler`}
+                    href={`/${locale}/urun/${product.slug}`}
                     className="text-xs uppercase tracking-widest text-brand-400 hover:text-brand-300 font-medium transition-colors"
                   >
                     {t('viewProduct')} →

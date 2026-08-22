@@ -2,7 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FEATURED_PRODUCTS, CATEGORIES } from '@/lib/data';
-import { MessageCircle } from 'lucide-react';
+import { MessageCircle, Eye } from 'lucide-react';
 
 interface ProductsPageProps {
   params: Promise<{ locale: string }>;
@@ -91,14 +91,12 @@ export default async function ProductsPage({
                     className="object-contain p-6 transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-neutral-950/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-3 rtl:space-x-reverse">
-                    <a
-                      href={`https://wa.me/905525833234?text=Merhaba,%20${encodeURIComponent(product.name)}%20hakkında%20bilgi%20ve%20teklif%20almak%20istiyorum.`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-11 h-11 rounded-full bg-emerald-500 text-white flex items-center justify-center hover:bg-emerald-600 transition-colors shadow-xl"
+                    <Link
+                      href={`/${locale}/urun/${product.slug}`}
+                      className="w-11 h-11 rounded-full bg-brand-500 text-white flex items-center justify-center hover:bg-brand-600 transition-colors shadow-xl"
                     >
-                      <MessageCircle className="w-5 h-5" />
-                    </a>
+                      <Eye className="w-5 h-5" />
+                    </Link>
                   </div>
                 </div>
                 <div className="p-6 space-y-2 border-t border-white/5">
@@ -109,9 +107,12 @@ export default async function ProductsPage({
                     {product.name}
                   </h3>
                   <div className="pt-2 flex items-center justify-between">
-                    <span className="text-xs text-neutral-400 font-light">
-                      {t('priceOnRequest')}
-                    </span>
+                    <Link
+                      href={`/${locale}/urun/${product.slug}`}
+                      className="text-xs uppercase tracking-widest text-brand-400 hover:text-brand-300 font-medium transition-colors"
+                    >
+                      {t('viewDetails')} →
+                    </Link>
                   </div>
                 </div>
               </div>
