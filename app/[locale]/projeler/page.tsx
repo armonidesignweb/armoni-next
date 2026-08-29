@@ -66,7 +66,7 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
         {/* Page Header */}
         <div className="text-center max-w-2xl mx-auto space-y-4">
           <span className="text-xs uppercase tracking-[0.35em] text-brand-400 font-medium block">
-            Portfolio
+            {t('label')}
           </span>
           <h1 className="text-4xl md:text-6xl font-light text-white font-serif tracking-tight">
             {t('title')}

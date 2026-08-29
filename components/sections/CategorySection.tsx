@@ -13,6 +13,8 @@ interface CategorySectionProps {
 
 export default function CategorySection({ locale }: CategorySectionProps) {
   const t = useTranslations('categories');
+  const tHome = useTranslations('homepage');
+  const tProducts = useTranslations('products');
 
   return (
     <section className="py-28 bg-neutral-950 relative overflow-hidden">
@@ -20,7 +22,7 @@ export default function CategorySection({ locale }: CategorySectionProps) {
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto space-y-4 mb-16 relative">
           <span className="text-xs uppercase tracking-[0.35em] text-brand-400 font-medium block">
-            Armoni Collection
+            {tHome('collectionLabel')}
           </span>
           <h2 className="text-5xl md:text-7xl font-light text-white font-serif tracking-tight">
             {t('title')}
@@ -66,7 +68,7 @@ export default function CategorySection({ locale }: CategorySectionProps) {
                 {/* Top Badge */}
                 <div className="relative z-10 flex justify-between items-center">
                   <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest bg-black/40 px-3 py-1 rounded-full backdrop-blur-md border border-white/10">
-                    {category.itemCount} Tasarım
+                    {category.itemCount} {tProducts('design')}
                   </span>
                   <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover:opacity-100 group-hover:bg-brand-500 transition-all duration-300 transform group-hover:scale-100 scale-75">
                     <ArrowUpRight className="w-4 h-4" />

@@ -13,6 +13,7 @@ interface HeroSectionProps {
 
 export default function HeroSection({ locale }: HeroSectionProps) {
   const t = useTranslations('hero');
+  const tHome = useTranslations('homepage');
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -120,7 +121,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
 
       {/* Scroll Down Indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 hidden md:flex flex-col items-center space-y-2 opacity-70 hover:opacity-100 transition-opacity">
-        <span className="text-[10px] uppercase tracking-[0.3em] text-neutral-400">Keşfet</span>
+        <span className="text-[10px] uppercase tracking-[0.3em] text-neutral-400">{tHome('discover')}</span>
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}

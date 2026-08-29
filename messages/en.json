@@ -78,7 +78,11 @@
     "emailValue": "iletisim@armonidesign.com",
     "success": "Your message has been sent successfully.",
     "whatsapp": "Chat on WhatsApp",
-    "mapTitle": "Our Location"
+    "mapTitle": "Our Location",
+    "label": "Contact & Quote",
+    "namePlaceholder": "Your Full Name",
+    "emailPlaceholder": "example@domain.com",
+    "messagePlaceholder": "Tell us about the furniture or custom design you are interested in..."
   },
   "footer": {
     "description": "Over 20 years of experience in luxury furniture design and manufacturing. We bring aesthetics and functionality to your living spaces.",
@@ -102,12 +106,17 @@
     "bestseller": "Bestseller",
     "customOrderText": "You can contact us for custom dimensions and fabric options.",
     "whatsappInfo": "Get Info via WhatsApp",
-    "contactForDetails": "Please contact us for detailed information."
+    "contactForDetails": "Please contact us for detailed information.",
+    "allProducts": "All Products",
+    "whatsappMessage": "Hello, I would like to get information and pricing for the {product} product.",
+    "showingRange": "Showing {start}–{end} of {total} products",
+    "design": "Design"
   },
   "projects": {
     "title": "Our Projects",
     "subtitle": "A selection from our completed works",
-    "viewProject": "View Project"
+    "viewProject": "View Project",
+    "label": "Portfolio"
   },
   "meta": {
     "homeTitle": "Armoni Design | Luxury Furniture Design & Manufacturing",
@@ -115,5 +124,20 @@
     "productsTitle": "Products | Armoni Design",
     "aboutTitle": "About | Armoni Design",
     "contactTitle": "Contact | Armoni Design"
+  },
+  "references": {
+    "label": "Trust & Success",
+    "title": "Our References",
+    "subtitle": "Projects we have brought to life with our distinguished business partners around the world.",
+    "prestigious": "Prestigious Brand & Partner",
+    "metaTitle": "References | Armoni Design",
+    "metaDesc": "Armoni Design references — projects realized with our distinguished partners around the world."
+  },
+  "homepage": {
+    "collectionLabel": "Armoni Collection",
+    "featuredLabel": "Special Selection",
+    "discover": "Discover",
+    "customProduction": "Custom Production",
+    "customProductionDesc": "Customizable Furniture"
   }
 }

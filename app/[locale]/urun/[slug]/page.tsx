@@ -84,7 +84,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href={`https://wa.me/905525833234?text=Merhaba,%20${encodeURIComponent(productName)}%20ürünü%20hakkında%20bilgi%20ve%20fiyat%20almak%20istiyorum.`}
+                  href={`https://wa.me/905525833234?text=${encodeURIComponent(t('whatsappMessage', { product: productName }))}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-8 py-4 bg-emerald-500 text-white text-sm font-medium tracking-wide rounded-full hover:bg-emerald-600 transition-colors text-center"

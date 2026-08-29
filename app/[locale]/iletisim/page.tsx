@@ -30,7 +30,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
         {/* Header Section */}
         <div className="text-center max-w-2xl mx-auto space-y-4">
           <span className="text-xs uppercase tracking-[0.35em] text-brand-400 font-medium block">
-            İletişim & Teklif
+            {t('label')}
           </span>
           <h1 className="text-4xl md:text-6xl font-light text-white font-serif tracking-tight">
             {t('title')}
@@ -130,7 +130,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
                   <input
                     type="text"
                     required
-                    placeholder="Adınız Soyadınız"
+                    placeholder={t('namePlaceholder')}
                     className="w-full bg-neutral-900/80 border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-brand-500 transition-colors"
                   />
                 </div>
@@ -141,7 +141,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
                   <input
                     type="email"
                     required
-                    placeholder="ornek@domain.com"
+                    placeholder={t('emailPlaceholder')}
                     className="w-full bg-neutral-900/80 border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-brand-500 transition-colors"
                   />
                 </div>
@@ -165,7 +165,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
                 <textarea
                   rows={5}
                   required
-                  placeholder="İlgilendiğiniz mobilya veya özel tasarım talebiniz hakkında bilgi verin..."
+                  placeholder={t('messagePlaceholder')}
                   className="w-full bg-neutral-900/80 border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-brand-500 transition-colors resize-none"
                 />
               </div>

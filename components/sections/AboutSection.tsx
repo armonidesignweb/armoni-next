@@ -12,6 +12,7 @@ interface AboutSectionProps {
 
 export default function AboutSection({ locale }: AboutSectionProps) {
   const t = useTranslations('about');
+  const tHome = useTranslations('homepage');
 
   const stats = [
     { number: '20+', label: t('stats.years') },
@@ -49,8 +50,8 @@ export default function AboutSection({ locale }: AboutSectionProps) {
                   <Sparkles className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-medium text-white font-serif">Özel Üretim</h4>
-                  <p className="text-xs text-neutral-400 font-light">Kişiselleştirilebilir Mobilya</p>
+                  <h4 className="text-sm font-medium text-white font-serif">{tHome('customProduction')}</h4>
+                  <p className="text-xs text-neutral-400 font-light">{tHome('customProductionDesc')}</p>
                 </div>
               </div>
             </div>

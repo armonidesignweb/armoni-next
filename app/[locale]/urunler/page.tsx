@@ -84,7 +84,7 @@ export default async function ProductsPage({
                 : 'glass-card text-neutral-300 hover:text-white border border-white/10'
             }`}
           >
-            Tüm Ürünler ({ALL_PRODUCTS.length})
+            {t('allProducts')} ({ALL_PRODUCTS.length})
           </Link>
           {CATEGORIES.map((cat) => (
             <Link
@@ -225,7 +225,7 @@ export default async function ProductsPage({
 
             {/* Page info */}
             <p className="text-center text-neutral-600 text-xs mt-4">
-              {totalItems} üründen {startIndex + 1}–{Math.min(startIndex + ITEMS_PER_PAGE, totalItems)} gösteriliyor
+              {t('showingRange', { total: String(totalItems), start: String(startIndex + 1), end: String(Math.min(startIndex + ITEMS_PER_PAGE, totalItems)) })}
             </p>
           </div>
         ) : (

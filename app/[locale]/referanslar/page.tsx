@@ -8,29 +8,30 @@ interface ReferanslarPageProps {
 
 export async function generateMetadata({ params }: ReferanslarPageProps) {
   const { locale } = await params;
-  await getTranslations({ locale, namespace: 'nav' });
+  const t = await getTranslations({ locale, namespace: 'references' });
   return {
-    title: `Referanslar | Armoni Design`,
-    description:
-      'Armoni Design referansları — dünyanın dört bir yanındaki seçkin iş ortaklarımızla hayata geçirilen projeler.',
+    title: t('metaTitle'),
+    description: t('metaDesc'),
   };
 }
 
-export default async function ReferanslarPage() {
+export default async function ReferanslarPage({ params }: ReferanslarPageProps) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'references' });
+
   return (
     <div className="pt-40 pb-24 bg-neutral-950 min-h-screen">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Başlık */}
         <div className="mb-16 text-center space-y-4">
           <span className="text-xs uppercase tracking-[0.35em] text-brand-400 font-medium block">
-            Güven &amp; Başarı
+            {t('label')}
           </span>
           <h1 className="text-4xl md:text-5xl font-light text-white font-serif tracking-tight">
-            Referanslarımız
+            {t('title')}
           </h1>
           <p className="text-neutral-400 font-light max-w-2xl mx-auto text-sm leading-relaxed">
-            Dünyanın dört bir yanındaki seçkin iş ortaklarımızla birlikte hayata geçirdiğimiz
-            projeler.
+            {t('subtitle')}
           </p>
         </div>
 
@@ -61,7 +62,7 @@ export default async function ReferanslarPage() {
         {/* Alt bilgi */}
         <div className="mt-20 text-center">
           <p className="text-neutral-500 text-xs uppercase tracking-widest">
-            {REFERENCES.length}+ Prestijli Marka &amp; İş Ortağı
+            {REFERENCES.length}+ {t('prestigious')}
           </p>
         </div>
       </div>

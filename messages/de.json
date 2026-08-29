@@ -78,7 +78,11 @@
     "emailValue": "iletisim@armonidesign.com",
     "success": "Ihre Nachricht wurde erfolgreich gesendet.",
     "whatsapp": "Per WhatsApp schreiben",
-    "mapTitle": "Unser Standort"
+    "mapTitle": "Unser Standort",
+    "label": "Kontakt & Angebot",
+    "namePlaceholder": "Ihr vollständiger Name",
+    "emailPlaceholder": "beispiel@domain.com",
+    "messagePlaceholder": "Erzählen Sie uns von den Möbeln oder dem individuellen Design, das Sie interessiert..."
   },
   "footer": {
     "description": "Über 20 Jahre Erfahrung in Luxusmöbeldesign und -herstellung. Wir bringen Ästhetik und Funktionalität in Ihre Wohnräume.",
@@ -102,12 +106,17 @@
     "bestseller": "Bestseller",
     "customOrderText": "Für Sondermaße und Stoffoptionen können Sie uns kontaktieren.",
     "whatsappInfo": "Info über WhatsApp erhalten",
-    "contactForDetails": "Bitte kontaktieren Sie uns für detaillierte Informationen."
+    "contactForDetails": "Bitte kontaktieren Sie uns für detaillierte Informationen.",
+    "allProducts": "Alle Produkte",
+    "whatsappMessage": "Hallo, ich hätte gerne Informationen und Preise für das Produkt {product}.",
+    "showingRange": "{start}–{end} von {total} Produkten werden angezeigt",
+    "design": "Design"
   },
   "projects": {
     "title": "Unsere Projekte",
     "subtitle": "Eine Auswahl unserer abgeschlossenen Arbeiten",
-    "viewProject": "Projekt ansehen"
+    "viewProject": "Projekt ansehen",
+    "label": "Portfolio"
   },
   "meta": {
     "homeTitle": "Armoni Design | Luxusmöbel Design & Herstellung",
@@ -115,5 +124,20 @@
     "productsTitle": "Produkte | Armoni Design",
     "aboutTitle": "Über uns | Armoni Design",
     "contactTitle": "Kontakt | Armoni Design"
+  },
+  "references": {
+    "label": "Vertrauen & Erfolg",
+    "title": "Unsere Referenzen",
+    "subtitle": "Projekte, die wir mit unseren angesehenen Geschäftspartnern auf der ganzen Welt realisiert haben.",
+    "prestigious": "Renommierte Marke & Partner",
+    "metaTitle": "Referenzen | Armoni Design",
+    "metaDesc": "Armoni Design Referenzen — Projekte, die mit unseren angesehenen Partnern weltweit realisiert wurden."
+  },
+  "homepage": {
+    "collectionLabel": "Armoni Collection",
+    "featuredLabel": "Besondere Auswahl",
+    "discover": "Entdecken",
+    "customProduction": "Sonderanfertigung",
+    "customProductionDesc": "Personalisierbare Möbel"
   }
 }

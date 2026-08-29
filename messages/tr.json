@@ -78,7 +78,11 @@
     "emailValue": "iletisim@armonidesign.com",
     "success": "Mesajınız başarıyla gönderildi.",
     "whatsapp": "WhatsApp ile Yazın",
-    "mapTitle": "Konumumuz"
+    "mapTitle": "Konumumuz",
+    "label": "İletişim & Teklif",
+    "namePlaceholder": "Adınız Soyadınız",
+    "emailPlaceholder": "ornek@domain.com",
+    "messagePlaceholder": "İlgilendiğiniz mobilya veya özel tasarım talebiniz hakkında bilgi verin..."
   },
   "footer": {
     "description": "Lüks mobilya tasarımı ve üretiminde 20 yılı aşkın deneyim. Estetik ve fonksiyonelliği yaşam alanlarınıza taşıyoruz.",
@@ -102,12 +106,17 @@
     "bestseller": "En Çok Satan",
     "customOrderText": "Özel ölçü ve kumaş seçenekleri için bizimle iletişime geçebilirsiniz.",
     "whatsappInfo": "WhatsApp'tan Bilgi Al",
-    "contactForDetails": "Detaylı bilgi için bizimle iletişime geçebilirsiniz."
+    "contactForDetails": "Detaylı bilgi için bizimle iletişime geçebilirsiniz.",
+    "allProducts": "Tüm Ürünler",
+    "whatsappMessage": "Merhaba, {product} ürünü hakkında bilgi ve fiyat almak istiyorum.",
+    "showingRange": "{total} üründen {start}–{end} gösteriliyor",
+    "design": "Tasarım"
   },
   "projects": {
     "title": "Projelerimiz",
     "subtitle": "Tamamlanan çalışmalarımızdan bir seçki",
-    "viewProject": "Projeyi İncele"
+    "viewProject": "Projeyi İncele",
+    "label": "Portföy"
   },
   "meta": {
     "homeTitle": "Armoni Design | Lüks Mobilya Tasarımı ve Üretimi",
@@ -115,5 +124,20 @@
     "productsTitle": "Ürünler | Armoni Design",
     "aboutTitle": "Hakkımızda | Armoni Design",
     "contactTitle": "İletişim | Armoni Design"
+  },
+  "references": {
+    "label": "Güven & Başarı",
+    "title": "Referanslarımız",
+    "subtitle": "Dünyanın dört bir yanındaki seçkin iş ortaklarımızla birlikte hayata geçirdiğimiz projeler.",
+    "prestigious": "Prestijli Marka & İş Ortağı",
+    "metaTitle": "Referanslar | Armoni Design",
+    "metaDesc": "Armoni Design referansları — dünyanın dört bir yanındaki seçkin iş ortaklarımızla hayata geçirilen projeler."
+  },
+  "homepage": {
+    "collectionLabel": "Armoni Collection",
+    "featuredLabel": "Özel Seçki",
+    "discover": "Keşfet",
+    "customProduction": "Özel Üretim",
+    "customProductionDesc": "Kişiselleştirilebilir Mobilya"
   }
 }

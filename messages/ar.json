@@ -78,7 +78,11 @@
     "emailValue": "iletisim@armonidesign.com",
     "success": "تم إرسال رسالتك بنجاح.",
     "whatsapp": "تواصل عبر واتساب",
-    "mapTitle": "موقعنا"
+    "mapTitle": "موقعنا",
+    "label": "التواصل والعروض",
+    "namePlaceholder": "الاسم الكامل",
+    "emailPlaceholder": "example@domain.com",
+    "messagePlaceholder": "أخبرنا عن الأثاث أو التصميم المخصص الذي تهتم به..."
   },
   "footer": {
     "description": "أكثر من 20 عاماً من الخبرة في تصميم وتصنيع الأثاث الفاخر. نجلب الجماليات والوظيفية إلى مساحات معيشتكم.",
@@ -102,12 +106,17 @@
     "bestseller": "الأكثر مبيعاً",
     "customOrderText": "يمكنك التواصل معنا لمعرفة خيارات المقاسات والأقمشة الخاصة.",
     "whatsappInfo": "احصل على معلومات عبر الواتساب",
-    "contactForDetails": "يرجى التواصل معنا للحصول على معلومات تفصيلية."
+    "contactForDetails": "يرجى التواصل معنا للحصول على معلومات تفصيلية.",
+    "allProducts": "جميع المنتجات",
+    "whatsappMessage": "مرحباً، أود الحصول على معلومات وأسعار لمنتج {product}.",
+    "showingRange": "عرض {start}–{end} من {total} منتج",
+    "design": "تصميم"
   },
   "projects": {
     "title": "مشاريعنا",
     "subtitle": "اختيار من أعمالنا المكتملة",
-    "viewProject": "عرض المشروع"
+    "viewProject": "عرض المشروع",
+    "label": "محفظة المشاريع"
   },
   "meta": {
     "homeTitle": "أرموني ديزاين | تصميم وتصنيع الأثاث الفاخر",
@@ -115,5 +124,20 @@
     "productsTitle": "المنتجات | أرموني ديزاين",
     "aboutTitle": "من نحن | أرموني ديزاين",
     "contactTitle": "اتصل بنا | أرموني ديزاين"
+  },
+  "references": {
+    "label": "الثقة والنجاح",
+    "title": "مراجعنا",
+    "subtitle": "المشاريع التي حققناها مع شركائنا المتميزين في جميع أنحاء العالم.",
+    "prestigious": "علامة تجارية وشريك متميز",
+    "metaTitle": "المراجع | أرموني ديزاين",
+    "metaDesc": "مراجع أرموني ديزاين — المشاريع التي حققناها مع شركائنا المتميزين حول العالم."
+  },
+  "homepage": {
+    "collectionLabel": "Armoni Collection",
+    "featuredLabel": "اختيارات خاصة",
+    "discover": "اكتشف",
+    "customProduction": "إنتاج مخصص",
+    "customProductionDesc": "أثاث قابل للتخصيص"
   }
 }

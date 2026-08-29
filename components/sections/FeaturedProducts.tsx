@@ -13,6 +13,7 @@ interface FeaturedProductsProps {
 
 export default function FeaturedProducts({ locale }: FeaturedProductsProps) {
   const t = useTranslations('featured');
+  const tHome = useTranslations('homepage');
 
   return (
     <section className="py-28 bg-neutral-900/50 border-t border-b border-neutral-900 relative">
@@ -20,7 +21,7 @@ export default function FeaturedProducts({ locale }: FeaturedProductsProps) {
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-20 space-y-4">
           <span className="text-xs uppercase tracking-[0.35em] text-brand-400 font-medium block">
-            Özel Seçki
+            {tHome('featuredLabel')}
           </span>
           <h2 className="text-4xl md:text-6xl font-light text-white font-serif tracking-tight">
             {t('title')}
