@@ -9,7 +9,7 @@ import {
   Briefcase, 
   Users, 
   Megaphone, 
-  TicketPercent, 
+  Ticket, 
   LifeBuoy, 
   Settings,
   LogOut
@@ -39,7 +39,7 @@ export default async function AdminLayout({
     { name: 'SİTE İÇERİĞİ', href: `/${locale}/admin/content`, icon: ImageIcon },
     { name: 'MÜŞTERİLER', href: `/${locale}/admin/customers`, icon: Users },
     { name: 'DUYURULAR', href: `/${locale}/admin/announcements`, icon: Megaphone },
-    { name: 'KAMPANYALAR', href: `/${locale}/admin/campaigns`, icon: TicketPercent },
+    { name: 'KAMPANYALAR', href: `/${locale}/admin/campaigns`, icon: Ticket },
     { name: 'DESTEK', href: `/${locale}/admin/support`, icon: LifeBuoy },
     { name: 'AYARLAR', href: `/${locale}/admin/settings`, icon: Settings },
   ];

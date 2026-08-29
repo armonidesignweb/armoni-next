@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { 
   LayoutDashboard, 
   Package, 
-  TicketPercent, 
+  Ticket, 
   Megaphone, 
   LifeBuoy, 
   User as UserIcon,
@@ -28,7 +28,7 @@ export default async function AccountLayout({
   const navItems = [
     { name: 'Genel Bakış', href: `/${locale}/account`, icon: LayoutDashboard },
     { name: 'Ürünler & Fiyatlar', href: `/${locale}/account/products`, icon: Package },
-    { name: 'Kampanyalar', href: `/${locale}/account/campaigns`, icon: TicketPercent },
+    { name: 'Kampanyalar', href: `/${locale}/account/campaigns`, icon: Ticket },
     { name: 'Duyurular', href: `/${locale}/account/announcements`, icon: Megaphone },
     { name: 'Yardım & Destek', href: `/${locale}/account/support`, icon: LifeBuoy },
     { name: 'Profil', href: `/${locale}/account/profile`, icon: UserIcon },

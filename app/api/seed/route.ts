@@ -21,16 +21,16 @@ export async function GET(request: Request) {
         // Map hardcoded structure to Mongoose structure
         await Product.create({
           title: {
-            tr: (typeof prod.name === 'string' ? prod.name : prod.name.tr) || prod.slug,
-            en: typeof prod.name === 'object' ? prod.name.en : '',
-            de: typeof prod.name === 'object' ? prod.name.de : '',
-            ar: typeof prod.name === 'object' ? prod.name.ar : '',
+            tr: prod.name.tr || prod.slug,
+            en: prod.name.en || '',
+            de: prod.name.de || '',
+            ar: prod.name.ar || '',
           },
           description: {
-            tr: (typeof prod.description === 'string' ? prod.description : prod.description?.tr) || '',
-            en: typeof prod.description === 'object' ? prod.description?.en : '',
-            de: typeof prod.description === 'object' ? prod.description?.de : '',
-            ar: typeof prod.description === 'object' ? prod.description?.ar : '',
+            tr: prod.description.tr || '',
+            en: prod.description.en || '',
+            de: prod.description.de || '',
+            ar: prod.description.ar || '',
           },
           slug: prod.slug,
           categorySlug: prod.categorySlug,
