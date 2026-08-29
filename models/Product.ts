@@ -8,12 +8,30 @@ export interface ILocalizedField {
   ar?: string;
 }
 
+export interface IProductTranslation {
+  name: string;
+  description?: string;
+  features?: string[];
+}
+
+export interface IProductTranslations {
+  tr?: IProductTranslation;
+  en?: IProductTranslation;
+  de?: IProductTranslation;
+  ar?: IProductTranslation;
+}
+
 export interface IProduct extends Document {
+  // Legacy fields
   title: ILocalizedField;
-  slug: string;
-  categorySlug: string;
   description?: ILocalizedField;
   features?: ILocalizedField[];
+  
+  // New CMS fields
+  slug: string;
+  categorySlug: string;
+  translations?: IProductTranslations;
+  
   images: string[];
   dimensions?: {
     width?: number;
@@ -37,13 +55,29 @@ const LocalizedSchema = new Schema({
   ar: { type: String, default: '' },
 }, { _id: false });
 
+const ProductTranslationSchema = new Schema({
+  name: { type: String },
+  description: { type: String },
+  features: [{ type: String }],
+}, { _id: false });
+
+const ProductTranslationsSchema = new Schema({
+  tr: { type: ProductTranslationSchema },
+  en: { type: ProductTranslationSchema },
+  de: { type: ProductTranslationSchema },
+  ar: { type: ProductTranslationSchema },
+}, { _id: false });
+
 const ProductSchema = new Schema<IProduct>(
   {
-    title: { type: LocalizedSchema, required: true },
+    title: { type: LocalizedSchema, required: true }, // Legacy
+    description: { type: LocalizedSchema }, // Legacy
+    features: [LocalizedSchema], // Legacy
+    
     slug: { type: String, required: true, unique: true, index: true },
     categorySlug: { type: String, required: true, index: true },
-    description: { type: LocalizedSchema },
-    features: [LocalizedSchema],
+    translations: { type: ProductTranslationsSchema },
+    
     images: [{ type: String, required: true }],
     dimensions: {
       width: Number,

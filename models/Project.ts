@@ -1,12 +1,30 @@
 import mongoose, { Schema, Document, Model } from 'mongoose';
 import { ILocalizedField } from './Product';
 
-export interface IProject extends Document {
-  title: ILocalizedField;
-  slug: string;
+export interface IProjectTranslation {
+  name: string;
+  description?: string;
   location?: string;
-  year?: number;
+}
+
+export interface IProjectTranslations {
+  tr?: IProjectTranslation;
+  en?: IProjectTranslation;
+  de?: IProjectTranslation;
+  ar?: IProjectTranslation;
+}
+
+export interface IProject extends Document {
+  // Legacy fields
+  title: ILocalizedField;
   description?: ILocalizedField;
+  location?: string;
+  
+  // New CMS fields
+  slug: string;
+  translations?: IProjectTranslations;
+  
+  year?: number;
   coverImage: string;
   gallery: string[];
   isActive: boolean;
@@ -23,13 +41,29 @@ const LocalizedSchema = new Schema({
   ar: { type: String, default: '' },
 }, { _id: false });
 
+const ProjectTranslationSchema = new Schema({
+  name: { type: String },
+  description: { type: String },
+  location: { type: String },
+}, { _id: false });
+
+const ProjectTranslationsSchema = new Schema({
+  tr: { type: ProjectTranslationSchema },
+  en: { type: ProjectTranslationSchema },
+  de: { type: ProjectTranslationSchema },
+  ar: { type: ProjectTranslationSchema },
+}, { _id: false });
+
 const ProjectSchema = new Schema<IProject>(
   {
-    title: { type: LocalizedSchema, required: true },
+    title: { type: LocalizedSchema, required: true }, // Legacy
+    description: { type: LocalizedSchema }, // Legacy
+    location: { type: String }, // Legacy
+    
     slug: { type: String, required: true, unique: true, index: true },
-    location: { type: String },
+    translations: { type: ProjectTranslationsSchema },
+    
     year: { type: Number },
-    description: { type: LocalizedSchema },
     coverImage: { type: String, required: true },
     gallery: [{ type: String }],
     isActive: { type: Boolean, default: true },
