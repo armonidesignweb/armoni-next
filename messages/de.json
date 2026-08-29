@@ -14,16 +14,16 @@
   "hero": {
     "tagline": "Luxus & Originelles Design",
     "title": "Eleganz,\nIn jedem Detail",
-    "subtitle": "Verwandeln Sie Ihre WohnrÃ¤ume mit unseren handgefertigten, designorientierten Möbelkollektionen.",
+    "subtitle": "Verwandeln Sie Ihre Wohnräume mit unseren handgefertigten, designorientierten Möbelkollektionen.",
     "cta": "Kollektion entdecken",
     "ctaSecondary": "Unsere Projekte"
   },
   "categories": {
     "title": "Kollektionen",
-    "subtitle": "Zeitlose Schönheit, sorgfÃ¤ltig für jeden Raum gestaltet",
+    "subtitle": "Zeitlose Schönheit, sorgfältig für jeden Raum gestaltet",
     "sofa": "Sofas & Eckgarnituren",
     "berjer": "Sessel",
-    "chair": "Stühle & BÃ¤nke",
+    "chair": "Stühle & Bänke",
     "bedroom": "Schlafzimmer",
     "mirrors": "Spiegel & Einheiten",
     "garden": "Gartenmöbel",
@@ -32,18 +32,18 @@
   "about": {
     "label": "Über uns",
     "title": "Eine Erfahrung\nJenseits des Designs",
-    "p1": "Armoni Design ist einer der führenden Luxusmöbelhersteller der Türkei mit über 20 Jahren Erfahrung. Jedes Stück erwacht in den HÃ¤nden unserer Handwerker zum Leben.",
-    "p2": "Unsere Kollektionen verbinden italienische DesignÃ¤sthetik mit türkischem Handwerk und verwandeln jeden Raum in ein elegantes Wohnambiente.",
+    "p1": "Armoni Design ist einer der führenden Luxusmöbelhersteller der Türkei mit über 20 Jahren Erfahrung. Jedes Stück erwacht in den Händen unserer Handwerker zum Leben.",
+    "p2": "Unsere Kollektionen verbinden italienische Designästhetik mit türkischem Handwerk und verwandeln jeden Raum in ein elegantes Wohnambiente.",
     "stats": {
       "products": "Produkte",
       "years": "Jahre Erfahrung",
       "projects": "Projekte",
-      "countries": "LÃ¤nder"
+      "countries": "Länder"
     },
     "cta": "Mehr erfahren"
   },
   "featured": {
-    "title": "AusgewÃ¤hlte Produkte",
+    "title": "Ausgewählte Produkte",
     "subtitle": "Unsere beliebtesten Designs",
     "viewProduct": "Produkt ansehen",
     "getQuote": "Angebot anfragen",
@@ -52,7 +52,7 @@
   "contact": {
     "title": "Kontakt aufnehmen",
     "subtitle": "Kontaktieren Sie uns für Ihre Projekte und individuellen Designanfragen.",
-    "name": "VollstÃ¤ndiger Name",
+    "name": "Vollständiger Name",
     "email": "E-Mail-Adresse",
     "phone": "Telefonnummer",
     "message": "Ihre Nachricht",
@@ -61,7 +61,7 @@
     "factoryAddressLabel": "Produktion",
     "factoryAddress": "Kağıthane Cad, 102 Sk. 34400 Kağıthane / Istanbul",
     "factoryMapUrl": "https://maps.app.goo.gl/B9QoXW5XoFmR4T4S6",
-    "storeAddressLabel": "GeschÃ¤ft",
+    "storeAddressLabel": "Geschäft",
     "storeAddress": "Kağıthane Cad, Limon Sk. 1A, 34400 Kağıthane / Istanbul",
     "storeMapUrl": "https://maps.app.goo.gl/B9QoXW5XoFmR4T4S6",
     "ourEmails": "E-Mail-Adressen",
@@ -81,7 +81,7 @@
     "mapTitle": "Unser Standort"
   },
   "footer": {
-    "description": "Über 20 Jahre Erfahrung in Luxusmöbeldesign und -herstellung. Wir bringen Ã„sthetik und FunktionalitÃ¤t in Ihre WohnrÃ¤ume.",
+    "description": "Über 20 Jahre Erfahrung in Luxusmöbeldesign und -herstellung. Wir bringen Ästhetik und Funktionalität in Ihre Wohnräume.",
     "quickLinks": "Schnelllinks",
     "categories": "Kategorien",
     "followUs": "Folgen Sie uns",
@@ -98,7 +98,7 @@
     "priceOnRequest": "Preis auf Anfrage",
     "viewDetails": "Details ansehen",
     "back": "Zurück",
-    "relatedProducts": "Ã„hnliche Produkte",
+    "relatedProducts": "Ähnliche Produkte",
     "bestseller": "Bestseller",
     "customOrderText": "Für Sondermaße und Stoffoptionen können Sie uns kontaktieren.",
     "whatsappInfo": "Info über WhatsApp erhalten",
@@ -111,7 +111,7 @@
   },
   "meta": {
     "homeTitle": "Armoni Design | Luxusmöbel Design & Herstellung",
-    "homeDesc": "Verwandeln Sie Ihre WohnrÃ¤ume mit Armoni Designs luxuriösen und einzigartigen Möbeldesigns.",
+    "homeDesc": "Verwandeln Sie Ihre Wohnräume mit Armoni Designs luxuriösen und einzigartigen Möbeldesigns.",
     "productsTitle": "Produkte | Armoni Design",
     "aboutTitle": "Über uns | Armoni Design",
     "contactTitle": "Kontakt | Armoni Design"
