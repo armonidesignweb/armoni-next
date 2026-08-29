@@ -69,12 +69,12 @@ export default function HeroSection({ locale }: HeroSectionProps) {
 
           {/* Title */}
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light text-white tracking-tight leading-[1.15] whitespace-pre-line font-serif">
-            {slide.titleKey}
+            {t(`slides.${slide.id}.title` as any)}
           </h1>
 
           {/* Subtitle */}
           <p className="text-base sm:text-lg text-neutral-300 font-light max-w-lg leading-relaxed">
-            {slide.subtitleKey}
+            {t(`slides.${slide.id}.subtitle` as any)}
           </p>
 
           {/* Action Buttons */}

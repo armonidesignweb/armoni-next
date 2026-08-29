@@ -16,7 +16,25 @@
     "title": "Elegance,\nIn Every Detail",
     "subtitle": "Transform your living spaces with our handcrafted, design-focused furniture collections.",
     "cta": "Explore Collection",
-    "ctaSecondary": "Our Projects"
+    "ctaSecondary": "Our Projects",
+    "slides": {
+      "1": {
+        "title": "Bellagia Outdoor Set",
+        "subtitle": "Modern Italian lines, top-level comfort"
+      },
+      "2": {
+        "title": "Crown Chair",
+        "subtitle": "Perfect harmony of ergonomics and elegant details"
+      },
+      "3": {
+        "title": "Fjord Armchair",
+        "subtitle": "Textural richness and timeless aesthetics"
+      },
+      "4": {
+        "title": "Nacre Corner Sofa",
+        "subtitle": "The symbol of craftsmanship and elegance"
+      }
+    }
   },
   "categories": {
     "title": "Collections",
@@ -139,5 +157,14 @@
     "discover": "Discover",
     "customProduction": "Custom Production",
     "customProductionDesc": "Customizable Furniture"
+  },
+  "testimonials": {
+    "badge": "Customer Reviews",
+    "title": "What Our Customers Say?",
+    "googleReviews": "5.0 · Google Reviews",
+    "prev": "Previous",
+    "next": "Next",
+    "prevReviews": "Previous Reviews",
+    "nextReviews": "Next Reviews"
   }
 }

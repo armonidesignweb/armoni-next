@@ -16,7 +16,25 @@
     "title": "Zarafet,\nHer Detayda",
     "subtitle": "El işçiliğiyle üretilen, tasarım odaklı mobilya koleksiyonlarımızla yaşam alanlarınızı dönüştürün.",
     "cta": "Koleksiyonu Keşfet",
-    "ctaSecondary": "Projelerimiz"
+    "ctaSecondary": "Projelerimiz",
+    "slides": {
+      "1": {
+        "title": "Bellagia Outdoor Takımı",
+        "subtitle": "Modern İtalyan çizgisi, üst düzey konfor"
+      },
+      "2": {
+        "title": "Crown Sandalye",
+        "subtitle": "Ergonomi ve zarif detayların mükemmel uyumu"
+      },
+      "3": {
+        "title": "Fjord Berjer",
+        "subtitle": "Dokusal zenginlik ve zamansız estetik"
+      },
+      "4": {
+        "title": "Nacre Köşe Kanepe",
+        "subtitle": "Zanaatkarlık ve şıklığın simgesi"
+      }
+    }
   },
   "categories": {
     "title": "Koleksiyonlar",
@@ -139,5 +157,14 @@
     "discover": "Keşfet",
     "customProduction": "Özel Üretim",
     "customProductionDesc": "Kişiselleştirilebilir Mobilya"
+  },
+  "testimonials": {
+    "badge": "Müşteri Yorumları",
+    "title": "Müşterilerimiz Ne Diyor?",
+    "googleReviews": "5.0 · Google Yorumları",
+    "prev": "Önceki",
+    "next": "Sonraki",
+    "prevReviews": "Önceki Yorumlar",
+    "nextReviews": "Sonraki Yorumlar"
   }
 }

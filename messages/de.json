@@ -16,7 +16,25 @@
     "title": "Eleganz,\nIn jedem Detail",
     "subtitle": "Verwandeln Sie Ihre Wohnräume mit unseren handgefertigten, designorientierten Möbelkollektionen.",
     "cta": "Kollektion entdecken",
-    "ctaSecondary": "Unsere Projekte"
+    "ctaSecondary": "Unsere Projekte",
+    "slides": {
+      "1": {
+        "title": "Bellagia Outdoor-Set",
+        "subtitle": "Moderne italienische Linien, höchster Komfort"
+      },
+      "2": {
+        "title": "Crown Stuhl",
+        "subtitle": "Perfekte Harmonie von Ergonomie und eleganten Details"
+      },
+      "3": {
+        "title": "Fjord Sessel",
+        "subtitle": "Struktureller Reichtum und zeitlose Ästhetik"
+      },
+      "4": {
+        "title": "Nacre Ecksofa",
+        "subtitle": "Das Symbol für Handwerkskunst und Eleganz"
+      }
+    }
   },
   "categories": {
     "title": "Kollektionen",
@@ -139,5 +157,14 @@
     "discover": "Entdecken",
     "customProduction": "Sonderanfertigung",
     "customProductionDesc": "Personalisierbare Möbel"
+  },
+  "testimonials": {
+    "badge": "Kundenbewertungen",
+    "title": "Was unsere Kunden sagen?",
+    "googleReviews": "5.0 · Google Bewertungen",
+    "prev": "Vorherige",
+    "next": "Nächste",
+    "prevReviews": "Vorherige Bewertungen",
+    "nextReviews": "Nächste Bewertungen"
   }
 }
