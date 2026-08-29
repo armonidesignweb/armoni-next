@@ -9,7 +9,7 @@ import {
   LifeBuoy, 
   User as UserIcon,
 } from 'lucide-react';
-import LogoutButton from '../admin/LogoutButton'; // Reusing logout button
+import LogoutButton from '../admin/(protected)/LogoutButton';
 
 export default async function AccountLayout({
   children,
