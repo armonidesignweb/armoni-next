@@ -38,6 +38,7 @@ export interface IProduct extends Document {
     depth?: number;
     height?: number;
     seatHeight?: number;
+  };
   materials?: string[];
   price?: number;
   isFeatured: boolean;
