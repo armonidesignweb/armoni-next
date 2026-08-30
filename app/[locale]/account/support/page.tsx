@@ -1,8 +1,30 @@
-export default function CustomerPage() {
-  return (
-    <div className="p-6 bg-neutral-900 border border-neutral-800 rounded-xl">
-      <h1 className="text-2xl font-bold font-serif text-white mb-4">Support</h1>
-      <p className="text-neutral-400">Size özel içerikler yakında bu alanda listelenecektir.</p>
-    </div>
-  );
+import { getSession } from '@/lib/auth';
+import { connectToDatabase } from '@/lib/mongodb';
+import { SupportTicket } from '@/models/SupportTicket';
+import SupportClient from './SupportClient';
+import { notFound } from 'next/navigation';
+
+export default async function CustomerSupportPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const session = await getSession();
+
+  if (!session || !session.user || !session.user.id) {
+    return notFound();
+  }
+
+  await connectToDatabase();
+  
+  const tickets = await SupportTicket.find({ userId: session.user.id })
+    .sort({ updatedAt: -1 })
+    .lean();
+
+  const serializedTickets = tickets.map(t => ({
+    _id: t._id.toString(),
+    subject: t.subject,
+    status: t.status,
+    createdAt: t.createdAt.toISOString(),
+    updatedAt: t.updatedAt.toISOString(),
+  }));
+
+  return <SupportClient initialTickets={serializedTickets as any} locale={locale} />;
 }
