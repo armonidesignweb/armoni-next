@@ -76,10 +76,16 @@ export default function CustomerLogin() {
               </div>
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-neutral-300">
-                Şifre
-              </label>
+              <div className="flex items-center justify-between">
+                <label className="block text-sm font-medium text-neutral-300">
+                  Şifre
+                </label>
+                <div className="text-sm">
+                  <Link href={`/${locale}/forgot-password`} className="font-medium text-brand-400 hover:text-brand-300">
+                    Şifremi Unuttum
+                  </Link>
+                </div>
+              </div>
               <div className="mt-1">
                 <input
                   type="password"
@@ -89,7 +95,6 @@ export default function CustomerLogin() {
                   className="block w-full appearance-none rounded-md border border-neutral-700 px-3 py-2 placeholder-neutral-500 shadow-sm focus:border-brand-500 focus:outline-none focus:ring-brand-500 sm:text-sm bg-neutral-950 text-white"
                 />
               </div>
-            </div>
 
             {error && (
               <div className="text-red-500 text-sm bg-red-500/10 border border-red-500/20 rounded p-3">

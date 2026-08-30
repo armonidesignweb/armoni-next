@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/mongodb';
 import { User } from '@/models/User';
 import { hashPassword, createSession } from '@/lib/auth';
+import { sendWelcomeEmail } from '@/lib/email';
 
 export async function POST(request: Request) {
   try {
@@ -39,6 +40,9 @@ export async function POST(request: Request) {
     });
 
     await createSession(user._id.toString());
+    
+    // Send Welcome Email (non-blocking)
+    sendWelcomeEmail(user.email, user.name).catch(e => console.error('Failed to send welcome email', e));
 
     return NextResponse.json({ 
       success: true, 

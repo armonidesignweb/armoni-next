@@ -84,7 +84,7 @@ export default function TopBar({ locale }: TopBarProps) {
 
         {/* Right Side - Actions */}
         <div className="flex items-center space-x-8 rtl:space-x-reverse text-[10px] uppercase font-medium tracking-widest text-neutral-400">
-          <Link href={localePath('kayit')} className="hover:text-white transition-colors">
+          <Link href={localePath('register')} className="hover:text-white transition-colors">
             {t('signUp')}
           </Link>
           <a
