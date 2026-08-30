@@ -2,10 +2,6 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { locales } from '@/middleware';
-import TopBar from '@/components/layout/TopBar';
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
-import FloatingWhatsApp from '@/components/ui/FloatingWhatsApp';
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));

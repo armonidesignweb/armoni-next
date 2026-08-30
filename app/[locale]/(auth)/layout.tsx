@@ -4,7 +4,7 @@ import LanguageSelector from '@/components/ui/LanguageSelector';
 import { ShieldCheck } from 'lucide-react';
 
 interface AuthLayoutProps {
-  children: React.享Node;
+  children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }
 
