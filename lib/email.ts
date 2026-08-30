@@ -100,15 +100,15 @@ export const sendPasswordChangedEmail = async (to: string, name: string) => {
 
 export const sendSupportNotificationEmail = async (subjectMatter: string, message: string, customerEmail: string) => {
   const adminEmail = process.env.ADMIN_EMAIL || 'iletisim@armonidesign.com';
-  const subject = \`Yeni Destek Talebi: \${subjectMatter}\`;
-  const htmlContent = \`
+  const subject = `Yeni Destek Talebi: ${subjectMatter}`;
+  const htmlContent = `
     <div style="font-family: sans-serif; max-w-md mx-auto;">
       <h2>Yeni Destek Talebi</h2>
-      <p><strong>Müşteri:</strong> \${customerEmail}</p>
-      <p><strong>Konu:</strong> \${subjectMatter}</p>
+      <p><strong>Müşteri:</strong> ${customerEmail}</p>
+      <p><strong>Konu:</strong> ${subjectMatter}</p>
       <p><strong>Mesaj:</strong></p>
-      <blockquote style="background: #f9f9f9; padding: 10px; border-left: 4px solid #ccc;">\${message}</blockquote>
+      <blockquote style="background: #f9f9f9; padding: 10px; border-left: 4px solid #ccc;">${message}</blockquote>
     </div>
-  \`;
+  `;
   return sendEmail({ to: adminEmail, subject, htmlContent });
 };
