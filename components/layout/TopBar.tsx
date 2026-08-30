@@ -51,6 +51,7 @@ export default function TopBar({ locale }: TopBarProps) {
   };
 
   // Build a locale-prefixed internal link (for action buttons on the right)
+  // TR goes to /register, EN goes to /en/register etc.
   const localePath = (segment: string) => {
     if (locale === DEFAULT_LOCALE) {
       return `/${segment}`;
