@@ -19,7 +19,7 @@ export default async function AdminProductsPage({ params }: { params: Promise<{ 
       const override = overrides.find((o: any) => o.legacyProductId === p.id);
       return {
         _id: p.id,
-        title: { tr: override?.title?.tr || p.name.tr || (typeof p.name === 'string' ? p.name : '') },
+        title: { tr: override?.title?.tr || p.name.tr || '' },
         images: override?.images?.length ? override.images : (override?.image ? [override.image] : [p.image]),
         categorySlug: override?.categorySlug || p.categorySlug,
         isActive: override?.isActive !== undefined ? override.isActive : true,

@@ -44,7 +44,7 @@ export default async function ProductsPage({
       if (override && override.isActive === false) return null; // Skip if override disabled it
       return {
         ...p,
-        name: { tr: override?.title?.tr || (typeof p.name === 'string' ? p.name : p.name?.tr || ''), en: p.name?.en || '', de: p.name?.de || '', ar: p.name?.ar || '' },
+        name: { tr: override?.title?.tr || p.name?.tr || '', en: p.name?.en || '', de: p.name?.de || '', ar: p.name?.ar || '' },
         categorySlug: override?.categorySlug || p.categorySlug,
         image: override?.image || override?.images?.[0] || p.image,
         images: override?.images?.length ? override.images : (override?.image ? [override.image] : (p.images || [])),

@@ -41,7 +41,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       if (override.isActive === false) notFound();
       product = {
         ...product,
-        name: { tr: override.title?.tr || (typeof product.name === 'string' ? product.name : product.name?.tr || ''), en: product.name?.en || '', de: product.name?.de || '', ar: product.name?.ar || '' },
+        name: { tr: override.title?.tr || product.name?.tr || '', en: product.name?.en || '', de: product.name?.de || '', ar: product.name?.ar || '' },
         categorySlug: override.categorySlug || product.categorySlug,
         image: override.image || override.images?.[0] || product.image,
         images: override.images?.length ? override.images : (override.image ? [override.image] : (product.images || [])),
