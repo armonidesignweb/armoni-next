@@ -80,7 +80,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       ? [product.image]
       : ['/images/placeholder.jpg'];
   // De-duplicate image list
-  const images = rawImages.filter((img, i, arr) => arr.indexOf(img) === i);
+  const images = rawImages.filter((img: string, i: number, arr: string[]) => arr.indexOf(img) === i);
 
   return (
     <div className="pt-32 pb-28 bg-neutral-950 min-h-screen">
