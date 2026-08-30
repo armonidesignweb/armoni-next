@@ -7,7 +7,9 @@
     "references": "المراجع",
     "contact": "اتصل بنا",
     "getQuote": "احصل على عرض سعر",
-    "signUp": "التسجيل",
+    "signUp": "إنشاء حساب",
+    "login": "تسجيل الدخول",
+    "myAccount": "حسابي",
     "catalog": "الكتالوج",
     "search": "بحث"
   },

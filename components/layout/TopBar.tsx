@@ -11,12 +11,14 @@ const SUPPORTED_LOCALES = ['tr', 'en', 'de', 'ru', 'ar'];
 
 interface TopBarProps {
   locale: string;
+  session?: any;
 }
 
-export default function TopBar({ locale }: TopBarProps) {
+export default function TopBar({ locale, session }: TopBarProps) {
   const t = useTranslations('nav');
   const pathname = usePathname();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const isLoggedIn = !!session?.user;
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -85,9 +87,20 @@ export default function TopBar({ locale }: TopBarProps) {
 
         {/* Right Side - Actions */}
         <div className="flex items-center space-x-8 rtl:space-x-reverse text-[10px] uppercase font-medium tracking-widest text-neutral-400">
-          <Link href={localePath('register')} className="hover:text-white transition-colors">
-            {t('signUp')}
-          </Link>
+          {isLoggedIn ? (
+            <Link href={localePath('account')} className="hover:text-white transition-colors">
+              {t('myAccount')}
+            </Link>
+          ) : (
+            <>
+              <Link href={localePath('register')} className="hover:text-white transition-colors">
+                {t('signUp')}
+              </Link>
+              <Link href={localePath('login')} className="hover:text-white transition-colors">
+                {t('login')}
+              </Link>
+            </>
+          )}
           <a
             href="/catalog/armoni-design-2026.pdf"
             target="_blank"
