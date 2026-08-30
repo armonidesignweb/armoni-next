@@ -1,7 +1,8 @@
 import { connectToDatabase } from '@/lib/mongodb';
 import { Product } from '@/models/Product';
 import { ProductOverride } from '@/models/ProductOverride';
-import { ALL_PRODUCTS, CATEGORIES } from '@/lib/products-data';
+import { ALL_PRODUCTS } from '@/lib/products-data';
+import { CATEGORIES } from '@/lib/data';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
