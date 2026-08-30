@@ -77,12 +77,13 @@ export default function AdminLogin() {
       <div className="w-full max-w-md relative z-10 space-y-6">
         {/* Brand Logo & Secure Header */}
         <div className="flex flex-col items-center space-y-4 text-center">
-          <div className="relative h-10 w-48 mb-2">
+          <div className="relative mb-2">
             <Image
               src="/images/2024/12/armoni-beyaz.png"
               alt="Armoni Design"
-              fill
-              className="object-contain"
+              width={240}
+              height={60}
+              className="h-10 w-auto object-contain mx-auto"
               priority
             />
           </div>

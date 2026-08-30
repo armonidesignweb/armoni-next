@@ -28,18 +28,19 @@ export default async function AuthLayout({ children, params }: { children: React
       {/* Left visual side - premium presentation of Armoni Design */}
       <div className="hidden lg:flex lg:w-1/2 bg-neutral-905 border-r border-neutral-900 flex-col justify-between p-16 relative overflow-hidden bg-[radial-gradient(ellipse_at_top_left,rgba(180,140,80,0.15),transparent_50%)]">
         {/* Brand Logo */}
-        <Link href={locale === 'tr' ? '/' : `/${locale}`} className="relative z-10 block w-48 h-12">
+        <Link href={locale === 'tr' ? '/' : `/${locale}`} className="relative z-10 block mb-12">
           <Image
             src="/images/2024/12/armoni-beyaz.png"
             alt="Armoni Design"
-            fill
-            className="object-contain object-left rtl:object-right"
+            width={240}
+            height={60}
+            className="h-12 w-auto object-contain object-left rtl:object-right"
             priority
           />
         </Link>
 
         {/* Premium presentation message */}
-        <div className="relative z-10 my-auto max-w-lg space-y-6">
+        <div className="relative z-10 mb-auto max-w-lg space-y-6">
           <p className="text-brand-400 font-medium tracking-[0.25em] text-xs uppercase">
             {locale === 'tr' ? 'Özgün & Lüks Mobilya Tasarımı' : locale === 'ar' ? 'تصميم أثاث فريد وفاخر' : locale === 'de' ? 'Exklusives & Luxuriöses Möbeldesign' : 'Unique & Luxury Furniture Design'}
           </p>
