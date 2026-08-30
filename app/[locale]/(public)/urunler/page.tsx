@@ -51,7 +51,7 @@ export default async function ProductsPage({
         price: override?.price,
         isStatic: true
       };
-    }).filter(Boolean),
+    }).filter((p): p is NonNullable<typeof p> => p !== null),
     ...dbProducts.map((p: any) => ({
       id: p._id.toString(),
       slug: p.slug,
