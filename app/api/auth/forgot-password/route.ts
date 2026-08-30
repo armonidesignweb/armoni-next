@@ -2,10 +2,9 @@ import { NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/mongodb';
 import { User } from '@/models/User';
 import crypto from 'crypto';
-import { sendPasswordResetEmail } from '@/lib/email';
+import { sendTemporaryPasswordEmail } from '@/lib/email';
+import { hashPassword } from '@/lib/auth';
 
-// In a real implementation, you would store this in the database or Redis
-// For simplicity, we just simulate the flow as requested by the user
 export async function POST(request: Request) {
   try {
     const { email } = await request.json();
@@ -21,16 +20,22 @@ export async function POST(request: Request) {
     const user = await User.findOne({ email });
     
     if (user) {
-      // In a real app, generate a token, save to DB, and send an email
-      // We will pretend we sent an email for the prompt's sake
-      const resetToken = crypto.randomBytes(32).toString('hex');
-      console.log(`Password reset requested for ${email}. Token: ${resetToken}`);
+      // Generate temporary password
+      const temporaryPassword = crypto.randomBytes(6).toString('hex'); // 12 character hex string
       
-      // Send Password Reset Email
+      // Hash and update user
+      const { hash, salt } = hashPassword(temporaryPassword);
+      user.passwordHash = hash;
+      user.passwordSalt = salt;
+      await user.save();
+      
+      console.log(`Temporary password generated for ${email}`);
+      
+      // Send Temporary Password Email
       try {
-        await sendPasswordResetEmail(user.email, resetToken);
+        await sendTemporaryPasswordEmail(user.email, user.name, temporaryPassword);
       } catch (e) {
-        console.error('Failed to send password reset email', e);
+        console.error('Failed to send temporary password email', e);
       }
     }
 

@@ -67,14 +67,19 @@ export const sendVerificationEmail = async (to: string, name: string, token: str
   return sendEmail({ to, subject, htmlContent });
 };
 
-export const sendPasswordResetEmail = async (to: string, token: string) => {
-  const subject = "Armoni Design - Şifre Sıfırlama Talebi";
+export const sendTemporaryPasswordEmail = async (to: string, name: string, temporaryPassword: string) => {
+  const subject = "Armoni Design - Geçici Şifreniz";
   const htmlContent = `
     <div style="font-family: sans-serif; max-w-md mx-auto;">
-      <h2>Merhaba,</h2>
-      <p>Şifre sıfırlama talebinde bulundunuz. Aşağıdaki bağlantıya tıklayarak yeni şifrenizi belirleyebilirsiniz:</p>
-      <p><a href="${process.env.NEXT_PUBLIC_SITE_URL || 'https://armonidesign.com'}/tr/reset-password?token=${token}">Şifremi Sıfırla</a></p>
-      <p>Eğer bu talebi siz yapmadıysanız bu e-postayı dikkate almayınız.</p>
+      <h2>Merhaba ${name},</h2>
+      <p>Şifre sıfırlama talebinde bulundunuz.</p>
+      <p>Hesabınız için oluşturulan geçici şifreniz aşağıdadır:</p>
+      <div style="background: #f4f4f5; padding: 16px; border-radius: 8px; text-align: center; margin: 20px 0;">
+        <strong style="font-size: 24px; letter-spacing: 2px; color: #18181b;">${temporaryPassword}</strong>
+      </div>
+      <p>Bu şifre ile giriş yaptıktan sonra, <strong>lütfen güvenlik amacıyla Profil sayfanızdan şifrenizi hemen değiştirin.</strong></p>
+      <p><a href="${process.env.NEXT_PUBLIC_SITE_URL || 'https://armonidesign.com'}/tr/login" style="display: inline-block; padding: 10px 20px; background-color: #000; color: #fff; text-decoration: none; border-radius: 6px; margin-top: 10px;">Giriş Yap</a></p>
+      <p style="margin-top: 30px; font-size: 14px; color: #71717a;">Eğer bu talebi siz yapmadıysanız, lütfen bizimle hemen iletişime geçin.</p>
       <br />
       <p>Sevgiler,</p>
       <p>Armoni Design Ekibi</p>

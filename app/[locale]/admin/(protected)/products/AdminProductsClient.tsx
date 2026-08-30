@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from 'react';
 import Image from 'next/image';
-import { Info, Check, Loader2 } from 'lucide-react';
+import { Info, Check, Loader2, Eye, EyeOff } from 'lucide-react';
 
 interface ProductRow {
   _id: string;
@@ -22,9 +22,10 @@ export default function AdminProductsClient({ initialProducts }: { initialProduc
   const [savingId, setSavingId] = useState<string | null>(null);
   const [successId, setSuccessId] = useState<string | null>(null);
   const [errorMsg, setErrorMsg] = useState<string>('');
+  const [togglingId, setTogglingId] = useState<string | null>(null);
 
   const handlePriceClick = useCallback((product: ProductRow) => {
-    if (!product.isStatic) return; // Only legacy products use override
+    if (!product.isStatic) return;
     setEditingId(product._id);
     setEditPrice(product.price !== undefined ? product.price.toString() : '');
     setErrorMsg('');
@@ -65,6 +66,39 @@ export default function AdminProductsClient({ initialProducts }: { initialProduc
     }
   }, [editPrice]);
 
+  const handleToggleActive = useCallback(async (product: ProductRow) => {
+    if (!product.isStatic) return;
+    setTogglingId(product._id);
+    setErrorMsg('');
+
+    try {
+      const res = await fetch('/api/admin/products/override', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          legacyProductId: product._id,
+          isActive: !product.isActive,
+        }),
+      });
+
+      if (res.ok) {
+        setProducts(prev =>
+          prev.map(p =>
+            p._id === product._id
+              ? { ...p, isActive: !p.isActive, hasOverride: true }
+              : p
+          )
+        );
+      } else {
+        setErrorMsg('Durum değiştirme hatası');
+      }
+    } catch (err) {
+      setErrorMsg('Bağlantı hatası');
+    } finally {
+      setTogglingId(null);
+    }
+  }, []);
+
   const handleKeyDown = useCallback((e: React.KeyboardEvent, productId: string) => {
     if (e.key === 'Enter') {
       handleSave(productId);
@@ -79,7 +113,7 @@ export default function AdminProductsClient({ initialProducts }: { initialProduc
       <div className="flex justify-between items-center mb-6">
         <div>
           <h1 className="text-2xl font-bold font-serif text-white">Ürün Yönetimi</h1>
-          <p className="text-neutral-500 text-xs mt-1">Fiyat alanına tıklayarak doğrudan düzenleyebilirsiniz</p>
+          <p className="text-neutral-500 text-xs mt-1">Fiyat alanına tıklayarak düzenleyin • Durum butonuyla aktif/pasif yapın</p>
         </div>
       </div>
 
@@ -105,7 +139,7 @@ export default function AdminProductsClient({ initialProducts }: { initialProduc
             <tbody className="divide-y divide-neutral-800">
               {products.length > 0 ? (
                 products.map((product) => (
-                  <tr key={product._id} className="hover:bg-neutral-800/50 transition-colors">
+                  <tr key={product._id} className={`transition-colors ${product.isActive ? 'hover:bg-neutral-800/50' : 'opacity-50 bg-neutral-950/50'}`}>
                     <td className="px-4 py-3">
                       <div className="relative w-12 h-12 bg-neutral-800 rounded overflow-hidden">
                         {product.images && product.images[0] ? (
@@ -184,13 +218,35 @@ export default function AdminProductsClient({ initialProducts }: { initialProduc
                       )}
                     </td>
                     <td className="px-4 py-3">
-                      <span className={`px-2 py-1 text-xs rounded-full ${product.isActive ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-neutral-500/10 text-neutral-400 border border-neutral-500/20'}`}>
-                        {product.isActive ? 'Aktif' : 'Pasif'}
-                      </span>
+                      {product.isStatic ? (
+                        <button
+                          onClick={() => handleToggleActive(product)}
+                          disabled={togglingId === product._id}
+                          className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs rounded-full transition-all cursor-pointer ${
+                            product.isActive 
+                              ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 hover:bg-emerald-500/20' 
+                              : 'bg-red-500/10 text-red-400 border border-red-500/20 hover:bg-red-500/20'
+                          } disabled:opacity-50`}
+                          title={product.isActive ? 'Pasif yapmak için tıklayın' : 'Aktif yapmak için tıklayın'}
+                        >
+                          {togglingId === product._id ? (
+                            <Loader2 className="w-3 h-3 animate-spin" />
+                          ) : product.isActive ? (
+                            <Eye className="w-3 h-3" />
+                          ) : (
+                            <EyeOff className="w-3 h-3" />
+                          )}
+                          {product.isActive ? 'Aktif' : 'Pasif'}
+                        </button>
+                      ) : (
+                        <span className={`px-2 py-1 text-xs rounded-full ${product.isActive ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-neutral-500/10 text-neutral-400 border border-neutral-500/20'}`}>
+                          {product.isActive ? 'Aktif' : 'Pasif'}
+                        </span>
+                      )}
                     </td>
                     <td className="px-4 py-3 text-right">
                       {product.isStatic ? (
-                        <span className="text-neutral-500 text-xs">
+                        <span className={`text-xs ${product.hasOverride ? 'text-brand-400' : 'text-neutral-500'}`}>
                           {product.hasOverride ? 'Override Mevcut' : 'Sistem Ürünü'}
                         </span>
                       ) : (
