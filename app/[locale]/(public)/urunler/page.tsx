@@ -4,6 +4,10 @@ import Link from 'next/link';
 import { ALL_PRODUCTS } from '@/lib/products-data';
 import { CATEGORIES } from '@/lib/data';
 import { Eye, ChevronLeft, ChevronRight } from 'lucide-react';
+import { connectToDatabase } from '@/lib/mongodb';
+import { Product } from '@/models/Product';
+import { ProductOverride } from '@/models/ProductOverride';
+import { getSession } from '@/lib/auth';
 
 interface ProductsPageProps {
   params: Promise<{ locale: string }>;
@@ -27,14 +31,49 @@ export default async function ProductsPage({
   const t = await getTranslations({ locale, namespace: 'products' });
   const tCat = await getTranslations({ locale, namespace: 'categories' });
 
+  const session = await getSession();
+  const isCustomer = session?.user?.role === 'customer' || session?.user?.role === 'admin';
+
+  await connectToDatabase();
+  const dbProducts = await Product.find({ isActive: true }).lean();
+  const overrides = await ProductOverride.find().lean();
+
+  const combinedProducts = [
+    ...ALL_PRODUCTS.map(p => {
+      const override: any = overrides.find((o: any) => o.legacyProductId === p.id);
+      if (override && override.isActive === false) return null; // Skip if override disabled it
+      return {
+        ...p,
+        name: { tr: override?.title?.tr || (typeof p.name === 'string' ? p.name : p.name?.tr || ''), en: p.name?.en || '', de: p.name?.de || '', ar: p.name?.ar || '' },
+        categorySlug: override?.categorySlug || p.categorySlug,
+        image: override?.image || override?.images?.[0] || p.image,
+        images: override?.images?.length ? override.images : (override?.image ? [override.image] : (p.images || [])),
+        price: override?.price,
+        isStatic: true
+      };
+    }).filter(Boolean),
+    ...dbProducts.map((p: any) => ({
+      id: p._id.toString(),
+      slug: p.slug,
+      name: { tr: p.title?.tr || '', en: p.title?.en || '', de: p.title?.de || '', ar: p.title?.ar || '' },
+      categorySlug: p.categorySlug,
+      categoryName: CATEGORIES.find(c => c.slug === p.categorySlug)?.key || p.categorySlug,
+      description: { tr: p.description?.tr || '' },
+      image: p.images?.[0] || '/images/placeholder.jpg',
+      images: p.images || [],
+      price: p.price,
+      isStatic: false
+    }))
+  ];
+
   const activeCategory = kategori;
 
   const currentPage = page ? parseInt(page, 10) : 1;
   const ITEMS_PER_PAGE = 12;
 
   const filteredProducts = activeCategory
-    ? ALL_PRODUCTS.filter((p) => p.categorySlug === activeCategory)
-    : ALL_PRODUCTS;
+    ? combinedProducts.filter((p) => p.categorySlug === activeCategory)
+    : combinedProducts;
 
   const totalItems = filteredProducts.length;
   const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE) || 1;
@@ -143,11 +182,16 @@ export default async function ProductsPage({
                     </div>
                     <div className="p-6 space-y-2 border-t border-white/5">
                       <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-500 block">
-                        {catName}
+                        {typeof catName === 'string' && tCat(catName) !== catName ? tCat(catName) : catName}
                       </span>
                       <h3 className="text-lg font-light text-white group-hover:text-brand-300 transition-colors">
                         {productName}
                       </h3>
+                      {isCustomer && product.price && (
+                        <div className="text-brand-400 font-medium">
+                          ${product.price.toLocaleString()}
+                        </div>
+                      )}
                       <div className="pt-2 flex items-center justify-between">
                         <Link
                           href={`/${locale}/urun/${product.slug}`}

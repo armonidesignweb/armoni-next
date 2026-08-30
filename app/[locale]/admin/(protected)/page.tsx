@@ -4,13 +4,15 @@ import { Product } from '@/models/Product';
 import { User } from '@/models/User';
 import { Campaign } from '@/models/Campaign';
 import { SupportTicket } from '@/models/SupportTicket';
+import { ALL_PRODUCTS } from '@/lib/products-data';
 
 export default async function AdminDashboard() {
   const session = await getSession();
   
   await connectToDatabase();
   
-  const productCount = await Product.countDocuments();
+  const dbProductCount = await Product.countDocuments();
+  const productCount = ALL_PRODUCTS.length + dbProductCount;
   const customerCount = await User.countDocuments({ role: 'customer' });
   const campaignCount = await Campaign.countDocuments({ isActive: true });
   const ticketCount = await SupportTicket.countDocuments({ status: 'new' });

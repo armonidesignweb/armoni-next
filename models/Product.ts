@@ -38,8 +38,8 @@ export interface IProduct extends Document {
     depth?: number;
     height?: number;
     seatHeight?: number;
-  };
   materials?: string[];
+  price?: number;
   isFeatured: boolean;
   isActive: boolean;
   order: number;
@@ -86,6 +86,7 @@ const ProductSchema = new Schema<IProduct>(
       seatHeight: Number,
     },
     materials: [String],
+    price: { type: Number },
     isFeatured: { type: Boolean, default: false },
     isActive: { type: Boolean, default: true },
     order: { type: Number, default: 0 },

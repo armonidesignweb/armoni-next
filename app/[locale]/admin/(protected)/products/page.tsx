@@ -1,14 +1,45 @@
 import { connectToDatabase } from '@/lib/mongodb';
 import { Product } from '@/models/Product';
+import { ProductOverride } from '@/models/ProductOverride';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Edit, Plus } from 'lucide-react';
+import { Edit, Plus, Info } from 'lucide-react';
+import { ALL_PRODUCTS } from '@/lib/products-data';
 
 export default async function AdminProductsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   await connectToDatabase();
   
-  const products = await Product.find().sort({ order: 1, createdAt: -1 });
+  const dbProducts = await Product.find().sort({ order: 1, createdAt: -1 }).lean();
+  const overrides = await ProductOverride.find().lean();
+  
+  const combinedProducts = [
+    // 164 Static Products (with Overrides Applied)
+    ...ALL_PRODUCTS.map(p => {
+      const override = overrides.find((o: any) => o.legacyProductId === p.id);
+      return {
+        _id: p.id,
+        title: { tr: override?.title?.tr || p.name.tr || (typeof p.name === 'string' ? p.name : '') },
+        images: override?.images?.length ? override.images : (override?.image ? [override.image] : [p.image]),
+        categorySlug: override?.categorySlug || p.categorySlug,
+        isActive: override?.isActive !== undefined ? override.isActive : true,
+        price: override?.price,
+        isStatic: true,
+        hasOverride: !!override
+      };
+    }),
+    // Dynamic DB Products
+    ...dbProducts.map((p: any) => ({
+      _id: p._id.toString(),
+      title: { tr: p.title?.tr || '' },
+      images: p.images || [],
+      categorySlug: p.categorySlug,
+      isActive: p.isActive,
+      price: p.price,
+      isStatic: false,
+      hasOverride: false
+    }))
+  ];
 
   return (
     <div>
@@ -33,19 +64,26 @@ export default async function AdminProductsPage({ params }: { params: Promise<{ 
               </tr>
             </thead>
             <tbody className="divide-y divide-neutral-800">
-              {products.length > 0 ? (
-                products.map((product) => (
-                  <tr key={product._id.toString()} className="hover:bg-neutral-800/50 transition-colors">
+              {combinedProducts.length > 0 ? (
+                combinedProducts.map((product) => (
+                  <tr key={product._id} className="hover:bg-neutral-800/50 transition-colors">
                     <td className="px-6 py-4">
                       <div className="relative w-12 h-12 bg-neutral-800 rounded overflow-hidden">
                         {product.images && product.images[0] ? (
-                          <Image src={product.images[0]} alt={product.title.tr} fill className="object-cover" />
+                          <Image src={product.images[0]} alt={product.title.tr} fill className="object-cover" unoptimized={product.isStatic} />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center text-neutral-500 text-xs">Yok</div>
                         )}
                       </div>
                     </td>
-                    <td className="px-6 py-4 font-medium text-white">{product.title.tr}</td>
+                    <td className="px-6 py-4 font-medium text-white flex items-center gap-2">
+                      {product.title.tr}
+                      {product.isStatic && (
+                        <span className="flex items-center gap-1 text-[10px] bg-neutral-800 text-neutral-400 px-2 py-0.5 rounded-full" title="Sistem Dosyası (Salt Okunur)">
+                          <Info className="w-3 h-3" /> Eski
+                        </span>
+                      )}
+                    </td>
                     <td className="px-6 py-4">{product.categorySlug}</td>
                     <td className="px-6 py-4">
                       <span className={`px-2 py-1 text-xs rounded-full ${product.isActive ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-neutral-500/10 text-neutral-400 border border-neutral-500/20'}`}>
@@ -53,17 +91,21 @@ export default async function AdminProductsPage({ params }: { params: Promise<{ 
                       </span>
                     </td>
                     <td className="px-6 py-4 text-right">
-                      <button className="text-brand-400 hover:text-brand-300 transition-colors inline-flex items-center gap-1">
-                        <Edit className="w-4 h-4" />
-                        <span>Düzenle</span>
-                      </button>
+                      {product.isStatic ? (
+                        <span className="text-neutral-500 text-xs">Sistem Ürünü</span>
+                      ) : (
+                        <button className="text-brand-400 hover:text-brand-300 transition-colors inline-flex items-center gap-1">
+                          <Edit className="w-4 h-4" />
+                          <span>Düzenle</span>
+                        </button>
+                      )}
                     </td>
                   </tr>
                 ))
               ) : (
                 <tr>
                   <td colSpan={5} className="px-6 py-8 text-center text-neutral-500">
-                    Henüz ürün eklenmemiş. Lütfen veritabanınızı seed edin veya yeni ürün ekleyin.
+                    Henüz ürün bulunmuyor.
                   </td>
                 </tr>
               )}

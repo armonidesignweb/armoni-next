@@ -4,6 +4,11 @@ import { ALL_PRODUCTS } from '@/lib/products-data';
 import Link from 'next/link';
 import ProductGallery from '@/components/ProductGallery';
 import { ArrowLeft } from 'lucide-react';
+import { connectToDatabase } from '@/lib/mongodb';
+import { Product } from '@/models/Product';
+import { ProductOverride } from '@/models/ProductOverride';
+import { getSession } from '@/lib/auth';
+import { CATEGORIES } from '@/lib/data';
 
 interface ProductPageProps {
   params: Promise<{ locale: string; slug: string }>;
@@ -20,15 +25,53 @@ export async function generateMetadata({ params }: ProductPageProps) {
 export default async function ProductPage({ params }: ProductPageProps) {
   const { locale, slug } = await params;
   const t = await getTranslations({ locale, namespace: 'products' });
+  const tCat = await getTranslations({ locale, namespace: 'categories' });
 
-  const product = ALL_PRODUCTS.find((p) => p.slug === slug);
+  const session = await getSession();
+  const isCustomer = session?.user?.role === 'customer' || session?.user?.role === 'admin';
 
-  if (!product) {
-    notFound();
+  let product: any = ALL_PRODUCTS.find((p) => p.slug === slug);
+  let price: number | undefined;
+
+  await connectToDatabase();
+
+  if (product) {
+    const override = await ProductOverride.findOne({ legacyProductId: product.id }).lean();
+    if (override) {
+      if (override.isActive === false) notFound();
+      product = {
+        ...product,
+        name: { tr: override.title?.tr || (typeof product.name === 'string' ? product.name : product.name?.tr || ''), en: product.name?.en || '', de: product.name?.de || '', ar: product.name?.ar || '' },
+        categorySlug: override.categorySlug || product.categorySlug,
+        image: override.image || override.images?.[0] || product.image,
+        images: override.images?.length ? override.images : (override.image ? [override.image] : (product.images || [])),
+      };
+      price = override.price;
+    }
+  } else {
+    const dbProduct = await Product.findOne({ slug, isActive: true }).lean();
+    
+    if (!dbProduct) {
+      notFound();
+    }
+    
+    product = {
+      id: dbProduct._id.toString(),
+      slug: dbProduct.slug,
+      name: { tr: dbProduct.title?.tr || '', en: dbProduct.title?.en || '', de: dbProduct.title?.de || '', ar: dbProduct.title?.ar || '' },
+      categorySlug: dbProduct.categorySlug,
+      categoryName: CATEGORIES.find(c => c.slug === dbProduct.categorySlug)?.key || dbProduct.categorySlug,
+      description: { tr: dbProduct.description?.tr || '' },
+      image: dbProduct.images?.[0] || '/images/placeholder.jpg',
+      images: dbProduct.images || [],
+    };
+    price = dbProduct.price;
   }
 
   const productName = product.name[locale] || product.name.tr;
-  const categoryName = product.categoryName[locale] || product.categoryName.tr;
+  const categoryName = typeof product.categoryName === 'string' && tCat(product.categoryName) !== product.categoryName 
+    ? tCat(product.categoryName) 
+    : product.categoryName[locale] || product.categoryName.tr || product.categoryName;
 
   // Use product images if available, fall back to main image
   const rawImages = product.images && product.images.length > 0
@@ -69,6 +112,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 <span className="inline-block px-3 py-1 bg-brand-500/20 text-brand-300 text-xs uppercase tracking-widest rounded-full border border-brand-500/30">
                   {product.badge === 'Bestseller' ? t('bestseller') : product.badge}
                 </span>
+              )}
+              {isCustomer && price && (
+                <div className="text-2xl text-brand-400 font-medium mt-4">
+                  ${price.toLocaleString()}
+                </div>
               )}
             </div>
 
