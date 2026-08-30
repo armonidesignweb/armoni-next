@@ -39,6 +39,9 @@ export default function LanguageSelector({ currentLocale }: LanguageSelectorProp
   const handleLanguageChange = (newLocale: string) => {
     setIsOpen(false);
 
+    // Set next-intl cookie so that localeDetection respects the manual choice
+    document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000`;
+
     // Strip the current locale prefix from the pathname to get the raw base path.
     const segments = pathname.split('/');
     const hasLocalePrefix = segments.length > 1 && LANGUAGES.some((l) => l.code === segments[1]);

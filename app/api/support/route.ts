@@ -23,7 +23,7 @@ export async function POST(request: Request) {
       userId: session.user.id,
       subject,
       message,
-      status: 'Yeni',
+      status: 'new',
     });
 
     // Send Support Notification Email
