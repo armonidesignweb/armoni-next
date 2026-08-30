@@ -22,7 +22,7 @@ export async function POST(request: Request) {
     const ticket = await SupportTicket.create({
       userId: session.user.id,
       subject,
-      message,
+      messages: [{ sender: 'customer', message }],
       status: 'new',
     });
 
