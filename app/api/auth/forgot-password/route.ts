@@ -26,8 +26,12 @@ export async function POST(request: Request) {
       const resetToken = crypto.randomBytes(32).toString('hex');
       console.log(`Password reset requested for ${email}. Token: ${resetToken}`);
       
-      // Send Password Reset Email (non-blocking)
-      sendPasswordResetEmail(user.email, resetToken).catch(e => console.error('Failed to send password reset email', e));
+      // Send Password Reset Email
+      try {
+        await sendPasswordResetEmail(user.email, resetToken);
+      } catch (e) {
+        console.error('Failed to send password reset email', e);
+      }
     }
 
     return NextResponse.json({ success: true });

@@ -41,8 +41,12 @@ export async function POST(request: Request) {
 
     await createSession(user._id.toString());
     
-    // Send Welcome Email (non-blocking)
-    sendWelcomeEmail(user.email, user.name).catch(e => console.error('Failed to send welcome email', e));
+    // Send Welcome Email
+    try {
+      await sendWelcomeEmail(user.email, user.name);
+    } catch (e) {
+      console.error('Failed to send welcome email', e);
+    }
 
     return NextResponse.json({ 
       success: true, 

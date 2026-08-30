@@ -26,8 +26,12 @@ export async function POST(request: Request) {
       status: 'Yeni',
     });
 
-    // Send Support Notification Email (non-blocking)
-    sendSupportNotificationEmail(subject, message, session.user.email).catch(e => console.error('Failed to send support email', e));
+    // Send Support Notification Email
+    try {
+      await sendSupportNotificationEmail(subject, message, session.user.email);
+    } catch (e) {
+      console.error('Failed to send support email', e);
+    }
 
     return NextResponse.json({ success: true, ticket });
   } catch (error) {

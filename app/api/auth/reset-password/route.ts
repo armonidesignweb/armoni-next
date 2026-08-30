@@ -34,8 +34,12 @@ export async function POST(request: Request) {
       user.passwordSalt = salt;
       await user.save();
       
-      // Send Password Changed Email (non-blocking)
-      sendPasswordChangedEmail(user.email, user.name).catch(e => console.error('Failed to send password changed email', e));
+      // Send Password Changed Email
+      try {
+        await sendPasswordChangedEmail(user.email, user.name);
+      } catch (e) {
+        console.error('Failed to send password changed email', e);
+      }
     }
 
     return NextResponse.json({ success: true });

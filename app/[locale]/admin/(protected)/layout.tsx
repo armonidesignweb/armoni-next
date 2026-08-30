@@ -27,7 +27,7 @@ export default async function AdminLayout({
   const session = await getSession();
 
   if (!session || session.user.role !== 'admin') {
-    redirect(`/${locale}/admin/login`);
+    redirect(locale === 'tr' ? '/admin/login' : `/${locale}/admin/login`);
   }
 
   const navItems = [

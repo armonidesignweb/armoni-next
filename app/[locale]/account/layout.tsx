@@ -22,7 +22,7 @@ export default async function AccountLayout({
   const session = await getSession();
 
   if (!session || session.user.role !== 'customer') {
-    redirect(`/${locale}/login`);
+    redirect(locale === 'tr' ? '/login' : `/${locale}/login`);
   }
 
   const navItems = [
