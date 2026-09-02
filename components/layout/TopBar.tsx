@@ -86,37 +86,41 @@ export default function TopBar({ locale, session }: TopBarProps) {
         </div>
 
         {/* Right Side - Actions */}
-        <div className="flex items-center space-x-8 rtl:space-x-reverse text-[10px] uppercase font-medium tracking-widest text-neutral-400">
+        <div className="flex items-center space-x-6 rtl:space-x-reverse text-[10px] uppercase font-medium tracking-widest text-neutral-400">
           {isLoggedIn ? (
             <Link href={localePath('account')} className="hover:text-white transition-colors">
-              {t('myAccount')}
+              {t('myAccount').toLocaleUpperCase('tr-TR')}
             </Link>
           ) : (
             <>
               <Link href={localePath('register')} className="hover:text-white transition-colors">
-                {t('signUp')}
+                {t('signUp').toLocaleUpperCase('tr-TR')}
               </Link>
+              <span className="text-neutral-700">|</span>
               <Link href={localePath('login')} className="hover:text-white transition-colors">
-                {t('login')}
+                {t('login').toLocaleUpperCase('tr-TR')}
               </Link>
             </>
           )}
+          <span className="text-neutral-700">|</span>
           <a
             href="/catalog/armoni-design-2026.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-white transition-colors"
           >
-            {t('catalog')}
+            {t('catalog').toLocaleUpperCase('tr-TR')}
           </a>
+          <span className="text-neutral-700">|</span>
           <Link href={localePath('iletisim')} className="hover:text-white transition-colors">
-            {t('getQuote')}
+            {t('getQuote').toLocaleUpperCase('tr-TR')}
           </Link>
+          <span className="text-neutral-700">|</span>
           <button
             onClick={() => setIsSearchOpen(true)}
             className="flex items-center space-x-2 hover:text-white transition-colors rtl:space-x-reverse"
           >
-            <span>{t('search')}</span>
+            <span>{t('search').toLocaleUpperCase('tr-TR')}</span>
             <Search className="w-3.5 h-3.5" />
           </button>
         </div>

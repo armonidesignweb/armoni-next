@@ -59,13 +59,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
           transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-2xl space-y-6"
         >
-          {/* Tagline */}
-          <div className="flex items-center space-x-3 rtl:space-x-reverse">
-            <span className="h-[1px] w-12 bg-brand-500" />
-            <span className="text-xs uppercase tracking-[0.35em] text-brand-400 font-medium">
-              {t('tagline')}
-            </span>
-          </div>
+
 
           {/* Title */}
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light text-white tracking-tight leading-[1.15] whitespace-pre-line font-serif">

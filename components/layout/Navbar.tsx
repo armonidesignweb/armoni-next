@@ -56,7 +56,7 @@ export default function Navbar({ locale }: NavbarProps) {
           <div className="w-full flex items-center justify-between">
             {/* Logo */}
             <Link href={lp()} className="relative z-10 flex items-center group">
-              <div className="relative h-9 w-48 md:w-56 transition-transform duration-300 group-hover:scale-105">
+              <div className="relative h-11 w-56 md:w-72 transition-transform duration-300 group-hover:scale-105">
                 <Image
                   src="/images/2024/12/armoni-beyaz.png"
                   alt="Armoni Design"
