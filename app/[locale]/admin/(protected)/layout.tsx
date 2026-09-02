@@ -49,7 +49,7 @@ export default async function AdminLayout({
       {/* Sidebar */}
       <aside className="w-full md:w-64 bg-neutral-900 border-r border-neutral-800 flex flex-col">
         <div className="p-6 border-b border-neutral-800">
-          <h2 className="text-xl font-serif text-brand-500 font-bold">Armoni Design</h2>
+          <h2 className="text-xl font-sans text-brand-500 font-bold">Armoni Design</h2>
           <p className="text-xs text-neutral-400 uppercase tracking-widest mt-1">Admin Panel</p>
         </div>
         
