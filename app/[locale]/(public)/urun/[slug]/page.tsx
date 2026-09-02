@@ -135,9 +135,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   {product.badge === 'Bestseller' ? t('bestseller') : product.badge}
                 </span>
               )}
-              {isCustomer && price && (
+              {session?.user && price && (
                 <div className="text-2xl text-brand-400 font-medium mt-4">
-                  ${price.toLocaleString()}
+                  {price.toLocaleString('tr-TR')} ₺
                 </div>
               )}
             </div>

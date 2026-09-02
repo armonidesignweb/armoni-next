@@ -187,9 +187,9 @@ export default async function ProductsPage({
                       <h3 className="text-lg font-light text-white group-hover:text-brand-300 transition-colors">
                         {productName}
                       </h3>
-                      {isCustomer && product.price && (
+                      {session?.user && product.price && (
                         <div className="text-brand-400 font-medium">
-                          ${product.price.toLocaleString()}
+                          {product.price.toLocaleString('tr-TR')} ₺
                         </div>
                       )}
                       <div className="pt-2 flex items-center justify-between">
