@@ -139,17 +139,7 @@ export default function AdminCategoryModal({ isOpen, onClose, category, onSave }
               </div>
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-neutral-400 mb-1">Kapak Görseli URL</label>
-              <input
-                type="text"
-                required
-                value={formData.image}
-                onChange={e => setFormData(prev => ({ ...prev, image: e.target.value }))}
-                placeholder="/images/kategori-adi.jpg"
-                className="w-full bg-neutral-950 border border-neutral-700 rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-brand-500"
-              />
-            </div>
+
 
             <div className="border border-neutral-800 rounded-xl overflow-hidden">
               <div className="flex bg-neutral-950 border-b border-neutral-800">
