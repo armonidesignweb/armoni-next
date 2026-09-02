@@ -35,7 +35,7 @@ export default function AboutSection({ locale }: AboutSectionProps) {
           >
             <div className="relative aspect-[4/5] w-full rounded-2xl overflow-hidden glass-card">
               <Image
-                src="/images/2026/01/Weave-Berjerrrs.png"
+                src="/images/armoni-production-facility.jpg"
                 alt="Armoni Design Zanaat"
                 fill
                 className="object-cover object-center brightness-90 hover:scale-105 transition-transform duration-1000"
