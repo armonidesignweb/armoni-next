@@ -37,6 +37,26 @@ export default async function ProductsPage({
   await connectToDatabase();
   const dbProducts = await Product.find({ isActive: true }).lean();
   const overrides = await ProductOverride.find().lean();
+  
+  // Import Category model and fetch dynamic categories
+  const { Category } = await import('@/models/Category');
+  const dbCategories = await Category.find({ isActive: true }).sort({ order: 1 }).lean();
+  
+  const combinedCategories = [
+    ...CATEGORIES.map(c => ({
+      id: c.id,
+      slug: c.slug,
+      key: c.key,
+      isStatic: true
+    })),
+    ...dbCategories.map((c: any) => ({
+      id: c._id.toString(),
+      slug: c.slug,
+      key: c.title?.[locale] || c.title?.tr || '',
+      isStatic: false
+    }))
+  ];
+
 
   const combinedProducts = [
     ...ALL_PRODUCTS.map(p => {
@@ -125,7 +145,11 @@ export default async function ProductsPage({
           >
             {t('allProducts')} ({ALL_PRODUCTS.length})
           </Link>
-          {CATEGORIES.map((cat) => (
+          {combinedCategories.map((cat) => {
+            const catName = typeof cat.key === 'string' && tCat(cat.key) !== cat.key 
+              ? tCat(cat.key) 
+              : cat.key;
+            return (
             <Link
               key={cat.id}
               href={`/${locale}/urunler?kategori=${cat.slug}`}
@@ -135,9 +159,9 @@ export default async function ProductsPage({
                   : 'glass-card text-neutral-300 hover:text-white border border-white/10'
               }`}
             >
-              {tCat(cat.key)}
+              {catName}
             </Link>
-          ))}
+          )})}
         </div>
 
         {/* Products Grid */}

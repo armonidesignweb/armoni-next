@@ -39,6 +39,17 @@ export default async function ProductPage({ params }: ProductPageProps) {
     const override = await ProductOverride.findOne({ legacyProductId: product.id }).lean();
     if (override) {
       if (override.isActive === false) notFound();
+      const { Category } = await import('@/models/Category');
+      const catSlug = override.categorySlug || product.categorySlug;
+      const dbCategory = await Category.findOne({ slug: catSlug }).lean();
+      
+      let catName = catSlug;
+      if (dbCategory) {
+        catName = dbCategory.title?.[locale] || dbCategory.title?.tr || catSlug;
+      } else {
+        catName = CATEGORIES.find(c => c.slug === catSlug)?.key || catSlug;
+      }
+
       product = {
         ...product,
         name: { 
@@ -55,7 +66,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
           ru: override.description?.ru || product.description?.ru || '',
           ar: override.description?.ar || product.description?.ar || ''
         },
-        categorySlug: override.categorySlug || product.categorySlug,
+        categorySlug: catSlug,
+        categoryName: catName,
         image: override.image || override.images?.[0] || product.image,
         images: override.images?.length ? override.images : (override.image ? [override.image] : (product.images || [])),
       };
@@ -67,7 +79,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
     if (!dbProduct) {
       notFound();
     }
-    
+    const { Category } = await import('@/models/Category');
+    const dbCategory = await Category.findOne({ slug: dbProduct.categorySlug }).lean();
+    let catName = dbProduct.categorySlug;
+    if (dbCategory) {
+      catName = dbCategory.title?.[locale] || dbCategory.title?.tr || dbProduct.categorySlug;
+    } else {
+      catName = CATEGORIES.find(c => c.slug === dbProduct.categorySlug)?.key || dbProduct.categorySlug;
+    }
+
     product = {
       id: dbProduct._id.toString(),
       slug: dbProduct.slug,
@@ -79,7 +99,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         ar: dbProduct.title?.ar || '' 
       },
       categorySlug: dbProduct.categorySlug,
-      categoryName: CATEGORIES.find(c => c.slug === dbProduct.categorySlug)?.key || dbProduct.categorySlug,
+      categoryName: catName,
       description: { 
         tr: dbProduct.description?.tr || '',
         en: dbProduct.description?.en || '',
