@@ -102,9 +102,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
           {/* Product Details */}
           <div className="flex flex-col justify-center space-y-8">
             <div className="space-y-4">
-              <span className="text-xs uppercase tracking-[0.35em] text-brand-400 font-medium block">
-                {categoryName}
-              </span>
               <h1 className="text-4xl md:text-5xl font-light text-white font-serif tracking-tight">
                 {productName}
               </h1>

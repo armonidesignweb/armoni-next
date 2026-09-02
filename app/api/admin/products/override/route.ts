@@ -11,7 +11,7 @@ export async function PUT(request: Request) {
     }
 
     const body = await request.json();
-    const { legacyProductId, price, isActive } = body;
+    const { legacyProductId, price, isActive, title, description, categorySlug, images } = body;
 
     if (!legacyProductId) {
       return NextResponse.json({ error: 'legacyProductId is required' }, { status: 400 });
@@ -27,6 +27,10 @@ export async function PUT(request: Request) {
     if (isActive !== undefined) {
       updateFields.isActive = isActive;
     }
+    if (title !== undefined) updateFields.title = title;
+    if (description !== undefined) updateFields.description = description;
+    if (categorySlug !== undefined) updateFields.categorySlug = categorySlug;
+    if (images !== undefined) updateFields.images = images;
 
     // Upsert: create if doesn't exist, update if exists
     const override = await ProductOverride.findOneAndUpdate(
