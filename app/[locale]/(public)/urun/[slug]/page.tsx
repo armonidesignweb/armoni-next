@@ -45,7 +45,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       
       let catName = catSlug;
       if (dbCategory) {
-        catName = dbCategory.title?.[locale] || dbCategory.title?.tr || catSlug;
+        catName = (dbCategory.title as any)?.[locale] || dbCategory.title?.tr || catSlug;
       } else {
         catName = CATEGORIES.find(c => c.slug === catSlug)?.key || catSlug;
       }
@@ -83,7 +83,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
     const dbCategory = await Category.findOne({ slug: dbProduct.categorySlug }).lean();
     let catName = dbProduct.categorySlug;
     if (dbCategory) {
-      catName = dbCategory.title?.[locale] || dbCategory.title?.tr || dbProduct.categorySlug;
+      catName = (dbCategory.title as any)?.[locale] || dbCategory.title?.tr || dbProduct.categorySlug;
     } else {
       catName = CATEGORIES.find(c => c.slug === dbProduct.categorySlug)?.key || dbProduct.categorySlug;
     }
