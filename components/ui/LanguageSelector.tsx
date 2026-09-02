@@ -58,7 +58,8 @@ export default function LanguageSelector({ currentLocale }: LanguageSelectorProp
       newPath = `/${newLocale}${basePath === '/' ? '' : basePath}`;
     }
 
-    window.location.href = newPath;
+    router.push(newPath);
+    router.refresh();
   };
 
   return (
