@@ -41,7 +41,20 @@ export default async function ProductPage({ params }: ProductPageProps) {
       if (override.isActive === false) notFound();
       product = {
         ...product,
-        name: { tr: override.title?.tr || product.name?.tr || '', en: product.name?.en || '', de: product.name?.de || '', ar: product.name?.ar || '' },
+        name: { 
+          tr: override.title?.tr || product.name?.tr || '', 
+          en: override.title?.en || product.name?.en || '', 
+          de: override.title?.de || product.name?.de || '', 
+          ru: override.title?.ru || product.name?.ru || '', 
+          ar: override.title?.ar || product.name?.ar || '' 
+        },
+        description: { 
+          tr: override.description?.tr || product.description?.tr || '',
+          en: override.description?.en || product.description?.en || '',
+          de: override.description?.de || product.description?.de || '',
+          ru: override.description?.ru || product.description?.ru || '',
+          ar: override.description?.ar || product.description?.ar || ''
+        },
         categorySlug: override.categorySlug || product.categorySlug,
         image: override.image || override.images?.[0] || product.image,
         images: override.images?.length ? override.images : (override.image ? [override.image] : (product.images || [])),
@@ -58,10 +71,22 @@ export default async function ProductPage({ params }: ProductPageProps) {
     product = {
       id: dbProduct._id.toString(),
       slug: dbProduct.slug,
-      name: { tr: dbProduct.title?.tr || '', en: dbProduct.title?.en || '', de: dbProduct.title?.de || '', ar: dbProduct.title?.ar || '' },
+      name: { 
+        tr: dbProduct.title?.tr || '', 
+        en: dbProduct.title?.en || '', 
+        de: dbProduct.title?.de || '', 
+        ru: dbProduct.title?.ru || '', 
+        ar: dbProduct.title?.ar || '' 
+      },
       categorySlug: dbProduct.categorySlug,
       categoryName: CATEGORIES.find(c => c.slug === dbProduct.categorySlug)?.key || dbProduct.categorySlug,
-      description: { tr: dbProduct.description?.tr || '' },
+      description: { 
+        tr: dbProduct.description?.tr || '',
+        en: dbProduct.description?.en || '',
+        de: dbProduct.description?.de || '',
+        ru: dbProduct.description?.ru || '',
+        ar: dbProduct.description?.ar || ''
+      },
       image: dbProduct.images?.[0] || '/images/placeholder.jpg',
       images: dbProduct.images || [],
     };
