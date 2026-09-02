@@ -38,14 +38,14 @@ const CATEGORIES = [
 
 export default function AdminProductModal({ isOpen, onClose, product, onSave }: AdminProductModalProps) {
   const [formData, setFormData] = useState<ProductData>({
-    title: { tr: '', en: '', de: '', ru: '' },
-    description: { tr: '', en: '', de: '', ru: '' },
+    title: { tr: '', en: '', de: '', ru: '', ar: '' },
+    description: { tr: '', en: '', de: '', ru: '', ar: '' },
     images: [],
     categorySlug: 'tum-urunler',
     price: undefined,
     isActive: true,
   });
-  const [activeTab, setActiveTab] = useState<'tr' | 'en' | 'de' | 'ru'>('tr');
+  const [activeTab, setActiveTab] = useState<'tr' | 'en' | 'de' | 'ru' | 'ar'>('tr');
   const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
@@ -58,12 +58,14 @@ export default function AdminProductModal({ isOpen, onClose, product, onSave }: 
           en: product.title?.en || '',
           de: product.title?.de || '',
           ru: product.title?.ru || '',
+          ar: product.title?.ar || '',
         },
         description: {
           tr: product.description?.tr || '',
           en: product.description?.en || '',
           de: product.description?.de || '',
           ru: product.description?.ru || '',
+          ar: product.description?.ar || '',
         },
         images: product.images?.length ? [...product.images] : [],
         categorySlug: product.categorySlug || 'tum-urunler',
@@ -72,8 +74,8 @@ export default function AdminProductModal({ isOpen, onClose, product, onSave }: 
       });
     } else {
       setFormData({
-        title: { tr: '', en: '', de: '', ru: '' },
-        description: { tr: '', en: '', de: '', ru: '' },
+        title: { tr: '', en: '', de: '', ru: '', ar: '' },
+        description: { tr: '', en: '', de: '', ru: '', ar: '' },
         images: [],
         categorySlug: 'tum-urunler',
         price: undefined,
@@ -201,7 +203,7 @@ export default function AdminProductModal({ isOpen, onClose, product, onSave }: 
 
             <div className="border border-neutral-800 rounded-xl overflow-hidden">
               <div className="flex bg-neutral-950 border-b border-neutral-800">
-                {(['tr', 'en', 'de', 'ru'] as const).map(lang => (
+                {(['tr', 'en', 'de', 'ru', 'ar'] as const).map(lang => (
                   <button
                     key={lang}
                     type="button"
