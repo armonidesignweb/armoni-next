@@ -2,6 +2,8 @@ import { connectToDatabase } from '@/lib/mongodb';
 import { Announcement } from '@/models/Announcement';
 import AdminAnnouncementsClient from './AdminAnnouncementsClient';
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminAnnouncementsPage() {
   await connectToDatabase();
   

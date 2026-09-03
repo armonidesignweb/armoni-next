@@ -4,6 +4,8 @@ import { getSession } from '@/lib/auth';
 import Image from 'next/image';
 import Link from 'next/link';
 
+export const dynamic = 'force-dynamic';
+
 export default async function CustomerCampaignsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const session = await getSession();

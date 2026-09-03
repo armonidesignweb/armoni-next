@@ -3,6 +3,8 @@ import { Announcement } from '@/models/Announcement';
 import { getSession } from '@/lib/auth';
 import Image from 'next/image';
 
+export const dynamic = 'force-dynamic';
+
 export default async function CustomerAnnouncementsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const session = await getSession();

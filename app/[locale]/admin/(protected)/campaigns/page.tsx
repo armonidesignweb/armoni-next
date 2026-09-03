@@ -2,6 +2,8 @@ import { connectToDatabase } from '@/lib/mongodb';
 import { Campaign } from '@/models/Campaign';
 import AdminCampaignsClient from './AdminCampaignsClient';
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminCampaignsPage() {
   await connectToDatabase();
   

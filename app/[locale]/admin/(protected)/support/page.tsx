@@ -3,6 +3,8 @@ import { SupportTicket } from '@/models/SupportTicket';
 import AdminSupportClient from './AdminSupportClient';
 import { User } from '@/models/User';
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminSupportPage() {
   await connectToDatabase();
   
