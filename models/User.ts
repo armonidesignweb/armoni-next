@@ -9,6 +9,7 @@ export interface IUser extends Document {
   company?: string;
   phone?: string;
   isActive: boolean;
+  locale?: string;
   lastLogin?: Date;
   createdAt: Date;
   updatedAt: Date;
@@ -24,6 +25,7 @@ const UserSchema = new Schema<IUser>(
     company: { type: String },
     phone: { type: String },
     isActive: { type: Boolean, default: true },
+    locale: { type: String, default: 'tr' },
     lastLogin: { type: Date },
   },
   { timestamps: true }

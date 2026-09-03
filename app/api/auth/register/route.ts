@@ -6,7 +6,7 @@ import { sendWelcomeEmail } from '@/lib/email';
 
 export async function POST(request: Request) {
   try {
-    const { name, email, password, company, phone, acceptTerms } = await request.json();
+    const { name, email, password, company, phone, acceptTerms, locale } = await request.json();
 
     if (!name || !email || !password || !acceptTerms) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
@@ -36,6 +36,7 @@ export async function POST(request: Request) {
       company,
       phone,
       isActive: true,
+      locale: locale || 'tr',
       lastLogin: new Date()
     });
 
