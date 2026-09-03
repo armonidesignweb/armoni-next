@@ -36,7 +36,7 @@ export default async function AccountLayout({
   ];
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-white flex flex-col md:flex-row pt-20">
+    <div className="min-h-screen bg-neutral-950 text-white flex flex-col md:flex-row">
       {/* Sidebar */}
       <aside className="w-full md:w-64 bg-neutral-900 border-r border-neutral-800 flex flex-col">
         <div className="p-6 border-b border-neutral-800 flex flex-col justify-center">
