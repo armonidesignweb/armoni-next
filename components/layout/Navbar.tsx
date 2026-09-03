@@ -12,9 +12,10 @@ const DEFAULT_LOCALE = 'tr';
 
 interface NavbarProps {
   locale: string;
+  settings?: any;
 }
 
-export default function Navbar({ locale }: NavbarProps) {
+export default function Navbar({ locale, settings }: NavbarProps) {
   const t = useTranslations('nav');
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -27,8 +28,6 @@ export default function Navbar({ locale }: NavbarProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Build a locale-aware path respecting 'as-needed' prefix strategy.
-  // Default locale (TR) has no prefix in the URL.
   const lp = (segment?: string) => {
     const prefix = locale === DEFAULT_LOCALE ? '' : `/${locale}`;
     return segment ? `${prefix}/${segment}` : prefix || '/';
@@ -42,6 +41,10 @@ export default function Navbar({ locale }: NavbarProps) {
     { href: lp('referanslar'), label: t('references') },
     { href: lp('iletisim'), label: t('contact') },
   ];
+
+  const whatsappUrl = settings?.whatsapp 
+    ? `https://wa.me/${settings.whatsapp.replace(/\D/g, '')}` 
+    : 'https://wa.me/905525833234';
 
   return (
     <>
@@ -58,8 +61,8 @@ export default function Navbar({ locale }: NavbarProps) {
             <Link href={lp()} className="relative z-10 flex items-center group">
               <div className="relative h-11 w-56 md:w-72 transition-transform duration-300 group-hover:scale-105">
                 <Image
-                  src="/images/2024/12/armoni-beyaz.png"
-                  alt="Armoni Design"
+                  src={settings?.logo || "/images/2024/12/armoni-beyaz.png"}
+                  alt={settings?.siteTitle || "Armoni Design"}
                   fill
                   className="object-contain object-left rtl:object-right"
                   priority
@@ -83,7 +86,7 @@ export default function Navbar({ locale }: NavbarProps) {
             {/* Right Action Icons */}
             <div className="hidden lg:flex items-center space-x-6 rtl:space-x-reverse">
               <a
-                href="https://wa.me/905525833234"
+                href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-2 rtl:space-x-reverse text-xs uppercase tracking-widest text-emerald-400 hover:text-emerald-300 transition-colors bg-emerald-950/40 border border-emerald-500/30 px-3.5 py-2 rounded-full"
@@ -133,7 +136,7 @@ export default function Navbar({ locale }: NavbarProps) {
 
             <div className="space-y-4 pt-8 border-t border-neutral-800">
               <a
-                href="https://wa.me/905525833234"
+                href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full flex items-center justify-center space-x-2 text-sm uppercase tracking-widest text-emerald-400 bg-emerald-950/50 border border-emerald-500/40 py-3 rounded-full"

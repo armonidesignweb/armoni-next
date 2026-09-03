@@ -1,5 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { Mail, Phone, MapPin, MessageCircle, Send, Navigation, Store, Factory } from 'lucide-react';
+import { connectToDatabase } from '@/lib/mongodb';
+import { SiteSettings } from '@/models/SiteSettings';
 
 interface ContactPageProps {
   params: Promise<{ locale: string }>;
@@ -17,8 +19,14 @@ export default async function ContactPage({ params }: ContactPageProps) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'contact' });
 
+  let settings = null;
+  try {
+    await connectToDatabase();
+    settings = await SiteSettings.findOne().lean();
+  } catch (e) {}
+
   // Encoded address for Google Maps iframe embed
-  const newAddress = "Kağıthane Cad, Limon Sk. 1A, 34400 Kağıthane, İstanbul";
+  const newAddress = settings?.address || "Kağıthane Cad, Limon Sk. 1A, 34400 Kağıthane, İstanbul";
   const mapAddress = encodeURIComponent(newAddress);
   const publicMapUrl = `https://maps.google.com/maps?q=${mapAddress}&t=&z=17&ie=UTF8&iwloc=&output=embed`;
   const directMapsLink = "https://www.google.com/maps?vet=10CAAQoqAOahcKEwj4yKqqm6WWAxUAAAAAHQAAAAAQCg..i&sca_esv=3bb46e3c35a5f9bd&pvq=Cg0vZy8xMWM2el9naGpxIhsKFWFybW9uaSBkZXNpZ24gSEFSxLBUQRACGAM&lqi=ChVhcm1vbmkgZGVzaWduIEhBUsSwVEFIlvzc75urgIAIWiAQABABEAIYABgBIhRhcm1vbmkgZGVzaWduIGhhcml0YZIBCnNvZmFfc3RvcmU&fvr=1&cs=0&um=1&ie=UTF-8&fb=1&gl=tr&sa=X&ftid=0x14cab6dd95d9a07b:0xd3c7416a91e2021b";
@@ -51,17 +59,10 @@ export default async function ContactPage({ params }: ContactPageProps) {
             <h3 className="text-xl font-light text-white font-serif">{t('ourAddresses')}</h3>
             <div className="space-y-4 text-xs text-neutral-300 font-light leading-relaxed w-full text-left rtl:text-right">
               <div className="flex items-start space-x-2 rtl:space-x-reverse">
-                <Factory className="w-4 h-4 text-brand-400 shrink-0 mt-0.5" />
-                <div>
-                  <span className="font-semibold text-white">{t('factoryAddressLabel')}: </span>
-                  <span>{t('factoryAddress')}</span>
-                </div>
-              </div>
-              <div className="flex items-start space-x-2 rtl:space-x-reverse pt-2 border-t border-white/5">
                 <Store className="w-4 h-4 text-brand-400 shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-semibold text-white">{t('storeAddressLabel')}: </span>
-                  <span>{t('storeAddress')}</span>
+                  <span className="font-semibold text-white">Adres: </span>
+                  <span className="whitespace-pre-wrap">{settings?.address || t('storeAddress')}</span>
                 </div>
               </div>
             </div>
@@ -75,16 +76,10 @@ export default async function ContactPage({ params }: ContactPageProps) {
             <h3 className="text-xl font-light text-white font-serif">{t('ourEmails')}</h3>
             <div className="space-y-3 text-sm text-neutral-300 font-light">
               <a
-                href="mailto:iletisim@armonidesign.com"
+                href={`mailto:${settings?.email || 'iletisim@armonidesign.com'}`}
                 className="block hover:text-brand-400 transition-colors"
               >
-                {t('primaryEmail')}
-              </a>
-              <a
-                href="mailto:iletisim@armonidesign.com"
-                className="block text-neutral-400 hover:text-brand-400 transition-colors text-xs"
-              >
-                {t('secondaryEmail')}
+                {settings?.email || t('primaryEmail')}
               </a>
             </div>
           </div>
@@ -97,18 +92,18 @@ export default async function ContactPage({ params }: ContactPageProps) {
             <h3 className="text-xl font-light text-white font-serif">{t('ourPhones')}</h3>
             <div className="space-y-3 text-sm text-neutral-300 font-light">
               <a
-                href="tel:+902122961356"
+                href={`tel:${(settings?.phone || t('phone1')).replace(/\s+/g, '')}`}
                 className="block hover:text-brand-400 transition-colors font-medium text-white"
               >
-                {t('phone1')}
+                {settings?.phone || t('phone1')}
               </a>
               <a
-                href="https://wa.me/905525833234"
+                href={settings?.whatsapp ? `https://wa.me/${settings.whatsapp.replace(/\D/g, '')}` : "https://wa.me/905525833234"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block hover:text-brand-400 transition-colors font-medium text-white"
               >
-                {t('phone2')}
+                {settings?.whatsapp || t('phone2')}
               </a>
             </div>
           </div>

@@ -2,10 +2,18 @@
 
 import { Phone } from 'lucide-react';
 
-export default function FloatingWhatsApp() {
+interface FloatingWhatsAppProps {
+  settings?: any;
+}
+
+export default function FloatingWhatsApp({ settings }: FloatingWhatsAppProps) {
+  const whatsappUrl = settings?.whatsapp 
+    ? `https://wa.me/${settings.whatsapp.replace(/\D/g, '')}` 
+    : 'https://wa.me/905525833234';
+
   return (
     <a
-      href="https://wa.me/905525833234"
+      href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="WhatsApp İletişim"
