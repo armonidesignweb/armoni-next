@@ -148,7 +148,7 @@ export default function AdminReferencesClient() {
     <div className="p-6 bg-neutral-900 min-h-screen text-white">
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-2xl font-bold font-serif">Referanslar</h1>
+          <h1 className="text-2xl font-bold font-sans text-white">Referanslar</h1>
           <p className="text-neutral-400 text-sm mt-1">Ön yüzdeki referans logolarını buradan yönetebilirsiniz.</p>
         </div>
         <button

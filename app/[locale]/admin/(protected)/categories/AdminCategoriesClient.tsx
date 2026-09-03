@@ -93,7 +93,7 @@ export default function AdminCategoriesClient({ initialCategories, initialProduc
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <h1 className="text-3xl font-light font-sans text-white">Kategoriler</h1>
+        <h1 className="text-2xl font-bold font-sans text-white">Kategoriler</h1>
         {activeTab === 'categories' && (
           <button
             onClick={() => { setEditingCategory(null); setIsModalOpen(true); }}
