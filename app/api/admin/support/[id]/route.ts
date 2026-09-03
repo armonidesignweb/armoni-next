@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/mongodb';
 import { SupportTicket } from '@/models/SupportTicket';
+import { User } from '@/models/User';
 import { getSession } from '@/lib/auth';
 
 export async function PUT(request: Request, context: any) {
@@ -36,8 +37,8 @@ export async function PUT(request: Request, context: any) {
     await ticket.save();
 
     return NextResponse.json(ticket);
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error updating ticket:', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json({ error: error.message || 'Internal Server Error' }, { status: 500 });
   }
 }

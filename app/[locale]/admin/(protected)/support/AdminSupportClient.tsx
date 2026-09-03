@@ -96,9 +96,12 @@ export default function AdminSupportClient({ initialTickets }: { initialTickets:
         setTickets(prev => prev.map(t => t._id === selectedTicket._id ? updatedTicket : t));
         setSelectedTicket(updatedTicket);
         setReplyMessage('');
+      } else {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error || 'Yanıt gönderilemedi.');
       }
-    } catch (e) {
-      alert('Yanıt gönderilemedi.');
+    } catch (e: any) {
+      alert(e.message || 'Yanıt gönderilemedi.');
     } finally {
       setReplying(false);
     }
