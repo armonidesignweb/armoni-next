@@ -108,7 +108,10 @@ export default function AdminAnnouncementsClient({ initialAnnouncements }: { ini
         body: JSON.stringify(formData)
       });
 
-      if (!res.ok) throw new Error('API Error');
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        throw new Error(errorData.error || 'API Error');
+      }
 
       const data = await res.json();
       
@@ -119,9 +122,9 @@ export default function AdminAnnouncementsClient({ initialAnnouncements }: { ini
       }
       
       closeModal();
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      alert('Bir hata oluştu.');
+      alert(error.message || 'Bir hata oluştu.');
     } finally {
       setLoading(false);
     }

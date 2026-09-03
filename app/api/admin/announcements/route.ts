@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/mongodb';
 import { Announcement } from '@/models/Announcement';
+import { User } from '@/models/User';
 import { getSession } from '@/lib/auth';
 
 export async function GET() {
@@ -33,8 +34,8 @@ export async function POST(request: Request) {
     const announcement = await Announcement.create(body);
 
     return NextResponse.json(announcement, { status: 201 });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error creating announcement:', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json({ error: error.message || 'Internal Server Error' }, { status: 500 });
   }
 }

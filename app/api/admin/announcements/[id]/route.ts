@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/mongodb';
 import { Announcement } from '@/models/Announcement';
+import { User } from '@/models/User';
 import { getSession } from '@/lib/auth';
 
 export async function PUT(request: Request, context: any) {
