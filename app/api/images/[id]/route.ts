@@ -25,7 +25,7 @@ export async function GET(
     headers.set('Content-Type', image.contentType);
     headers.set('Cache-Control', 'public, max-age=31536000, immutable');
 
-    return new NextResponse(image.data, {
+    return new NextResponse(image.data as any, {
       status: 200,
       headers,
     });
