@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation';
 import { getSession } from '@/lib/auth';
 import Link from 'next/link';
+import Image from 'next/image';
 import { 
   LayoutDashboard, 
   Package, 
@@ -38,9 +39,17 @@ export default async function AccountLayout({
     <div className="min-h-screen bg-neutral-950 text-white flex flex-col md:flex-row pt-20">
       {/* Sidebar */}
       <aside className="w-full md:w-64 bg-neutral-900 border-r border-neutral-800 flex flex-col">
-        <div className="p-6 border-b border-neutral-800">
-          <h2 className="text-lg font-serif text-white font-bold truncate">{session.user.company || session.user.name}</h2>
-          <p className="text-xs text-brand-400 uppercase tracking-widest mt-1">Müşteri Portalı</p>
+        <div className="p-6 border-b border-neutral-800 flex flex-col justify-center">
+          <div className="relative w-44 h-8 mb-2">
+            <Image
+              src="/images/2024/12/armoni-beyaz.png"
+              alt="Armoni Design"
+              fill
+              className="object-contain object-left"
+              priority
+            />
+          </div>
+          <p className="text-xs text-brand-400 uppercase tracking-widest">Müşteri Portalı</p>
         </div>
         
         <nav className="flex-1 overflow-y-auto py-4">

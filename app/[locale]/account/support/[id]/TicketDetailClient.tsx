@@ -60,7 +60,7 @@ export default function TicketDetailClient({ ticket, locale }: { ticket: Ticket,
           <ArrowLeft className="w-4 h-4 mr-1" />
           Taleplere Dön
         </Link>
-        <h1 className="text-2xl font-bold font-serif text-white">{ticket.subject}</h1>
+        <h1 className="text-2xl font-bold font-sans text-white">{ticket.subject}</h1>
         <p className="text-sm text-neutral-500 mt-1">
           Talep No: #{ticket._id.substring(0, 8).toUpperCase()} • Oluşturulma: {new Date(ticket.createdAt).toLocaleDateString('tr-TR')}
         </p>

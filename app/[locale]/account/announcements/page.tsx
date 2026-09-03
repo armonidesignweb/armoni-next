@@ -18,7 +18,7 @@ export default async function CustomerAnnouncementsPage({ params }: { params: Pr
 
   return (
     <div>
-      <h1 className="text-2xl font-bold font-serif mb-6 text-white">Duyurular</h1>
+      <h1 className="text-2xl font-bold font-sans mb-6 text-white">Duyurular</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {announcements.map((ann) => {

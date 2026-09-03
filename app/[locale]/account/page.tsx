@@ -13,7 +13,7 @@ export default async function CustomerDashboard() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold font-serif mb-6 text-white">Genel Bakış</h1>
+      <h1 className="text-2xl font-bold font-sans mb-6 text-white">Genel Bakış</h1>
       
       <div className="bg-brand-500/10 border border-brand-500/20 rounded-xl p-6 mb-8">
         <h2 className="text-lg font-medium text-white mb-2">Hoş Geldiniz, {session?.user.company || session?.user.name}</h2>

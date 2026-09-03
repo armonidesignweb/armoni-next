@@ -114,7 +114,7 @@ export default function ProfileClient({ initialProfile, locale }: { initialProfi
     <div className="max-w-3xl space-y-8">
       <div>
         <div className="mb-8">
-          <h1 className="text-2xl font-bold font-serif text-white mb-2">Profil Bilgileri</h1>
+          <h1 className="text-2xl font-bold font-sans text-white mb-2">Profil Bilgileri</h1>
           <p className="text-neutral-400 text-sm">Hesap bilgilerinizi görüntüleyebilir ve güncelleyebilirsiniz.</p>
         </div>
 
@@ -128,7 +128,7 @@ export default function ProfileClient({ initialProfile, locale }: { initialProfi
         <div className="bg-neutral-900 border border-neutral-800 rounded-xl overflow-hidden">
           <div className="p-6 border-b border-neutral-800 flex justify-between items-center">
             <div className="flex items-center space-x-4">
-              <div className="w-16 h-16 bg-brand-900/50 rounded-full flex items-center justify-center text-brand-400 text-xl font-serif">
+              <div className="w-16 h-16 bg-brand-900/50 rounded-full flex items-center justify-center text-brand-400 text-xl font-sans">
                 {profile.name.charAt(0).toUpperCase()}
               </div>
               <div>
@@ -265,7 +265,7 @@ export default function ProfileClient({ initialProfile, locale }: { initialProfi
       {/* Password Change Section */}
       <div>
         <div className="mb-6">
-          <h2 className="text-xl font-bold font-serif text-white mb-2">Şifre Değiştir</h2>
+          <h2 className="text-xl font-bold font-sans text-white mb-2">Şifre Değiştir</h2>
           <p className="text-neutral-400 text-sm">Hesabınızın güvenliği için şifrenizi düzenli olarak güncelleyin.</p>
         </div>
 

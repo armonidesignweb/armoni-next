@@ -26,7 +26,7 @@ export default async function CustomerCampaignsPage({ params }: { params: Promis
 
   return (
     <div>
-      <h1 className="text-2xl font-bold font-serif mb-6 text-white">Kampanyalar</h1>
+      <h1 className="text-2xl font-bold font-sans mb-6 text-white">Kampanyalar</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {campaigns.map((camp) => {

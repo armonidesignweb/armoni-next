@@ -59,7 +59,7 @@ export default function SupportClient({ initialTickets, locale }: { initialTicke
     <div>
       <div className="flex justify-between items-center mb-8">
         <div>
-          <h1 className="text-2xl font-bold font-serif text-white mb-2">Yardım & Destek</h1>
+          <h1 className="text-2xl font-bold font-sans text-white mb-2">Yardım & Destek</h1>
           <p className="text-neutral-400 text-sm">Destek taleplerinizi buradan oluşturabilir ve takip edebilirsiniz.</p>
         </div>
         <button 
