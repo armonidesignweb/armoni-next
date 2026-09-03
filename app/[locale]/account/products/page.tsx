@@ -74,7 +74,6 @@ export default async function CustomerProductsPage({ params }: { params: Promise
                   )}
                 </div>
                 <div className="p-5 border-t border-neutral-800">
-                  <div className="text-xs text-brand-400 uppercase tracking-widest mb-1">{categoryName as string || product.categorySlug.replace('-', ' ')}</div>
                   <h3 className="text-lg font-medium text-white font-sans mb-2 truncate" title={productName as string}>{productName as string}</h3>
                   
                   <div className="mt-4 pt-4 border-t border-neutral-800 flex justify-between items-center">
