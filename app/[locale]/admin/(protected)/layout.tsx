@@ -36,7 +36,7 @@ export default async function AdminLayout({
     { name: 'KATEGORİLER', href: `/${locale}/admin/categories`, icon: Tags },
     { name: 'PROJELER', href: `/${locale}/admin/projects`, icon: Briefcase },
     { name: 'REFERANSLAR', href: `/${locale}/admin/references`, icon: ImageIcon },
-    { name: 'SİTE İÇERİĞİ', href: `/${locale}/admin/content`, icon: ImageIcon },
+    // { name: 'SİTE İÇERİĞİ', href: `/${locale}/admin/content`, icon: ImageIcon },
     { name: 'MÜŞTERİLER', href: `/${locale}/admin/customers`, icon: Users },
     { name: 'DUYURULAR', href: `/${locale}/admin/announcements`, icon: Megaphone },
     { name: 'KAMPANYALAR', href: `/${locale}/admin/campaigns`, icon: Ticket },
