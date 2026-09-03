@@ -291,16 +291,58 @@ export default function AdminReferencesClient() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-neutral-300 mb-1">Kare Logo (URL veya Yolu)</label>
-                <input
-                  type="text"
-                  required
-                  value={formData.logo}
-                  onChange={(e) => setFormData({ ...formData, logo: e.target.value })}
-                  className="w-full bg-neutral-950 border border-neutral-800 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-brand-500"
-                  placeholder="Örn: /referanslar/renkli/ASUMAN-renkli.png"
-                />
-                <p className="text-xs text-neutral-500 mt-1">Sadece tek bir KARE, RENKLİ logo girin. Siyah-beyaz efekti CSS ile yapılacaktır.</p>
+                <label className="block text-sm font-medium text-neutral-300 mb-2">Kare Logo</label>
+                
+                <div className="flex items-center gap-4">
+                  <div className="w-20 h-20 bg-white rounded-lg border border-neutral-700 flex items-center justify-center overflow-hidden relative p-2 flex-shrink-0">
+                    {formData.logo ? (
+                      <Image src={formData.logo} alt="Logo Önizleme" fill className="object-contain p-2" unoptimized />
+                    ) : (
+                      <span className="text-xs text-neutral-400 text-center">Görsel Yok</span>
+                    )}
+                  </div>
+                  
+                  <div className="flex-1">
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={async (e) => {
+                        const file = e.target.files?.[0];
+                        if (!file) return;
+                        
+                        try {
+                          const uploadData = new FormData();
+                          uploadData.append('file', file);
+                          
+                          // Optional: add a simple loading indicator or just rely on speed
+                          const input = e.target;
+                          input.disabled = true;
+                          
+                          const res = await fetch('/api/admin/upload', {
+                            method: 'POST',
+                            body: uploadData,
+                          });
+                          
+                          input.disabled = false;
+                          
+                          if (res.ok) {
+                            const { url } = await res.json();
+                            setFormData({ ...formData, logo: url });
+                          } else {
+                            alert('Görsel yüklenemedi.');
+                          }
+                        } catch (error) {
+                          console.error(error);
+                          alert('Görsel yüklenirken bir hata oluştu.');
+                        }
+                      }}
+                      className="w-full text-sm text-neutral-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-neutral-800 file:text-white hover:file:bg-neutral-700 transition-colors cursor-pointer"
+                    />
+                    <p className="text-xs text-neutral-500 mt-2">
+                      Sadece tek bir KARE, RENKLİ logo seçin. Siyah-beyaz efekti sitede CSS ile uygulanacaktır.
+                    </p>
+                  </div>
+                </div>
               </div>
 
               <div>
