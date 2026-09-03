@@ -5,6 +5,7 @@ export interface ILocalizedField {
   en?: string;
   de?: string;
   ar?: string;
+  ru?: string;
 }
 
 export interface ICampaign extends Document {
@@ -16,6 +17,7 @@ export interface ICampaign extends Document {
   startDate: Date;
   endDate: Date;
   isActive: boolean;
+  targetUrl?: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -25,6 +27,7 @@ const LocalizedSchema = new Schema({
   en: { type: String, default: '' },
   de: { type: String, default: '' },
   ar: { type: String, default: '' },
+  ru: { type: String, default: '' },
 }, { _id: false });
 
 const CampaignSchema = new Schema<ICampaign>(
@@ -37,6 +40,7 @@ const CampaignSchema = new Schema<ICampaign>(
     startDate: { type: Date, default: Date.now },
     endDate: { type: Date },
     isActive: { type: Boolean, default: true },
+    targetUrl: { type: String },
   },
   { timestamps: true }
 );

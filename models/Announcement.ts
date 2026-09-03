@@ -5,6 +5,7 @@ export interface ILocalizedField {
   en?: string;
   de?: string;
   ar?: string;
+  ru?: string;
 }
 
 export interface IAnnouncement extends Document {
@@ -24,6 +25,7 @@ const LocalizedSchema = new Schema({
   en: { type: String, default: '' },
   de: { type: String, default: '' },
   ar: { type: String, default: '' },
+  ru: { type: String, default: '' },
 }, { _id: false });
 
 const AnnouncementSchema = new Schema<IAnnouncement>(

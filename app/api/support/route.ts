@@ -4,6 +4,23 @@ import { SupportTicket } from '@/models/SupportTicket';
 import { getSession } from '@/lib/auth';
 import { sendSupportNotificationEmail } from '@/lib/email';
 
+export async function GET() {
+  try {
+    const session = await getSession();
+    if (!session || !session.user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    await connectToDatabase();
+    const tickets = await SupportTicket.find({ userId: session.user.id }).sort({ updatedAt: -1 });
+
+    return NextResponse.json(tickets);
+  } catch (error) {
+    console.error('Error fetching support tickets:', error);
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+  }
+}
+
 export async function POST(request: Request) {
   try {
     const session = await getSession();
@@ -11,7 +28,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const { subject, message } = await request.json();
+    const { subject, message, attachment } = await request.json();
 
     if (!subject || !message) {
       return NextResponse.json({ error: 'Subject and message required' }, { status: 400 });
@@ -22,7 +39,7 @@ export async function POST(request: Request) {
     const ticket = await SupportTicket.create({
       userId: session.user.id,
       subject,
-      messages: [{ sender: 'customer', message }],
+      messages: [{ sender: 'customer', message, attachment }],
       status: 'new',
     });
 
