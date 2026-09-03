@@ -9,7 +9,15 @@ export default async function CustomerDashboard() {
   await connectToDatabase();
   
   const activeCampaigns = await Campaign.find({ isActive: true }).sort({ createdAt: -1 }).limit(3);
-  const recentAnnouncements = await Announcement.find({ isActive: true, $or: [{ target: 'all' }, { targetUsers: session?.user.id }] }).sort({ createdAt: -1 }).limit(3);
+  const recentAnnouncements = await Announcement.find({ 
+    isActive: true, 
+    $or: [
+      { target: 'all' },
+      { target: { $exists: false } },
+      { target: null },
+      { targetUsers: session?.user.id }
+    ] 
+  }).sort({ createdAt: -1 }).limit(3);
 
   return (
     <div>

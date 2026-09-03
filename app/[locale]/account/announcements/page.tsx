@@ -13,7 +13,12 @@ export default async function CustomerAnnouncementsPage({ params }: { params: Pr
   
   const announcements = await Announcement.find({ 
     isActive: true, 
-    $or: [{ target: 'all' }, { targetUsers: session?.user.id }] 
+    $or: [
+      { target: 'all' },
+      { target: { $exists: false } },
+      { target: null },
+      { targetUsers: session?.user.id }
+    ] 
   }).sort({ publishDate: -1, createdAt: -1 });
 
   return (
