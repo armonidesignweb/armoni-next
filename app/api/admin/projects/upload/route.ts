@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getSession } from '@/lib/auth';
-import { writeFile, mkdir } from 'fs/promises';
-import path from 'path';
+import { connectToDatabase } from '@/lib/mongodb';
+import { ImageModel } from '@/models/Image';
 
 export async function POST(request: Request) {
   try {
@@ -20,18 +20,18 @@ export async function POST(request: Request) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
+    await connectToDatabase();
+
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
     const filename = uniqueSuffix + '-' + file.name.replace(/[^a-zA-Z0-9.\-]/g, '');
 
-    const uploadDir = path.join(process.cwd(), 'public', 'images', 'projeler');
-    
-    // Ensure dir exists
-    await mkdir(uploadDir, { recursive: true });
-    
-    const filepath = path.join(uploadDir, filename);
-    await writeFile(filepath, buffer);
+    const newImage = await ImageModel.create({
+      filename,
+      contentType: file.type || 'image/jpeg',
+      data: buffer,
+    });
 
-    const imageUrl = `/images/projeler/${filename}`;
+    const imageUrl = `/api/images/${newImage._id}`;
 
     return NextResponse.json({ url: imageUrl }, { status: 201 });
   } catch (error) {
