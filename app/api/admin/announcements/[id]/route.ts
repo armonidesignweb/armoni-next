@@ -11,7 +11,8 @@ export async function PUT(request: Request, context: any) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const id = context.params?.id;
+    const params = await context.params;
+    const id = params?.id;
     if (!id) return NextResponse.json({ error: 'ID is required' }, { status: 400 });
 
     await connectToDatabase();
@@ -37,7 +38,8 @@ export async function DELETE(request: Request, context: any) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const id = context.params?.id;
+    const params = await context.params;
+    const id = params?.id;
     if (!id) return NextResponse.json({ error: 'ID is required' }, { status: 400 });
 
     await connectToDatabase();

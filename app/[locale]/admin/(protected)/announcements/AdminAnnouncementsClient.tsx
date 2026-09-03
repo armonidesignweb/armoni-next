@@ -330,7 +330,7 @@ export default function AdminAnnouncementsClient({ initialAnnouncements }: { ini
                 
                 <div className="flex flex-col justify-center">
                   <label className="flex items-center gap-3 cursor-pointer">
-                    <div className={`w-12 h-6 rounded-full transition-colors relative ${formData.isActive ? 'bg-primary-600' : 'bg-neutral-700'}`}>
+                    <div className={`w-12 h-6 rounded-full transition-colors relative ${formData.isActive ? 'bg-green-500' : 'bg-red-500'}`}>
                       <div className={`absolute top-1 w-4 h-4 rounded-full bg-white transition-all ${formData.isActive ? 'left-7' : 'left-1'}`} />
                     </div>
                     <input
@@ -339,7 +339,9 @@ export default function AdminAnnouncementsClient({ initialAnnouncements }: { ini
                       checked={formData.isActive}
                       onChange={(e) => setFormData({ ...formData, isActive: e.target.checked })}
                     />
-                    <span className="text-white font-medium">Aktif olarak yayınla</span>
+                    <span className={`font-medium ${formData.isActive ? 'text-green-400' : 'text-red-400'}`}>
+                      {formData.isActive ? 'AKTİF (Yayınlanıyor)' : 'PASİF (Gizli)'}
+                    </span>
                   </label>
                   <p className="text-sm text-neutral-500 mt-2">
                     Eğer kapalıysa, müşteri panelinde görünmez.
