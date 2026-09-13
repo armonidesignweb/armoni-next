@@ -78,7 +78,7 @@ export default async function CustomerProductsPage({ params }: { params: Promise
                   
                   <div className="mt-4 pt-4 border-t border-neutral-800 flex justify-between items-center">
                     <span className="text-white font-medium">
-                      {product.price ? `${product.price.toLocaleString('tr-TR')} ₺` : 'Fiyat Sorunuz'}
+                      {product.price !== undefined && product.price > 0 ? `${product.price.toLocaleString('tr-TR')} ₺` : 'Fiyat Sorunuz'}
                     </span>
                     <span className="text-brand-400 transition-colors text-sm font-medium group-hover:text-white">İncele →</span>
                   </div>

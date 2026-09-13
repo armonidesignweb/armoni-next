@@ -247,7 +247,7 @@ export default function AdminProductsClient({ initialProducts }: { initialProduc
                           className={`min-w-[80px] text-left px-3 py-1.5 rounded border transition-all ${
                             successId === product._id 
                               ? 'border-green-500/50 bg-green-900/20 text-green-400' 
-                              : product.price !== undefined 
+                              : product.price !== undefined && product.price > 0 
                                 ? 'border-neutral-700 bg-neutral-800 text-white hover:border-brand-500/50' 
                                 : 'border-dashed border-neutral-700 text-neutral-500 hover:border-brand-500/50 hover:text-neutral-300'
                           }`}
@@ -257,10 +257,10 @@ export default function AdminProductsClient({ initialProducts }: { initialProduc
                             <span className="flex items-center gap-1 text-sm">
                               <Check className="w-3.5 h-3.5" /> Kaydedildi
                             </span>
-                          ) : product.price !== undefined ? (
+                          ) : product.price !== undefined && product.price > 0 ? (
                             <span className="text-sm font-medium">{product.price.toLocaleString('tr-TR')} ₺</span>
                           ) : (
-                            <span className="text-xs italic">Fiyat gir...</span>
+                            <span className="text-xs italic text-neutral-400">Fiyat verilmedi</span>
                           )}
                         </button>
                       )}
