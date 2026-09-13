@@ -1,7 +1,8 @@
 import { getTranslations } from 'next-intl/server';
-import { Mail, Phone, MapPin, MessageCircle, Send, Navigation, Store, Factory } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageCircle, Navigation, Store, Factory } from 'lucide-react';
 import { connectToDatabase } from '@/lib/mongodb';
 import { SiteSettings } from '@/models/SiteSettings';
+import ContactForm from '@/components/ContactForm';
 
 interface ContactPageProps {
   params: Promise<{ locale: string }>;
@@ -114,66 +115,20 @@ export default async function ContactPage({ params }: ContactPageProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-8">
           
           {/* Left Column: Form */}
-          <div className="lg:col-span-6 glass-card p-8 md:p-12 rounded-3xl border border-white/10 shadow-2xl">
-            <h3 className="text-2xl font-light text-white font-serif mb-6">{t('title')}</h3>
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-xs uppercase tracking-widest text-neutral-300 block font-medium">
-                    {t('name')}
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    placeholder={t('namePlaceholder')}
-                    className="w-full bg-neutral-900/80 border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-brand-500 transition-colors"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-xs uppercase tracking-widest text-neutral-300 block font-medium">
-                    {t('email')}
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    placeholder={t('emailPlaceholder')}
-                    className="w-full bg-neutral-900/80 border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-brand-500 transition-colors"
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-xs uppercase tracking-widest text-neutral-300 block font-medium">
-                  {t('phone')}
-                </label>
-                <input
-                  type="tel"
-                  placeholder="0 212 296 13 56"
-                  className="w-full bg-neutral-900/80 border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-brand-500 transition-colors"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-xs uppercase tracking-widest text-neutral-300 block font-medium">
-                  {t('message')}
-                </label>
-                <textarea
-                  rows={5}
-                  required
-                  placeholder={t('messagePlaceholder')}
-                  className="w-full bg-neutral-900/80 border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-brand-500 transition-colors resize-none"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full flex items-center justify-center space-x-2 text-xs uppercase tracking-[0.2em] font-medium text-white bg-brand-500 hover:bg-brand-600 py-4 rounded-xl transition-all shadow-xl shadow-brand-500/25"
-              >
-                <Send className="w-4 h-4" />
-                <span>{t('send')}</span>
-              </button>
-            </form>
-          </div>
+          <ContactForm
+            t={{
+              title: t('title'),
+              name: t('name'),
+              namePlaceholder: t('namePlaceholder'),
+              email: t('email'),
+              emailPlaceholder: t('emailPlaceholder'),
+              phone: t('phone'),
+              message: t('message'),
+              messagePlaceholder: t('messagePlaceholder'),
+              send: t('send'),
+              success: t('success'),
+            }}
+          />
 
           {/* Right Column: Google Maps Embed */}
           <div className="lg:col-span-6 h-full min-h-[400px]">
