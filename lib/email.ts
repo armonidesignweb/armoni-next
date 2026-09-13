@@ -1,4 +1,4 @@
-export const sendEmail = async ({ to, subject, htmlContent }: { to: string; subject: string; htmlContent: string }) => {
+export const sendEmail = async ({ to, subject, htmlContent, replyTo }: { to: string; subject: string; htmlContent: string; replyTo?: string }) => {
   const BREVO_API_KEY = process.env.BREVO_API_KEY;
   
   if (!BREVO_API_KEY) {
@@ -6,12 +6,16 @@ export const sendEmail = async ({ to, subject, htmlContent }: { to: string; subj
     return false;
   }
 
-  const payload = {
+  const payload: any = {
     sender: { name: "Armoni Design", email: "armonidesignweb@gmail.com" },
     to: [{ email: to }],
     subject,
     htmlContent,
   };
+  
+  if (replyTo) {
+    payload.replyTo = { email: replyTo };
+  }
 
   try {
     const res = await fetch("https://api.brevo.com/v3/smtp/email", {
@@ -115,5 +119,5 @@ export const sendSupportNotificationEmail = async (subjectMatter: string, messag
       <blockquote style="background: #f9f9f9; padding: 10px; border-left: 4px solid #ccc;">${message}</blockquote>
     </div>
   `;
-  return sendEmail({ to: adminEmail, subject, htmlContent });
+  return sendEmail({ to: adminEmail, subject, htmlContent, replyTo: customerEmail });
 };
