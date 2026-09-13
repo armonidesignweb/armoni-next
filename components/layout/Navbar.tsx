@@ -61,7 +61,7 @@ export default function Navbar({ locale, settings }: NavbarProps) {
             <Link href={lp()} className="relative z-10 flex items-center group">
               <div className="relative h-11 w-56 md:w-72 transition-transform duration-300 group-hover:scale-105">
                 <Image
-                  src={settings?.logo || "/images/2024/12/armoni-beyaz.png"}
+                  src={settings?.logo || "/images/armoni-design-beyaz.png"}
                   alt={settings?.siteTitle || "Armoni Design"}
                   fill
                   className="object-contain object-left rtl:object-right"

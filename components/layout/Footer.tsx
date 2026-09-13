@@ -45,7 +45,7 @@ export default function Footer({ locale, settings }: FooterProps) {
               <Link href={lp()} className="inline-block">
                 <div className="relative h-10 w-52">
                   <Image
-                    src={settings?.logo || "/images/2024/12/armoni-beyaz.png"}
+                    src={settings?.logo || "/images/armoni-design-beyaz.png"}
                     alt={settings?.siteTitle || "Armoni Design"}
                     fill
                     className="object-contain object-left rtl:object-right"
