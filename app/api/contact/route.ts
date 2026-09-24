@@ -15,7 +15,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Geçersiz e-posta adresi.' }, { status: 400 });
     }
 
-    const adminEmail = process.env.ADMIN_EMAIL || 'armonidesign@gmail.com';
+    const adminEmail = process.env.ADMIN_EMAIL || 'iletisim@armonidesign.com';
     const subject = `Yeni İletişim Formu Mesajı: ${name}`;
 
     const htmlContent = `
