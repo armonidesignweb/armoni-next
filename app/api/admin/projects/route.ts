@@ -65,11 +65,27 @@ export async function GET(request: Request) {
   }
 }
 
+function slugify(text: string): string {
+  return text
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/ğ/g, 'g')
+    .replace(/ü/g, 'u')
+    .replace(/ş/g, 's')
+    .replace(/ı/g, 'i')
+    .replace(/ö/g, 'o')
+    .replace(/ç/g, 'c')
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/[\s-]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
 export async function POST(request: Request) {
   try {
     const session = await getSession();
     if (!session || session.user.role !== 'admin') {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+      return NextResponse.json({ error: 'Oturum yetkiniz yok veya süresi dolmuş.' }, { status: 401 });
     }
 
     const body = await request.json();
@@ -78,18 +94,27 @@ export async function POST(request: Request) {
     const maxOrderProj = await Project.findOne().sort('-order');
     const newOrder = maxOrderProj && maxOrderProj.order !== undefined ? maxOrderProj.order + 1 : 1;
     
+    // Ensure description defaults
+    if (!body.description) {
+      body.description = { tr: '', en: '', de: '', ru: '', ar: '' };
+    }
+
     // auto slug
     if (!body.slug && body.title?.tr) {
-      body.slug = body.title.tr.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '-' + Date.now();
+      const cleanSlug = slugify(body.title.tr);
+      body.slug = (cleanSlug || 'proj') + '-' + Date.now();
     } else if (!body.slug) {
       body.slug = 'proj-' + Date.now();
     }
 
     const project = await Project.create({ ...body, order: newOrder });
     return NextResponse.json(project, { status: 201 });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error creating project:', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json(
+      { error: error?.message || 'Proje oluşturulurken bir hata oluştu.' },
+      { status: 400 }
+    );
   }
 }
 

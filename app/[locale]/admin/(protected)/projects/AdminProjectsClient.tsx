@@ -61,7 +61,8 @@ export default function AdminProjectsClient() {
     });
 
     if (!res.ok) {
-      throw new Error('Failed to save project');
+      const data = await res.json().catch(() => ({}));
+      throw new Error(data.error || 'Proje kaydedilemedi.');
     }
     fetchProjects();
   };

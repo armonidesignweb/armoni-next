@@ -56,6 +56,14 @@ const LocalizedSchema = new Schema({
   ar: { type: String, default: '' },
 }, { _id: false });
 
+const OptionalLocalizedSchema = new Schema({
+  tr: { type: String, default: '' },
+  en: { type: String, default: '' },
+  de: { type: String, default: '' },
+  ru: { type: String, default: '' },
+  ar: { type: String, default: '' },
+}, { _id: false });
+
 const ProductTranslationSchema = new Schema({
   name: { type: String },
   description: { type: String },
@@ -72,7 +80,7 @@ const ProductTranslationsSchema = new Schema({
 const ProductSchema = new Schema<IProduct>(
   {
     title: { type: LocalizedSchema, required: true }, // Legacy
-    description: { type: LocalizedSchema }, // Legacy
+    description: { type: OptionalLocalizedSchema, default: () => ({ tr: '', en: '', de: '', ru: '', ar: '' }) }, // Legacy
     features: [LocalizedSchema], // Legacy
     
     slug: { type: String, required: true, unique: true, index: true },

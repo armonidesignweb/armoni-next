@@ -37,6 +37,14 @@ const LocalizedSchema = new Schema({
   ar: { type: String, default: '' },
 }, { _id: false });
 
+const OptionalLocalizedSchema = new Schema({
+  tr: { type: String, default: '' },
+  en: { type: String, default: '' },
+  de: { type: String, default: '' },
+  ru: { type: String, default: '' },
+  ar: { type: String, default: '' },
+}, { _id: false });
+
 const CategoryTranslationSchema = new Schema({
   name: { type: String },
   description: { type: String },
@@ -52,7 +60,7 @@ const CategoryTranslationsSchema = new Schema({
 const CategorySchema = new Schema<ICategory>(
   {
     title: { type: LocalizedSchema, required: true }, // Legacy
-    description: { type: LocalizedSchema }, // Legacy
+    description: { type: OptionalLocalizedSchema, default: () => ({ tr: '', en: '', de: '', ru: '', ar: '' }) }, // Legacy
     
     slug: { type: String, required: true, unique: true, index: true },
     translations: { type: CategoryTranslationsSchema },

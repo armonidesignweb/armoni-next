@@ -175,9 +175,9 @@ export default function AdminProjectModal({ isOpen, onClose, project, onSave }: 
     try {
       await onSave(formData);
       onClose();
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      alert('Kaydetme başarısız oldu.');
+      alert('Kaydetme başarısız oldu: ' + (error?.message || 'Lütfen bilgileri kontrol edin.'));
     } finally {
       setIsSaving(false);
     }

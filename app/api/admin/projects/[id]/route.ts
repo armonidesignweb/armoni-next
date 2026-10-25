@@ -18,6 +18,10 @@ export async function PUT(
 
     await connectToDatabase();
 
+    if (!body.description) {
+      body.description = { tr: '', en: '', de: '', ru: '', ar: '' };
+    }
+
     const updated = await Project.findByIdAndUpdate(
       id,
       { $set: body },
@@ -25,13 +29,16 @@ export async function PUT(
     );
 
     if (!updated) {
-      return NextResponse.json({ error: 'Not Found' }, { status: 404 });
+      return NextResponse.json({ error: 'Proje bulunamadı.' }, { status: 404 });
     }
 
     return NextResponse.json(updated);
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error updating project:', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json(
+      { error: error?.message || 'Proje güncellenirken bir hata oluştu.' },
+      { status: 400 }
+    );
   }
 }
 
