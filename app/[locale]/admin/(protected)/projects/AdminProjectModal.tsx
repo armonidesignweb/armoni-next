@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Plus, Trash2, ArrowUp, ArrowDown, Image as ImageIcon } from 'lucide-react';
+import { X, Plus, Trash2, ArrowUp, ArrowDown, Image as ImageIcon, Copy, Check } from 'lucide-react';
 import Image from 'next/image';
 
 interface LocalizedField {
@@ -39,6 +39,31 @@ export default function AdminProjectModal({ isOpen, onClose, project, onSave }: 
   const [activeTab, setActiveTab] = useState<'tr' | 'en' | 'de' | 'ru' | 'ar'>('tr');
   const [isSaving, setIsSaving] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
+  const [copiedField, setCopiedField] = useState<string | null>(null);
+
+  const handleCopyText = (text: string, fieldKey: string) => {
+    if (!text) return;
+    navigator.clipboard.writeText(text);
+    setCopiedField(fieldKey);
+    setTimeout(() => setCopiedField(null), 2000);
+  };
+
+  const handleCopyTrToAll = () => {
+    const trTitle = formData.title.tr;
+    if (!trTitle) return;
+    setFormData(prev => ({
+      ...prev,
+      title: {
+        tr: trTitle,
+        en: prev.title.en || trTitle,
+        de: prev.title.de || trTitle,
+        ru: prev.title.ru || trTitle,
+        ar: prev.title.ar || trTitle,
+      }
+    }));
+    setCopiedField('all_titles');
+    setTimeout(() => setCopiedField(null), 2000);
+  };
 
   useEffect(() => {
     if (project) {
@@ -229,22 +254,87 @@ export default function AdminProjectModal({ isOpen, onClose, project, onSave }: 
               
               <div className="p-4 space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-neutral-400 mb-1">Proje Adı ({activeTab.toUpperCase()})</label>
+                  <div className="flex items-center justify-between mb-1.5">
+                    <label className="block text-sm font-medium text-neutral-400">
+                      Proje Adı ({activeTab.toUpperCase()})
+                    </label>
+                    <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={() => handleCopyText((formData.title as any)[activeTab] || '', `title_${activeTab}`)}
+                        className="inline-flex items-center gap-1 text-xs text-neutral-400 hover:text-white px-2 py-0.5 rounded bg-neutral-800/80 hover:bg-neutral-800 transition-colors border border-neutral-700/60"
+                        title="Metni Kopyala"
+                      >
+                        {copiedField === `title_${activeTab}` ? (
+                          <>
+                            <Check className="w-3.5 h-3.5 text-emerald-400" />
+                            <span className="text-emerald-400 font-medium">Kopyalandı</span>
+                          </>
+                        ) : (
+                          <>
+                            <Copy className="w-3.5 h-3.5 text-neutral-400" />
+                            <span>Kopyala</span>
+                          </>
+                        )}
+                      </button>
+
+                      {activeTab === 'tr' && formData.title.tr && (
+                        <button
+                          type="button"
+                          onClick={handleCopyTrToAll}
+                          className="inline-flex items-center gap-1 text-xs text-brand-400 hover:text-brand-300 px-2 py-0.5 rounded bg-brand-500/10 hover:bg-brand-500/20 transition-colors border border-brand-500/30"
+                          title="TR başlığı diğer tüm dillere (EN, DE, RU, AR) kopyala"
+                        >
+                          {copiedField === 'all_titles' ? (
+                            <span className="text-emerald-400 font-medium">Aktarıldı ✓</span>
+                          ) : (
+                            <span>Tüm Dillere Aktar</span>
+                          )}
+                        </button>
+                      )}
+                    </div>
+                  </div>
                   <input
                     type="text"
                     required={activeTab === 'tr'}
                     value={(formData.title as any)[activeTab] || ''}
                     onChange={e => handleTitleChange(activeTab, e.target.value)}
-                    className="w-full bg-neutral-950 border border-neutral-700 rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-brand-500"
+                    onFocus={e => e.target.select()}
+                    placeholder="Örn: Boğaziçi Residences"
+                    className="w-full bg-neutral-950 border border-neutral-700 rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-brand-500 select-text cursor-text"
                   />
                 </div>
+
                 <div>
-                  <label className="block text-sm font-medium text-neutral-400 mb-1">Kısa Açıklama ({activeTab.toUpperCase()})</label>
+                  <div className="flex items-center justify-between mb-1.5">
+                    <label className="block text-sm font-medium text-neutral-400">
+                      Kısa Açıklama ({activeTab.toUpperCase()})
+                    </label>
+                    <button
+                      type="button"
+                      onClick={() => handleCopyText((formData.description as any)[activeTab] || '', `desc_${activeTab}`)}
+                      className="inline-flex items-center gap-1 text-xs text-neutral-400 hover:text-white px-2 py-0.5 rounded bg-neutral-800/80 hover:bg-neutral-800 transition-colors border border-neutral-700/60"
+                      title="Metni Kopyala"
+                    >
+                      {copiedField === `desc_${activeTab}` ? (
+                        <>
+                          <Check className="w-3.5 h-3.5 text-emerald-400" />
+                          <span className="text-emerald-400 font-medium">Kopyalandı</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="w-3.5 h-3.5 text-neutral-400" />
+                          <span>Kopyala</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
                   <textarea
                     rows={2}
                     value={(formData.description as any)[activeTab] || ''}
                     onChange={e => handleDescChange(activeTab, e.target.value)}
-                    className="w-full bg-neutral-950 border border-neutral-700 rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-brand-500"
+                    onFocus={e => e.target.select()}
+                    className="w-full bg-neutral-950 border border-neutral-700 rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-brand-500 select-text cursor-text"
                   />
                 </div>
               </div>
@@ -282,7 +372,9 @@ export default function AdminProjectModal({ isOpen, onClose, project, onSave }: 
                       )}
                     </div>
                     <div className="flex-1 px-2 overflow-hidden">
-                      <p className="text-sm text-neutral-300 truncate">{img.split('/').pop()}</p>
+                      <p className="text-sm text-neutral-300 truncate">
+                        {img.includes('/api/images/') ? `Görsel ${i + 1} (Yüklenen)` : img.split('/').pop()}
+                      </p>
                       {i === 0 && <span className="text-xs text-brand-400">Ana/Kapak Görseli</span>}
                     </div>
                     <div className="flex items-center gap-1 border-l border-neutral-800 pl-2">

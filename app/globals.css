@@ -15,8 +15,22 @@
     background-color: #0c0c0d;
     color: #f3f3f4;
     overflow-x: hidden;
-    selection-background-color: #906e50;
-    selection-color: #ffffff;
+  }
+
+  ::selection {
+    background-color: #906e50 !important;
+    color: #ffffff !important;
+  }
+
+  ::-moz-selection {
+    background-color: #906e50 !important;
+    color: #ffffff !important;
+  }
+
+  input::selection,
+  textarea::selection {
+    background-color: #906e50 !important;
+    color: #ffffff !important;
   }
 }
 
